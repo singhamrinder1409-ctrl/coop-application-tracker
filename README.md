@@ -2,9 +2,7 @@
 
 CSC 370 Project Kick-Off - Fall 2026
 
-## Group
-
-Group 3
+## Group 3
 
 | Name | Username |
 | --- | --- |
@@ -12,7 +10,6 @@ Group 3
 | Jaiman Singh | jaiman1 |
 | Aashna Sadeque | aashnas |
 
-Student numbers can be added if Brightspace or the TA asks for them.
 
 ## Project Idea
 
@@ -31,9 +28,8 @@ These are the main files for the kick-off evidence:
 - `SPRINT_PLAN.md`: current sprint evidence and next sprint plan
 - `schema.sql`: MySQL DDL code
 - `SOURCES.md`: course sources used
-- `SUBMISSION_CHECKLIST.md`: checklist based on the instructions
-
-Extra helper files are in `supporting-files/`. They are useful for the video, but they are not the main submission evidence.
+- `supporting-files/seed.sql`: optional sample data for demo/testing
+- `supporting-files/demo_queries.sql`: optional SQL queries for demo/testing
 
 ## How To Demo Locally
 
@@ -45,7 +41,7 @@ mysql -u root -p coop_application_tracker < supporting-files/seed.sql
 mysql -u root -p coop_application_tracker < supporting-files/demo_queries.sql
 ```
 
-If the group uses a different MySQL username, change the command as needed.
+If you use a different MySQL username, change the command as needed.
 
 ## Submission Checklist
 
@@ -53,7 +49,7 @@ If the group uses a different MySQL username, change the command as needed.
 - Commit the files.
 - Copy the GitHub link and the exact commit hash.
 - Record a video that is no longer than 11 minutes because the group has 3 people.
-- In the video, show the ERD/schema, SQL DDL, sample data, demo queries, and next sprint plan.
+- In the video, show the ERD/schema, SQL DDL, evidence of progress, and next sprint plan.
 - Make sure one group member submits on Brightspace for the whole group.
 - If the GitHub repo is private, give access to the instructor and TA-client.
 - Include or point to `SOURCES.md` so the course sources are clear.

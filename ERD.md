@@ -10,7 +10,7 @@ The main idea is to describe what should be in the database before thinking too 
 
 We chose these entity sets because each one has its own information and its own identifier. For example, an employer has a name and website, while a job posting has a title, deadline, and work term. We think those should be separate because one employer can have many postings.
 
-The rendered diagram follows the same general style as the lecture slides: entity sets are rectangles, attributes are ellipses, relationships are diamonds, and identifier attributes are underlined. Table reference details are handled later in the relational schema instead of being treated as conceptual ERD attributes.
+The ER diagram follows the same general style as the lecture slides: entity sets are rectangles, attributes are ellipses, relationships are diamonds, and identifier attributes are underlined. Table reference details are handled later in the relational schema instead of being treated as ERD attributes.
 
 ## Entity Sets And Identifiers
 

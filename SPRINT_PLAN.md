@@ -23,11 +23,14 @@ We consider this sprint successful if:
 
 ## Evidence That We Met The Goals
 
-- The ERD is in `ERD.md`.
-- The relational schema is in `RELATIONAL_SCHEMA.md`.
-- The normalization reasoning is in `NORMALIZATION.md`.
-- The MySQL DDL is in `schema.sql`.
-- Extra sample data and demo queries are in `supporting-files/`.
+| Sprint goal | Evidence in the repo |
+| --- | --- |
+| Develop a conceptual schema | `ERD.md` explains the entity sets, identifiers, relationships, and multiplicities. |
+| Create a complete ERD | `ERD.svg` shows the rendered ER diagram in Chen-style notation. |
+| Convert the ERD into relations | `RELATIONAL_SCHEMA.md` lists the tables, keys, references, and uniqueness rules. |
+| Implement a normalized database | `schema.sql` creates the MySQL database with tables, keys, foreign keys, and checks. |
+| Explain functional dependencies and BCNF | `NORMALIZATION.md` lists the main FDs and explains why the tables were split. |
+| Show the schema can support useful queries | `supporting-files/seed.sql` and `supporting-files/demo_queries.sql` give optional test data and demo queries. |
 
 We think this shows real progress because the project now has a structure that can be tested and changed. It is not just an idea anymore.
 
@@ -35,14 +38,14 @@ We think this shows real progress because the project now has a structure that c
 
 We have not received TA/client requirements yet, so the scope is based on our current understanding. This means the design may change after we talk to the TA-client.
 
-We also have not built an application UI yet. For this sprint, we focused on the database design because the instructions said to cover conceptual and relational schema design up to BCNF normalization.
+We also have not built an application UI yet. We think that is okay for this sprint because the given kick-off plan focuses on conceptual design, relational schema design, SQL DDL, and normalization up to BCNF.
 
 ## Plan For Next Sprint
 
 For the next sprint, we want to cover the material up to Advanced Relational Design. Our plan is:
 
 1. Review the schema with the TA-client and adjust the scope.
-2. Add more formal constraints for data quality, including referential integrity and value constraints.
+2. Add more formal constraints for data quality, including referential integrity, value constraints, and the rule that an application's resume should belong to the same student.
 3. Write relational algebra constraints for some rules, such as:
    - every application must refer to an existing student and job posting
    - an application deadline should not be before the posting date
@@ -50,7 +53,6 @@ For the next sprint, we want to cover the material up to Advanced Relational Des
 4. Decide whether inheritance or weak entity sets would actually help our design.
 5. Add more realistic sample data.
 6. Write more SQL queries for reporting, like active applications, interview schedule, and offers.
-7. Start a small backend/API plan if the TA agrees that the database design is ready.
 
 ## Next Sprint Success Criteria
 
@@ -65,8 +67,9 @@ By the end of the next sprint, we should be able to show:
 
 ## Course-Level Connection
 
-This next sprint connects to:
+This next sprint connects to the course in these ways:
 
 - data modelling, because we will improve the schema and constraints
 - SQL/data analysis, because we will write more useful queries
 - back-end engineering, because constraints and referential integrity make the database safer for an application to use
+- Advanced Relational Design, because we will decide whether weak entity sets, inheritance, and extra constraints are actually useful for this project

@@ -1,11 +1,11 @@
 # Sources Used
 
-The project idea and database design were based on the CSC 370 project instructions, rubric, and lecture slides provided for the course.
+The project idea and database design were based on the CSC 370 kick-off instructions, rubric, and lecture slides provided for the course.
 
 ## Course Instructions
 
 - `Project Kick-Off - Fall 2026 CSC 370 A01 A02 X - University of Victoria.pdf`
-- Brightspace project kick-off instructions pasted by the group
+- Brightspace kick-off instructions pasted by the group
 
 ## Lecture Slides Used
 
@@ -35,4 +35,4 @@ The project idea and database design were based on the CSC 370 project instructi
 
 ## External Sources
 
-No external code sources were used for the SQL files in this kick-off package.
+No external code sources were used for the SQL files in this kick-off stage.

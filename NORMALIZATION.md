@@ -34,7 +34,7 @@ There are also some alternate uniqueness rules:
 
 In our design, each table has a primary key, and the other attributes depend on that key. For example, in `Employer`, the employer name, industry, website, and location all depend on `employer_id`.
 
-For BCNF, the main idea we used is that every non-trivial functional dependency should have a superkey on the left side. The design is close to BCNF because facts are separated into their own tables:
+For BCNF, the main idea we used is that every non-trivial functional dependency should have a superkey on the left side. Based on the functional dependencies listed above, we think the design satisfies BCNF for the current scope because facts are separated into their own tables:
 
 - employer facts are only in `Employer`
 - job posting facts are only in `JobPosting`
@@ -44,6 +44,8 @@ For BCNF, the main idea we used is that every non-trivial functional dependency 
 - offer facts are only in `Offer`
 
 Acc to us, this avoids the main anomaly problem from putting everything in one relation. For example, deleting a rejected application will not delete the employer from the database. Also, changing an employer website does not require updating every application row.
+
+One rule we still want to check more carefully in the next sprint is that the resume used by an application should belong to the same student as that application. The current schema records both references, but this rule is better handled as an extra constraint after TA-client feedback.
 
 ## Small BCNF Example From Our Design
 
