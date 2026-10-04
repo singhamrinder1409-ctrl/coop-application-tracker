@@ -8,7 +8,7 @@ Group size is 3, so the video must be no longer than 11 minutes.
 
 Hi, we are Group 3. Our project is a Co-op Application Tracker. The goal is to help students track job postings, applications, interviews, employers, and offers in one database.
 
-We chose this topic because co-op applications can get hard to manage if everything is stored in a spreadsheet. There are many connected pieces of data, so it fits a relational database project pretty well.
+We chose this topic because co-op applications can get hard to manage if everything is just kept in a spreadsheet. There are many connected pieces of data, so we think it fits a relational database project pretty well.
 
 ### 0:45-2:00 - Requirements And Scope
 
@@ -18,7 +18,7 @@ We kept the scope focused for now because this is the kick-off submission. We ha
 
 ### 2:00-4:00 - ERD
 
-Show `docs/erd.md`.
+Show `ERD.md`.
 
 Our main entity sets are Student, Employer, JobPosting, Application, ApplicationStatus, ResumeVersion, Interview, and Offer.
 
@@ -34,7 +34,7 @@ We also gave each entity set an identifier, like `student_id`, `employer_id`, an
 
 ### 4:00-6:00 - Relational Schema And SQL DDL
 
-Show `docs/relational-schema.md` and `sql/schema.sql`.
+Show `RELATIONAL_SCHEMA.md` and `schema.sql`.
 
 We converted the ERD into relational tables. The SQL file creates the database, tables, primary keys, foreign keys, unique constraints, and some check constraints.
 
@@ -42,15 +42,15 @@ For example, `Application` connects a student to a job posting and has a status.
 
 ### 6:00-7:30 - Normalization And BCNF
 
-Show `docs/normalization.md`.
+Show `NORMALIZATION.md`.
 
 We tried not to put all information into one big table because that would repeat employer and student data. It could cause update and deletion problems.
 
-In our design, employer information is stored in `Employer`, posting information is stored in `JobPosting`, and application information is stored in `Application`. This makes the functional dependencies cleaner because most non-key attributes depend on the key of their own table.
+In our design, employer information is stored in `Employer`, posting information is stored in `JobPosting`, and application information is stored in `Application`. This makes the functional dependencies easier to explain because the facts are not all mixed together.
 
 ### 7:30-9:00 - Demo Queries
 
-Show `sql/demo_queries.sql`.
+Show `supporting-files/demo_queries.sql`.
 
 Some demo queries are:
 
@@ -64,13 +64,12 @@ These queries show that the database can already answer useful questions.
 
 ### 9:00-10:30 - Next Sprint Plan
 
-Show `docs/sprint-plan.md`.
+Show `SPRINT_PLAN.md`.
 
 For the next sprint, we want to review the design with the TA-client, add more formal constraints, write relational algebra constraints, add better sample data, and prepare more queries.
 
-This connects to Advanced Relational Design because we will focus more on constraints, referential integrity, and whether any weak entity set or inheritance pattern is useful.
+This connects to Advanced Relational Design because next we will focus more on constraints, referential integrity, and whether weak entity sets or inheritance would actually help our design.
 
 ### 10:30-11:00 - Closing
 
 Overall, we think this is a good starting point because we have a clear topic, an ERD, a relational schema, SQL DDL, normalization notes, and a plan for improving the design in the next sprint.
-

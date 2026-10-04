@@ -6,7 +6,7 @@ If we made this project as one big table, it might look like this:
 
 `CoopTracker(student_name, username, employer_name, employer_website, job_title, deadline, status_name, resume_file, interview_round, interview_time, offer_wage)`
 
-At first this looks simple, but it would cause repeated data. The same employer could appear in many rows. The same student could appear in many rows. The same application could need several rows if it has more than one interview. This can lead to update, insertion, and deletion anomalies.
+At first this looks simple, but it would repeat a lot of data. The same employer could appear in many rows. The same student could appear in many rows. One application could also need several rows if it has more than one interview. This can lead to update, insertion, and deletion problems.
 
 ## Main Functional Dependencies
 
@@ -32,7 +32,7 @@ There are also some alternate uniqueness rules:
 
 ## Keys And BCNF
 
-In our design, each table has a primary key, and the non-key attributes depend on that key. For example, in `Employer`, the employer name, industry, website, and location all depend on `employer_id`.
+In our design, each table has a primary key, and the other attributes depend on that key. For example, in `Employer`, the employer name, industry, website, and location all depend on `employer_id`.
 
 For BCNF, the main idea we used is that every non-trivial functional dependency should have a superkey on the left side. The design is close to BCNF because facts are separated into their own tables:
 
@@ -68,4 +68,3 @@ So we decomposed it into separate relations like:
 - `ApplicationStatus(status_id, status_name, is_terminal)`
 
 This is why the schema has more tables, even though it may look longer.
-

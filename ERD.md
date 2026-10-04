@@ -1,10 +1,10 @@
-# ERD Notes
+# ERD
 
 ## Conceptual Design
 
-The main idea is to describe what should be in the database before thinking too much about screens or code. For this project, the important things are students, employers, job postings, applications, interviews, offers, application statuses, and resume versions.
+The main idea is to describe what should be in the database before thinking too much about screens or code. For this project, the important things are students, employers, job postings, applications, statuses, resume versions, interviews, and offers.
 
-We chose these entity sets because each one has its own information and its own identifier. For example, an employer has a name and website, while a job posting has a title, deadline, and work term. These should not be stored as one big table because the same employer can have more than one posting.
+We chose these entity sets because each one has its own information and its own identifier. For example, an employer has a name and website, while a job posting has a title, deadline, and work term. We think those should be separate because one employer can have many postings.
 
 ## Entity Sets And Identifiers
 
@@ -33,7 +33,7 @@ We chose these entity sets because each one has its own information and its own 
 
 ## Mermaid ERD
 
-This diagram uses crow's foot notation because it is easy to keep in GitHub. The course uses a Chen-style ERD in class, but the same main ideas are here: entity sets, attributes, identifiers, relationships, and multiplicities.
+This diagram uses crow's foot notation because it works well in GitHub. The course uses a Chen-style ERD in class, but the same main ideas are here: entity sets, attributes, identifiers, relationships, and multiplicities.
 
 ```mermaid
 erDiagram
@@ -128,4 +128,3 @@ erDiagram
         text notes
     }
 ```
-

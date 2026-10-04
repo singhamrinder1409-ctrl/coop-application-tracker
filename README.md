@@ -20,27 +20,29 @@ We are planning to build a Co-op Application Tracker. The main idea is to help s
 
 To us, this is a good database project because the information is connected in many ways. One employer can post many jobs. One student can apply to many jobs. One application can have interviews and maybe an offer. There are also useful constraints, like one student should not have two applications for the exact same job posting.
 
-## What Is In This Kick-Off Package
+## Main Submission Files
 
-- `docs/kickoff-report.md`: written report for the kick-off submission
-- `docs/erd.md`: ERD description and Mermaid diagram
-- `docs/relational-schema.md`: relational schema with keys and foreign keys
-- `docs/normalization.md`: functional dependencies and BCNF notes
-- `docs/sprint-plan.md`: current sprint evidence and next sprint plan
-- `docs/video-script.md`: suggested video outline/script
-- `docs/sources.md`: course source note
-- `sql/schema.sql`: MySQL DDL code
-- `sql/seed.sql`: sample data for demo
-- `sql/demo_queries.sql`: SQL queries to show progress in the video
+These are the main files for the kick-off evidence:
+
+- `PROJECT_KICKOFF.md`: project direction and progress report
+- `ERD.md`: ERD notes and diagram
+- `RELATIONAL_SCHEMA.md`: relational schema with keys and foreign keys
+- `NORMALIZATION.md`: functional dependencies and BCNF notes
+- `SPRINT_PLAN.md`: current sprint evidence and next sprint plan
+- `schema.sql`: MySQL DDL code
+- `SOURCES.md`: course sources used
+- `SUBMISSION_CHECKLIST.md`: checklist based on the instructions
+
+Extra helper files are in `supporting-files/`. They are useful for the video, but they are not the main submission evidence.
 
 ## How To Demo Locally
 
 If MySQL is installed, run:
 
 ```bash
-mysql -u root -p < sql/schema.sql
-mysql -u root -p coop_application_tracker < sql/seed.sql
-mysql -u root -p coop_application_tracker < sql/demo_queries.sql
+mysql -u root -p < schema.sql
+mysql -u root -p coop_application_tracker < supporting-files/seed.sql
+mysql -u root -p coop_application_tracker < supporting-files/demo_queries.sql
 ```
 
 If the group uses a different MySQL username, change the command as needed.
@@ -54,4 +56,4 @@ If the group uses a different MySQL username, change the command as needed.
 - In the video, show the ERD/schema, SQL DDL, sample data, demo queries, and next sprint plan.
 - Make sure one group member submits on Brightspace for the whole group.
 - If the GitHub repo is private, give access to the instructor and TA-client.
-- Include or point to `docs/sources.md` so the course sources are clear.
+- Include or point to `SOURCES.md` so the course sources are clear.

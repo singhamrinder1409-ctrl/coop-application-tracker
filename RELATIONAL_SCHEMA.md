@@ -1,6 +1,6 @@
 # Relational Schema
 
-This is the relational version of the ERD. Primary keys are marked with `PK`, foreign keys with `FK`, and important uniqueness constraints are noted below each table.
+This is the relational version of the ERD. Primary keys are marked with `PK`, and foreign keys are marked with `FK`.
 
 ## Tables
 
@@ -47,7 +47,6 @@ This is the relational version of the ERD. Primary keys are marked with `PK`, fo
 
 ## Why These Tables Are Split
 
-We split the database this way to avoid repeating the same facts many times. For example, employer details are stored once in `Employer`, not copied into every application. Application status names are also stored in `ApplicationStatus`, so we do not have to repeat the exact strings everywhere.
+We split the database this way to avoid repeating the same facts many times. For example, employer details are stored once in `Employer`, not copied into every application. Application status names are also stored in `ApplicationStatus`, so we do not have to repeat the exact same words everywhere.
 
 This also makes the database easier to update. If an employer website changes, we update one row instead of many rows.
-

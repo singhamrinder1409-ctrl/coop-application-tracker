@@ -2,7 +2,7 @@
 
 ## Current Sprint Goals
 
-For this kick-off sprint, we worked from the course's given starting plan:
+For this kick-off sprint, we worked from the starting plan in the project instructions:
 
 1. Develop a conceptual schema from our own requirements.
 2. Create an ERD with entity sets, attributes, identifiers, relationships, and multiplicities.
@@ -23,12 +23,11 @@ We consider this sprint successful if:
 
 ## Evidence That We Met The Goals
 
-- The ERD is in `docs/erd.md`.
-- The relational schema is in `docs/relational-schema.md`.
-- The normalization reasoning is in `docs/normalization.md`.
-- The MySQL DDL is in `sql/schema.sql`.
-- The sample data is in `sql/seed.sql`.
-- Demo SQL queries are in `sql/demo_queries.sql`.
+- The ERD is in `ERD.md`.
+- The relational schema is in `RELATIONAL_SCHEMA.md`.
+- The normalization reasoning is in `NORMALIZATION.md`.
+- The MySQL DDL is in `schema.sql`.
+- Extra sample data and demo queries are in `supporting-files/`.
 
 We think this shows real progress because the project now has a structure that can be tested and changed. It is not just an idea anymore.
 
@@ -48,7 +47,7 @@ For the next sprint, we want to cover the material up to Advanced Relational Des
    - every application must refer to an existing student and job posting
    - an application deadline should not be before the posting date
    - one application should not have duplicate interview round numbers
-4. Decide whether any inheritance or weak entity set pattern is useful.
+4. Decide whether inheritance or weak entity sets would actually help our design.
 5. Add more realistic sample data.
 6. Write more SQL queries for reporting, like active applications, interview schedule, and offers.
 7. Start a small backend/API plan if the TA agrees that the database design is ready.
@@ -59,7 +58,7 @@ By the end of the next sprint, we should be able to show:
 
 - an updated schema based on feedback
 - at least five clear constraints written in SQL or relational algebra
-- explanation of any advanced design choice, like weak entities or inheritance, if we use it
+- explanation of any advanced design choice, like weak entities or inheritance, if we use one
 - sample data that covers normal cases and edge cases
 - SQL queries that answer useful questions about co-op applications
 - a short demo proving the database can support the main workflow
@@ -71,4 +70,3 @@ This next sprint connects to:
 - data modelling, because we will improve the schema and constraints
 - SQL/data analysis, because we will write more useful queries
 - back-end engineering, because constraints and referential integrity make the database safer for an application to use
-
