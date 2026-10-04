@@ -23,12 +23,14 @@ This checklist is based on the kick-off instructions and rubric.
 - [x] MySQL DDL: `schema.sql`
 - [x] Current sprint evidence and next sprint plan: `SPRINT_PLAN.md`
 - [x] Course sources used: `SOURCES.md`
+- [x] Rendered ERD image: `ERD.svg`
 
 ## Helpful But Not Main Submission Files
 
 - [x] Sample data: `supporting-files/seed.sql`
 - [x] Demo queries: `supporting-files/demo_queries.sql`
 - [x] Video outline: `supporting-files/video-script.md`
+- [x] Team speaking script: `TEAM_VIDEO_SCRIPT.md`
 
 ## Nothing Major Missing Right Now
 

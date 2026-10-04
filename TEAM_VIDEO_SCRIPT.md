@@ -33,13 +33,14 @@ Target time: 2:45-5:45
 
 ### Show
 
+- `ERD.svg`
 - `ERD.md`
 - `RELATIONAL_SCHEMA.md`
 - `schema.sql`
 
 ### Say
 
-This is our ERD. The main entity sets are `Student`, `Employer`, `JobPosting`, `Application`, `ApplicationStatus`, `ResumeVersion`, `Interview`, and `Offer`.
+This is our ERD diagram. The main entity sets are `Student`, `Employer`, `JobPosting`, `Application`, `ApplicationStatus`, `ResumeVersion`, `Interview`, and `Offer`.
 
 We gave each entity an identifier. For example, `Student` has `student_id`, `Employer` has `employer_id`, and `Application` has `application_id`.
 
