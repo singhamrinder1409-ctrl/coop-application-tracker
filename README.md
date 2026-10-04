@@ -28,7 +28,7 @@ To us, this is a good database project because the information is connected in m
 - `docs/normalization.md`: functional dependencies and BCNF notes
 - `docs/sprint-plan.md`: current sprint evidence and next sprint plan
 - `docs/video-script.md`: suggested video outline/script
-- `docs/ai-and-sources.md`: AI use and course source note
+- `docs/sources.md`: course source note
 - `sql/schema.sql`: MySQL DDL code
 - `sql/seed.sql`: sample data for demo
 - `sql/demo_queries.sql`: SQL queries to show progress in the video
@@ -54,4 +54,4 @@ If the group uses a different MySQL username, change the command as needed.
 - In the video, show the ERD/schema, SQL DDL, sample data, demo queries, and next sprint plan.
 - Make sure one group member submits on Brightspace for the whole group.
 - If the GitHub repo is private, give access to the instructor and TA-client.
-- Include or point to `docs/ai-and-sources.md` so AI use and course sources are clear.
+- Include or point to `docs/sources.md` so the course sources are clear.
