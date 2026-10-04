@@ -46,7 +46,7 @@ We gave each entity an identifier. For example, `Student` has `student_id`, `Emp
 
 Some of the important relationships are that one employer can have many job postings, one student can submit many applications, and each application belongs to one student and one job posting. Also, one application can have many interviews, but in our first design one application can have at most one offer.
 
-The ERD is shown in crow's foot notation because it works well in GitHub. Even though the course uses Chen-style ERDs in class, we are still showing the same main ideas: entity sets, attributes, identifiers, relationships, and multiplicities.
+The ERD is shown in a Chen-style format like the lecture slides. Rectangles are entity sets, ellipses are attributes, diamonds are relationships, and the underlined attributes are identifiers.
 
 After that, we converted the ERD into a relational schema. In `RELATIONAL_SCHEMA.md`, we list the tables and show the primary keys and foreign keys.
 

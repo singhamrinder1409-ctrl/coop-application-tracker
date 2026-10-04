@@ -1,143 +1,204 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1250" viewBox="0 0 1800 1250">
   <defs>
     <style>
-      .page { fill: #fbfbf8; }
-      .title { font: 700 34px Arial, sans-serif; fill: #1f2933; }
-      .subtitle { font: 18px Arial, sans-serif; fill: #52606d; }
-      .entity { fill: #ffffff; stroke: #1f2933; stroke-width: 2.2; rx: 10; }
-      .entity-title { font: 700 20px Arial, sans-serif; fill: #102a43; }
-      .attr { font: 16px Arial, sans-serif; fill: #334e68; }
-      .key { font: 700 16px Arial, sans-serif; fill: #102a43; }
-      .line { stroke: #334e68; stroke-width: 2.5; fill: none; }
-      .label { font: 15px Arial, sans-serif; fill: #243b53; }
-      .badge { fill: #e0f2fe; stroke: #0284c7; stroke-width: 1; rx: 8; }
-      .badgeText { font: 700 14px Arial, sans-serif; fill: #075985; }
+      .page { fill: #ffffff; }
+      .shape { fill: #ffffff; stroke: #000000; stroke-width: 2.2; }
+      .line { stroke: #000000; stroke-width: 2; fill: none; }
+      .title { font: 700 34px Arial, sans-serif; fill: #000000; }
+      .subtitle { font: 18px Arial, sans-serif; fill: #000000; }
+      .entityText { font: 700 20px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
+      .relText { font: 700 17px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
+      .attrText { font: 15px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
+      .idText { font: 700 15px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; text-decoration: underline; }
+      .mult { font: 15px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
+      .note { font: 15px Arial, sans-serif; fill: #000000; }
     </style>
   </defs>
 
-  <rect class="page" x="0" y="0" width="1600" height="1050"/>
-  <text class="title" x="70" y="70">Co-op Application Tracker ERD</text>
-  <text class="subtitle" x="70" y="103">Rendered version of the conceptual design for the CSC 370 kick-off submission.</text>
+  <rect class="page" x="0" y="0" width="1800" height="1250"/>
+  <text class="title" x="70" y="65">Co-op Application Tracker ERD</text>
+  <text class="subtitle" x="70" y="98">Chen-style ERD: rectangles = entity sets, diamonds = relationships, ellipses = attributes.</text>
+  <text class="subtitle" x="70" y="124">Identifier attributes are underlined.</text>
 
-  <!-- Entities -->
-  <g id="student">
-    <rect class="entity" x="80" y="170" width="270" height="195"/>
-    <text class="entity-title" x="105" y="205">Student</text>
-    <text class="key" x="105" y="245">PK student_id</text>
-    <text class="attr" x="105" y="275">full_name</text>
-    <text class="attr" x="105" y="305">username</text>
-    <text class="attr" x="105" y="335">email</text>
-  </g>
+  <rect class="shape" x="105" y="255" width="210" height="70"/>
+  <text class="entityText" x="210" y="290">Student</text>
 
-  <g id="resume">
-    <rect class="entity" x="80" y="560" width="285" height="205"/>
-    <text class="entity-title" x="105" y="595">ResumeVersion</text>
-    <text class="key" x="105" y="635">PK resume_id</text>
-    <text class="attr" x="105" y="665">FK student_id</text>
-    <text class="attr" x="105" y="695">resume_label</text>
-    <text class="attr" x="105" y="725">version_number</text>
-  </g>
+  <rect class="shape" x="105" y="805" width="240" height="70"/>
+  <text class="entityText" x="225" y="840">ResumeVersion</text>
 
-  <g id="application">
-    <rect class="entity" x="620" y="385" width="330" height="245"/>
-    <text class="entity-title" x="645" y="420">Application</text>
-    <text class="key" x="645" y="460">PK application_id</text>
-    <text class="attr" x="645" y="490">FK student_id</text>
-    <text class="attr" x="645" y="520">FK posting_id</text>
-    <text class="attr" x="645" y="550">FK status_id</text>
-    <text class="attr" x="645" y="580">FK resume_id</text>
-    <text class="attr" x="645" y="610">date_applied, priority</text>
-  </g>
+  <rect class="shape" x="730" y="520" width="220" height="70"/>
+  <text class="entityText" x="840" y="555">Application</text>
 
-  <g id="status">
-    <rect class="entity" x="620" y="760" width="295" height="165"/>
-    <text class="entity-title" x="645" y="795">ApplicationStatus</text>
-    <text class="key" x="645" y="835">PK status_id</text>
-    <text class="attr" x="645" y="865">status_name</text>
-    <text class="attr" x="645" y="895">is_terminal</text>
-  </g>
+  <rect class="shape" x="690" y="960" width="300" height="70"/>
+  <text class="entityText" x="840" y="995">ApplicationStatus</text>
 
-  <g id="employer">
-    <rect class="entity" x="1230" y="170" width="285" height="205"/>
-    <text class="entity-title" x="1255" y="205">Employer</text>
-    <text class="key" x="1255" y="245">PK employer_id</text>
-    <text class="attr" x="1255" y="275">employer_name</text>
-    <text class="attr" x="1255" y="305">industry</text>
-    <text class="attr" x="1255" y="335">website, location</text>
-  </g>
+  <rect class="shape" x="1385" y="255" width="220" height="70"/>
+  <text class="entityText" x="1495" y="290">Employer</text>
 
-  <g id="posting">
-    <rect class="entity" x="1200" y="495" width="330" height="255"/>
-    <text class="entity-title" x="1225" y="530">JobPosting</text>
-    <text class="key" x="1225" y="570">PK posting_id</text>
-    <text class="attr" x="1225" y="600">FK employer_id</text>
-    <text class="attr" x="1225" y="630">job_title</text>
-    <text class="attr" x="1225" y="660">work_term</text>
-    <text class="attr" x="1225" y="690">deadline, status</text>
-    <text class="attr" x="1225" y="720">location, posting_url</text>
-  </g>
+  <rect class="shape" x="1370" y="805" width="250" height="70"/>
+  <text class="entityText" x="1495" y="840">JobPosting</text>
 
-  <g id="interview">
-    <rect class="entity" x="650" y="95" width="295" height="205"/>
-    <text class="entity-title" x="675" y="130">Interview</text>
-    <text class="key" x="675" y="170">PK interview_id</text>
-    <text class="attr" x="675" y="200">FK application_id</text>
-    <text class="attr" x="675" y="230">interview_round</text>
-    <text class="attr" x="675" y="260">scheduled_at, result</text>
-  </g>
+  <rect class="shape" x="730" y="170" width="220" height="70"/>
+  <text class="entityText" x="840" y="205">Interview</text>
 
-  <g id="offer">
-    <rect class="entity" x="1030" y="840" width="300" height="165"/>
-    <text class="entity-title" x="1055" y="875">Offer</text>
-    <text class="key" x="1055" y="915">PK offer_id</text>
-    <text class="attr" x="1055" y="945">FK application_id</text>
-    <text class="attr" x="1055" y="975">wage, dates, status</text>
-  </g>
+  <rect class="shape" x="1385" y="1040" width="220" height="70"/>
+  <text class="entityText" x="1495" y="1075">Offer</text>
 
-  <!-- Relationships -->
-  <path class="line" d="M350 250 C470 250, 500 470, 620 470"/>
-  <rect class="badge" x="420" y="318" width="126" height="30"/>
-  <text class="badgeText" x="437" y="339">1 to many</text>
-  <text class="label" x="410" y="370">Student submits Applications</text>
+  <ellipse class="shape" cx="95" cy="170" rx="82" ry="30"/>
+  <text class="idText" x="95" y="170">student_id</text>
+  <path class="line" d="M58 182 L132 182"/>
+  <path class="line" d="M135 195 L185 255"/>
+  <ellipse class="shape" cx="245" cy="165" rx="75" ry="30"/>
+  <text class="attrText" x="245" y="165">full_name</text>
+  <path class="line" d="M240 195 L225 255"/>
+  <ellipse class="shape" cx="375" cy="220" rx="72" ry="30"/>
+  <text class="attrText" x="375" y="220">username</text>
+  <path class="line" d="M330 240 L285 255"/>
+  <ellipse class="shape" cx="60" cy="390" rx="58" ry="30"/>
+  <text class="attrText" x="60" y="390">email</text>
+  <path class="line" d="M110 375 L160 325"/>
 
-  <path class="line" d="M350 300 C450 375, 480 590, 620 575"/>
-  <rect class="badge" x="438" y="510" width="126" height="30"/>
-  <text class="badgeText" x="455" y="531">1 to many</text>
-  <text class="label" x="392" y="560">Student has ResumeVersions</text>
+  <ellipse class="shape" cx="100" cy="720" rx="80" ry="30"/>
+  <text class="idText" x="100" y="720">resume_id</text>
+  <path class="line" d="M62 732 L138 732"/>
+  <path class="line" d="M135 745 L180 805"/>
+  <ellipse class="shape" cx="305" cy="720" rx="95" ry="30"/>
+  <text class="attrText" x="305" y="720">resume_label</text>
+  <path class="line" d="M280 748 L245 805"/>
+  <ellipse class="shape" cx="225" cy="930" rx="105" ry="30"/>
+  <text class="attrText" x="225" y="930">version_number</text>
+  <path class="line" d="M225 900 L225 875"/>
 
-  <path class="line" d="M365 660 C465 660, 520 585, 620 570"/>
-  <rect class="badge" x="405" y="675" width="126" height="30"/>
-  <text class="badgeText" x="422" y="696">1 to many</text>
-  <text class="label" x="392" y="725">Resume used for Applications</text>
+  <ellipse class="shape" cx="680" cy="430" rx="100" ry="30"/>
+  <text class="idText" x="680" y="430">application_id</text>
+  <path class="line" d="M628 442 L732 442"/>
+  <path class="line" d="M715 455 L780 520"/>
+  <ellipse class="shape" cx="1040" cy="430" rx="88" ry="30"/>
+  <text class="attrText" x="1040" y="430">date_applied</text>
+  <path class="line" d="M1000 455 L930 520"/>
+  <ellipse class="shape" cx="1090" cy="535" rx="65" ry="30"/>
+  <text class="attrText" x="1090" y="535">priority</text>
+  <path class="line" d="M1025 540 L950 550"/>
+  <ellipse class="shape" cx="1070" cy="650" rx="52" ry="30"/>
+  <text class="attrText" x="1070" y="650">notes</text>
+  <path class="line" d="M1022 638 L945 585"/>
 
-  <path class="line" d="M1230 300 C1120 330, 1065 440, 950 500"/>
-  <rect class="badge" x="1035" y="346" width="126" height="30"/>
-  <text class="badgeText" x="1052" y="367">1 to many</text>
-  <text class="label" x="1010" y="395">Employer posts Jobs</text>
+  <ellipse class="shape" cx="670" cy="1085" rx="75" ry="30"/>
+  <text class="idText" x="670" y="1085">status_id</text>
+  <path class="line" d="M636 1097 L704 1097"/>
+  <path class="line" d="M710 1060 L770 1030"/>
+  <ellipse class="shape" cx="850" cy="1095" rx="92" ry="30"/>
+  <text class="attrText" x="850" y="1095">status_name</text>
+  <path class="line" d="M848 1065 L845 1030"/>
+  <ellipse class="shape" cx="1030" cy="1085" rx="80" ry="30"/>
+  <text class="attrText" x="1030" y="1085">is_terminal</text>
+  <path class="line" d="M990 1060 L930 1030"/>
 
-  <path class="line" d="M1200 620 C1090 600, 1045 535, 950 515"/>
-  <rect class="badge" x="1010" y="625" width="126" height="30"/>
-  <text class="badgeText" x="1027" y="646">1 to many</text>
-  <text class="label" x="1010" y="680">Posting receives Applications</text>
+  <ellipse class="shape" cx="1340" cy="170" rx="90" ry="30"/>
+  <text class="idText" x="1340" y="170">employer_id</text>
+  <path class="line" d="M1295 182 L1385 182"/>
+  <path class="line" d="M1385 195 L1450 255"/>
+  <ellipse class="shape" cx="1510" cy="160" rx="105" ry="30"/>
+  <text class="attrText" x="1510" y="160">employer_name</text>
+  <path class="line" d="M1505 190 L1500 255"/>
+  <ellipse class="shape" cx="1630" cy="230" rx="70" ry="30"/>
+  <text class="attrText" x="1630" y="230">website</text>
+  <path class="line" d="M1595 250 L1565 255"/>
+  <ellipse class="shape" cx="1380" cy="390" rx="62" ry="30"/>
+  <text class="attrText" x="1380" y="390">industry</text>
+  <path class="line" d="M1410 365 L1450 325"/>
 
-  <path class="line" d="M765 760 L780 630"/>
-  <rect class="badge" x="808" y="670" width="126" height="30"/>
-  <text class="badgeText" x="825" y="691">1 to many</text>
-  <text class="label" x="808" y="725">Status labels Applications</text>
+  <ellipse class="shape" cx="1340" cy="715" rx="80" ry="30"/>
+  <text class="idText" x="1340" y="715">posting_id</text>
+  <path class="line" d="M1302 727 L1378 727"/>
+  <path class="line" d="M1378 740 L1430 805"/>
+  <ellipse class="shape" cx="1515" cy="710" rx="70" ry="30"/>
+  <text class="attrText" x="1515" y="710">job_title</text>
+  <path class="line" d="M1512 740 L1505 805"/>
+  <ellipse class="shape" cx="1640" cy="790" rx="75" ry="30"/>
+  <text class="attrText" x="1640" y="790">deadline</text>
+  <path class="line" d="M1602 810 L1565 820"/>
+  <ellipse class="shape" cx="1495" cy="935" rx="72" ry="30"/>
+  <text class="attrText" x="1495" y="935">work_term</text>
+  <path class="line" d="M1495 905 L1495 875"/>
 
-  <path class="line" d="M800 300 L795 385"/>
-  <rect class="badge" x="825" y="330" width="126" height="30"/>
-  <text class="badgeText" x="842" y="351">1 to many</text>
-  <text class="label" x="835" y="378">Application has Interviews</text>
+  <ellipse class="shape" cx="680" cy="85" rx="82" ry="30"/>
+  <text class="idText" x="680" y="85">interview_id</text>
+  <path class="line" d="M638 97 L722 97"/>
+  <path class="line" d="M715 112 L780 170"/>
+  <ellipse class="shape" cx="865" cy="85" rx="112" ry="30"/>
+  <text class="attrText" x="865" y="85">interview_round</text>
+  <path class="line" d="M860 115 L850 170"/>
+  <ellipse class="shape" cx="1015" cy="155" rx="90" ry="30"/>
+  <text class="attrText" x="1015" y="155">scheduled_at</text>
+  <path class="line" d="M965 170 L945 180"/>
 
-  <path class="line" d="M900 630 C970 730, 1040 790, 1115 840"/>
-  <rect class="badge" x="982" y="745" width="150" height="30"/>
-  <text class="badgeText" x="1000" y="766">0 or 1 offer</text>
-  <text class="label" x="975" y="810">Application may receive Offer</text>
+  <ellipse class="shape" cx="1320" cy="1135" rx="62" ry="30"/>
+  <text class="idText" x="1320" y="1135">offer_id</text>
+  <path class="line" d="M1290 1147 L1350 1147"/>
+  <path class="line" d="M1365 1115 L1430 1110"/>
+  <ellipse class="shape" cx="1500" cy="1160" rx="82" ry="30"/>
+  <text class="attrText" x="1500" y="1160">hourly_wage</text>
+  <path class="line" d="M1500 1130 L1500 1110"/>
+  <ellipse class="shape" cx="1640" cy="1120" rx="86" ry="30"/>
+  <text class="attrText" x="1640" y="1120">offer_status</text>
+  <path class="line" d="M1590 1105 L1605 1098"/>
 
-  <!-- Small legend -->
-  <rect class="entity" x="80" y="880" width="430" height="105"/>
-  <text class="entity-title" x="105" y="915">Legend</text>
-  <text class="attr" x="105" y="950">PK = primary key, FK = foreign key</text>
-  <text class="attr" x="105" y="975">Relationship labels show multiplicity in plain words.</text>
+  <polygon class="shape" points="495,555 570,610 495,665 420,610"/>
+  <text class="relText" x="495" y="610">Submits</text>
+  <path class="line" d="M315 315 C385 385 430 500 460 575"/>
+  <path class="line" d="M570 610 C625 585 675 570 730 560"/>
+  <text class="mult" x="345" y="410">1</text>
+  <text class="mult" x="650" y="580">N</text>
+
+  <polygon class="shape" points="225,500 305,555 225,610 145,555"/>
+  <text class="relText" x="225" y="555">Owns</text>
+  <path class="line" d="M215 325 L225 500"/>
+  <path class="line" d="M225 610 L225 805"/>
+  <text class="mult" x="240" y="395">1</text>
+  <text class="mult" x="250" y="675">N</text>
+
+  <polygon class="shape" points="495,810 570,865 495,920 420,865"/>
+  <text class="relText" x="495" y="865">Uses</text>
+  <path class="line" d="M345 845 L420 865"/>
+  <path class="line" d="M570 865 C630 780 690 650 750 590"/>
+  <text class="mult" x="380" y="850">1</text>
+  <text class="mult" x="650" y="730">N</text>
+
+  <polygon class="shape" points="840,335 925,390 840,445 755,390"/>
+  <text class="relText" x="840" y="390">Has</text>
+  <path class="line" d="M840 240 L840 335"/>
+  <path class="line" d="M840 445 L840 520"/>
+  <text class="mult" x="865" y="285">1</text>
+  <text class="mult" x="865" y="485">N</text>
+
+  <polygon class="shape" points="840,725 935,780 840,835 745,780"/>
+  <text class="relText" x="840" y="780">HasStatus</text>
+  <path class="line" d="M840 590 L840 725"/>
+  <path class="line" d="M840 835 L840 960"/>
+  <text class="mult" x="865" y="670">N</text>
+  <text class="mult" x="865" y="900">1</text>
+
+  <polygon class="shape" points="1160,555 1255,610 1160,665 1065,610"/>
+  <text class="relText" x="1160" y="610">Receives</text>
+  <path class="line" d="M950 555 C995 570 1030 590 1065 610"/>
+  <path class="line" d="M1255 610 C1305 675 1350 755 1390 805"/>
+  <text class="mult" x="1010" y="565">N</text>
+  <text class="mult" x="1320" y="725">1</text>
+
+  <polygon class="shape" points="1495,500 1575,555 1495,610 1415,555"/>
+  <text class="relText" x="1495" y="555">Posts</text>
+  <path class="line" d="M1495 325 L1495 500"/>
+  <path class="line" d="M1495 610 L1495 805"/>
+  <text class="mult" x="1520" y="410">1</text>
+  <text class="mult" x="1520" y="715">N</text>
+
+  <polygon class="shape" points="1160,930 1250,985 1160,1040 1070,985"/>
+  <text class="relText" x="1160" y="985">MayReceive</text>
+  <path class="line" d="M930 590 C1000 725 1060 860 1110 950"/>
+  <path class="line" d="M1250 985 C1295 1020 1345 1050 1385 1070"/>
+  <text class="mult" x="1005" y="720">1</text>
+  <text class="mult" x="1325" y="1030">0..1</text>
+
+  <text class="note" x="70" y="1145">Note: Identifier attributes are underlined. Table reference details are handled in the relational schema.</text>
 </svg>
