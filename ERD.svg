@@ -4,14 +4,15 @@
       .page { fill: #ffffff; }
       .shape { fill: #ffffff; stroke: #000000; stroke-width: 2.2; }
       .line { stroke: #000000; stroke-width: 2; fill: none; }
-      .title { font: 700 36px Arial, sans-serif; fill: #000000; }
-      .subtitle { font: 18px Arial, sans-serif; fill: #000000; }
-      .entityText { font: 700 21px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
-      .relText { font: 700 17px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
-      .attrText { font: 16px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
-      .idText { font: 700 16px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
-      .mult { font: 16px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
-      .note { font: 15px Arial, sans-serif; fill: #000000; }
+      text { font-family: Arial, Helvetica, sans-serif; fill: #000000; }
+      .title { font-size: 36px; font-weight: 700; }
+      .subtitle { font-size: 18px; font-weight: 400; }
+      .entityText { font-size: 18px; font-weight: 600; text-anchor: middle; dominant-baseline: middle; }
+      .relText { font-size: 18px; font-weight: 600; text-anchor: middle; dominant-baseline: middle; }
+      .attrText { font-size: 18px; font-weight: 400; text-anchor: middle; dominant-baseline: middle; }
+      .idText { font-size: 18px; font-weight: 400; text-anchor: middle; dominant-baseline: middle; }
+      .mult { font-size: 18px; font-weight: 400; text-anchor: middle; dominant-baseline: middle; }
+      .note { font-size: 15px; font-weight: 400; }
     </style>
   </defs>
 
@@ -83,9 +84,9 @@
   <path class="line" d="M902 633 L1018 633"/>
   <path class="line" d="M1000 650 L1100 735"/>
 
-  <ellipse class="shape" cx="1225" cy="620" rx="100" ry="34"/>
-  <text class="attrText" x="1225" y="620">date_applied</text>
-  <path class="line" d="M1215 654 L1205 735"/>
+  <ellipse class="shape" cx="1300" cy="620" rx="100" ry="34"/>
+  <text class="attrText" x="1300" y="620">date_applied</text>
+  <path class="line" d="M1280 654 L1235 735"/>
 
   <ellipse class="shape" cx="1440" cy="695" rx="72" ry="34"/>
   <text class="attrText" x="1440" y="695">priority</text>
@@ -196,7 +197,7 @@
   <path class="line" d="M1165 310 L1165 430"/>
   <path class="line" d="M1165 570 L1165 735"/>
   <text class="mult" x="1190" y="370">1</text>
-  <text class="mult" x="1190" y="650">N</text>
+  <text class="mult" x="1138" y="675">N</text>
 
   <polygon class="shape" points="1190,990 1305,1060 1190,1130 1075,1060"/>
   <text class="relText" x="1190" y="1060">HasStatus</text>
@@ -209,7 +210,7 @@
   <text class="relText" x="1580" y="770">Receives</text>
   <path class="line" d="M1340 770 L1470 770"/>
   <path class="line" d="M1690 770 L1935 1005"/>
-  <text class="mult" x="1405" y="748">N</text>
+  <text class="mult" x="1405" y="735">N</text>
   <text class="mult" x="1810" y="875">1</text>
 
   <polygon class="shape" points="2100,705 2200,775 2100,845 2000,775"/>
