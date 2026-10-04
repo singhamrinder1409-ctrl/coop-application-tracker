@@ -1,204 +1,230 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1250" viewBox="0 0 1800 1250">
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1600" viewBox="0 0 2400 1600">
   <defs>
     <style>
       .page { fill: #ffffff; }
       .shape { fill: #ffffff; stroke: #000000; stroke-width: 2.2; }
       .line { stroke: #000000; stroke-width: 2; fill: none; }
-      .title { font: 700 34px Arial, sans-serif; fill: #000000; }
+      .title { font: 700 36px Arial, sans-serif; fill: #000000; }
       .subtitle { font: 18px Arial, sans-serif; fill: #000000; }
-      .entityText { font: 700 20px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
+      .entityText { font: 700 21px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
       .relText { font: 700 17px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
-      .attrText { font: 15px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
-      .idText { font: 700 15px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; text-decoration: underline; }
-      .mult { font: 15px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
+      .attrText { font: 16px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
+      .idText { font: 700 16px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
+      .mult { font: 16px Arial, sans-serif; fill: #000000; text-anchor: middle; dominant-baseline: middle; }
       .note { font: 15px Arial, sans-serif; fill: #000000; }
     </style>
   </defs>
 
-  <rect class="page" x="0" y="0" width="1800" height="1250"/>
+  <rect class="page" x="0" y="0" width="2400" height="1600"/>
   <text class="title" x="70" y="65">Co-op Application Tracker ERD</text>
-  <text class="subtitle" x="70" y="98">Chen-style ERD: rectangles = entity sets, diamonds = relationships, ellipses = attributes.</text>
-  <text class="subtitle" x="70" y="124">Identifier attributes are underlined.</text>
+  <text class="subtitle" x="70" y="100">Chen-style ERD: rectangles = entity sets, diamonds = relationships, ellipses = attributes.</text>
+  <text class="subtitle" x="70" y="128">Identifier attributes are underlined once.</text>
 
-  <rect class="shape" x="105" y="255" width="210" height="70"/>
-  <text class="entityText" x="210" y="290">Student</text>
+  <!-- Entity sets -->
+  <rect class="shape" x="180" y="590" width="250" height="80"/>
+  <text class="entityText" x="305" y="630">Student</text>
 
-  <rect class="shape" x="105" y="805" width="240" height="70"/>
-  <text class="entityText" x="225" y="840">ResumeVersion</text>
+  <rect class="shape" x="155" y="1120" width="330" height="80"/>
+  <text class="entityText" x="320" y="1160">ResumeVersion</text>
 
-  <rect class="shape" x="730" y="520" width="220" height="70"/>
-  <text class="entityText" x="840" y="555">Application</text>
+  <rect class="shape" x="1040" y="735" width="300" height="80"/>
+  <text class="entityText" x="1190" y="775">Application</text>
 
-  <rect class="shape" x="690" y="960" width="300" height="70"/>
-  <text class="entityText" x="840" y="995">ApplicationStatus</text>
+  <rect class="shape" x="1015" y="230" width="300" height="80"/>
+  <text class="entityText" x="1165" y="270">Interview</text>
 
-  <rect class="shape" x="1385" y="255" width="220" height="70"/>
-  <text class="entityText" x="1495" y="290">Employer</text>
+  <rect class="shape" x="990" y="1260" width="400" height="80"/>
+  <text class="entityText" x="1190" y="1300">ApplicationStatus</text>
 
-  <rect class="shape" x="1370" y="805" width="250" height="70"/>
-  <text class="entityText" x="1495" y="840">JobPosting</text>
+  <rect class="shape" x="1965" y="520" width="270" height="80"/>
+  <text class="entityText" x="2100" y="560">Employer</text>
 
-  <rect class="shape" x="730" y="170" width="220" height="70"/>
-  <text class="entityText" x="840" y="205">Interview</text>
+  <rect class="shape" x="1935" y="965" width="330" height="80"/>
+  <text class="entityText" x="2100" y="1005">JobPosting</text>
 
-  <rect class="shape" x="1385" y="1040" width="220" height="70"/>
-  <text class="entityText" x="1495" y="1075">Offer</text>
+  <rect class="shape" x="1705" y="1260" width="270" height="80"/>
+  <text class="entityText" x="1840" y="1300">Offer</text>
 
-  <ellipse class="shape" cx="95" cy="170" rx="82" ry="30"/>
-  <text class="idText" x="95" y="170">student_id</text>
-  <path class="line" d="M58 182 L132 182"/>
-  <path class="line" d="M135 195 L185 255"/>
-  <ellipse class="shape" cx="245" cy="165" rx="75" ry="30"/>
-  <text class="attrText" x="245" y="165">full_name</text>
-  <path class="line" d="M240 195 L225 255"/>
-  <ellipse class="shape" cx="375" cy="220" rx="72" ry="30"/>
-  <text class="attrText" x="375" y="220">username</text>
-  <path class="line" d="M330 240 L285 255"/>
-  <ellipse class="shape" cx="60" cy="390" rx="58" ry="30"/>
-  <text class="attrText" x="60" y="390">email</text>
-  <path class="line" d="M110 375 L160 325"/>
+  <!-- Student attributes -->
+  <ellipse class="shape" cx="125" cy="455" rx="90" ry="34"/>
+  <text class="idText" x="125" y="455">student_id</text>
+  <path class="line" d="M82 468 L168 468"/>
+  <path class="line" d="M155 485 L240 590"/>
 
-  <ellipse class="shape" cx="100" cy="720" rx="80" ry="30"/>
-  <text class="idText" x="100" y="720">resume_id</text>
-  <path class="line" d="M62 732 L138 732"/>
-  <path class="line" d="M135 745 L180 805"/>
-  <ellipse class="shape" cx="305" cy="720" rx="95" ry="30"/>
-  <text class="attrText" x="305" y="720">resume_label</text>
-  <path class="line" d="M280 748 L245 805"/>
-  <ellipse class="shape" cx="225" cy="930" rx="105" ry="30"/>
-  <text class="attrText" x="225" y="930">version_number</text>
-  <path class="line" d="M225 900 L225 875"/>
+  <ellipse class="shape" cx="330" cy="455" rx="88" ry="34"/>
+  <text class="attrText" x="330" y="455">full_name</text>
+  <path class="line" d="M325 489 L315 590"/>
 
-  <ellipse class="shape" cx="680" cy="430" rx="100" ry="30"/>
-  <text class="idText" x="680" y="430">application_id</text>
-  <path class="line" d="M628 442 L732 442"/>
-  <path class="line" d="M715 455 L780 520"/>
-  <ellipse class="shape" cx="1040" cy="430" rx="88" ry="30"/>
-  <text class="attrText" x="1040" y="430">date_applied</text>
-  <path class="line" d="M1000 455 L930 520"/>
-  <ellipse class="shape" cx="1090" cy="535" rx="65" ry="30"/>
-  <text class="attrText" x="1090" y="535">priority</text>
-  <path class="line" d="M1025 540 L950 550"/>
-  <ellipse class="shape" cx="1070" cy="650" rx="52" ry="30"/>
-  <text class="attrText" x="1070" y="650">notes</text>
-  <path class="line" d="M1022 638 L945 585"/>
+  <ellipse class="shape" cx="80" cy="545" rx="65" ry="34"/>
+  <text class="attrText" x="80" y="545">email</text>
+  <path class="line" d="M135 562 L185 598"/>
 
-  <ellipse class="shape" cx="670" cy="1085" rx="75" ry="30"/>
-  <text class="idText" x="670" y="1085">status_id</text>
-  <path class="line" d="M636 1097 L704 1097"/>
-  <path class="line" d="M710 1060 L770 1030"/>
-  <ellipse class="shape" cx="850" cy="1095" rx="92" ry="30"/>
-  <text class="attrText" x="850" y="1095">status_name</text>
-  <path class="line" d="M848 1065 L845 1030"/>
-  <ellipse class="shape" cx="1030" cy="1085" rx="80" ry="30"/>
-  <text class="attrText" x="1030" y="1085">is_terminal</text>
-  <path class="line" d="M990 1060 L930 1030"/>
+  <ellipse class="shape" cx="530" cy="545" rx="88" ry="34"/>
+  <text class="attrText" x="530" y="545">username</text>
+  <path class="line" d="M470 565 L425 598"/>
 
-  <ellipse class="shape" cx="1340" cy="170" rx="90" ry="30"/>
-  <text class="idText" x="1340" y="170">employer_id</text>
-  <path class="line" d="M1295 182 L1385 182"/>
-  <path class="line" d="M1385 195 L1450 255"/>
-  <ellipse class="shape" cx="1510" cy="160" rx="105" ry="30"/>
-  <text class="attrText" x="1510" y="160">employer_name</text>
-  <path class="line" d="M1505 190 L1500 255"/>
-  <ellipse class="shape" cx="1630" cy="230" rx="70" ry="30"/>
-  <text class="attrText" x="1630" y="230">website</text>
-  <path class="line" d="M1595 250 L1565 255"/>
-  <ellipse class="shape" cx="1380" cy="390" rx="62" ry="30"/>
-  <text class="attrText" x="1380" y="390">industry</text>
-  <path class="line" d="M1410 365 L1450 325"/>
+  <!-- ResumeVersion attributes -->
+  <ellipse class="shape" cx="115" cy="1315" rx="88" ry="34"/>
+  <text class="idText" x="115" y="1315">resume_id</text>
+  <path class="line" d="M72 1328 L158 1328"/>
+  <path class="line" d="M150 1286 L235 1200"/>
 
-  <ellipse class="shape" cx="1340" cy="715" rx="80" ry="30"/>
-  <text class="idText" x="1340" y="715">posting_id</text>
-  <path class="line" d="M1302 727 L1378 727"/>
-  <path class="line" d="M1378 740 L1430 805"/>
-  <ellipse class="shape" cx="1515" cy="710" rx="70" ry="30"/>
-  <text class="attrText" x="1515" y="710">job_title</text>
-  <path class="line" d="M1512 740 L1505 805"/>
-  <ellipse class="shape" cx="1640" cy="790" rx="75" ry="30"/>
-  <text class="attrText" x="1640" y="790">deadline</text>
-  <path class="line" d="M1602 810 L1565 820"/>
-  <ellipse class="shape" cx="1495" cy="935" rx="72" ry="30"/>
-  <text class="attrText" x="1495" y="935">work_term</text>
-  <path class="line" d="M1495 905 L1495 875"/>
+  <ellipse class="shape" cx="335" cy="1325" rx="110" ry="34"/>
+  <text class="attrText" x="335" y="1325">resume_label</text>
+  <path class="line" d="M330 1291 L325 1200"/>
 
-  <ellipse class="shape" cx="680" cy="85" rx="82" ry="30"/>
-  <text class="idText" x="680" y="85">interview_id</text>
-  <path class="line" d="M638 97 L722 97"/>
-  <path class="line" d="M715 112 L780 170"/>
-  <ellipse class="shape" cx="865" cy="85" rx="112" ry="30"/>
-  <text class="attrText" x="865" y="85">interview_round</text>
-  <path class="line" d="M860 115 L850 170"/>
-  <ellipse class="shape" cx="1015" cy="155" rx="90" ry="30"/>
-  <text class="attrText" x="1015" y="155">scheduled_at</text>
-  <path class="line" d="M965 170 L945 180"/>
+  <ellipse class="shape" cx="580" cy="1315" rx="118" ry="34"/>
+  <text class="attrText" x="580" y="1315">version_number</text>
+  <path class="line" d="M520 1286 L420 1200"/>
 
-  <ellipse class="shape" cx="1320" cy="1135" rx="62" ry="30"/>
-  <text class="idText" x="1320" y="1135">offer_id</text>
-  <path class="line" d="M1290 1147 L1350 1147"/>
-  <path class="line" d="M1365 1115 L1430 1110"/>
-  <ellipse class="shape" cx="1500" cy="1160" rx="82" ry="30"/>
-  <text class="attrText" x="1500" y="1160">hourly_wage</text>
-  <path class="line" d="M1500 1130 L1500 1110"/>
-  <ellipse class="shape" cx="1640" cy="1120" rx="86" ry="30"/>
-  <text class="attrText" x="1640" y="1120">offer_status</text>
-  <path class="line" d="M1590 1105 L1605 1098"/>
+  <!-- Application attributes -->
+  <ellipse class="shape" cx="960" cy="620" rx="112" ry="34"/>
+  <text class="idText" x="960" y="620">application_id</text>
+  <path class="line" d="M902 633 L1018 633"/>
+  <path class="line" d="M1000 650 L1100 735"/>
 
-  <polygon class="shape" points="495,555 570,610 495,665 420,610"/>
-  <text class="relText" x="495" y="610">Submits</text>
-  <path class="line" d="M315 315 C385 385 430 500 460 575"/>
-  <path class="line" d="M570 610 C625 585 675 570 730 560"/>
-  <text class="mult" x="345" y="410">1</text>
-  <text class="mult" x="650" y="580">N</text>
+  <ellipse class="shape" cx="1225" cy="620" rx="100" ry="34"/>
+  <text class="attrText" x="1225" y="620">date_applied</text>
+  <path class="line" d="M1215 654 L1205 735"/>
 
-  <polygon class="shape" points="225,500 305,555 225,610 145,555"/>
-  <text class="relText" x="225" y="555">Owns</text>
-  <path class="line" d="M215 325 L225 500"/>
-  <path class="line" d="M225 610 L225 805"/>
-  <text class="mult" x="240" y="395">1</text>
-  <text class="mult" x="250" y="675">N</text>
+  <ellipse class="shape" cx="1440" cy="695" rx="72" ry="34"/>
+  <text class="attrText" x="1440" y="695">priority</text>
+  <path class="line" d="M1375 715 L1340 740"/>
 
-  <polygon class="shape" points="495,810 570,865 495,920 420,865"/>
-  <text class="relText" x="495" y="865">Uses</text>
-  <path class="line" d="M345 845 L420 865"/>
-  <path class="line" d="M570 865 C630 780 690 650 750 590"/>
-  <text class="mult" x="380" y="850">1</text>
-  <text class="mult" x="650" y="730">N</text>
+  <!-- Interview attributes -->
+  <ellipse class="shape" cx="925" cy="90" rx="92" ry="34"/>
+  <text class="idText" x="925" y="90">interview_id</text>
+  <path class="line" d="M880 103 L970 103"/>
+  <path class="line" d="M960 120 L1070 230"/>
 
-  <polygon class="shape" points="840,335 925,390 840,445 755,390"/>
-  <text class="relText" x="840" y="390">Has</text>
-  <path class="line" d="M840 240 L840 335"/>
-  <path class="line" d="M840 445 L840 520"/>
-  <text class="mult" x="865" y="285">1</text>
-  <text class="mult" x="865" y="485">N</text>
+  <ellipse class="shape" cx="1190" cy="90" rx="125" ry="34"/>
+  <text class="attrText" x="1190" y="90">interview_round</text>
+  <path class="line" d="M1185 124 L1175 230"/>
 
-  <polygon class="shape" points="840,725 935,780 840,835 745,780"/>
-  <text class="relText" x="840" y="780">HasStatus</text>
-  <path class="line" d="M840 590 L840 725"/>
-  <path class="line" d="M840 835 L840 960"/>
-  <text class="mult" x="865" y="670">N</text>
-  <text class="mult" x="865" y="900">1</text>
+  <ellipse class="shape" cx="1435" cy="205" rx="100" ry="34"/>
+  <text class="attrText" x="1435" y="205">scheduled_at</text>
+  <path class="line" d="M1345 225 L1315 235"/>
 
-  <polygon class="shape" points="1160,555 1255,610 1160,665 1065,610"/>
-  <text class="relText" x="1160" y="610">Receives</text>
-  <path class="line" d="M950 555 C995 570 1030 590 1065 610"/>
-  <path class="line" d="M1255 610 C1305 675 1350 755 1390 805"/>
-  <text class="mult" x="1010" y="565">N</text>
-  <text class="mult" x="1320" y="725">1</text>
+  <!-- ApplicationStatus attributes -->
+  <ellipse class="shape" cx="855" cy="1480" rx="86" ry="34"/>
+  <text class="idText" x="855" y="1480">status_id</text>
+  <path class="line" d="M813 1493 L897 1493"/>
+  <path class="line" d="M895 1450 L1060 1340"/>
 
-  <polygon class="shape" points="1495,500 1575,555 1495,610 1415,555"/>
-  <text class="relText" x="1495" y="555">Posts</text>
-  <path class="line" d="M1495 325 L1495 500"/>
-  <path class="line" d="M1495 610 L1495 805"/>
-  <text class="mult" x="1520" y="410">1</text>
-  <text class="mult" x="1520" y="715">N</text>
+  <ellipse class="shape" cx="1190" cy="1480" rx="105" ry="34"/>
+  <text class="attrText" x="1190" y="1480">status_name</text>
+  <path class="line" d="M1190 1446 L1190 1340"/>
 
-  <polygon class="shape" points="1160,930 1250,985 1160,1040 1070,985"/>
-  <text class="relText" x="1160" y="985">MayReceive</text>
-  <path class="line" d="M930 590 C1000 725 1060 860 1110 950"/>
-  <path class="line" d="M1250 985 C1295 1020 1345 1050 1385 1070"/>
-  <text class="mult" x="1005" y="720">1</text>
-  <text class="mult" x="1325" y="1030">0..1</text>
+  <ellipse class="shape" cx="1435" cy="1480" rx="92" ry="34"/>
+  <text class="attrText" x="1435" y="1480">is_terminal</text>
+  <path class="line" d="M1400 1450 L1295 1340"/>
 
-  <text class="note" x="70" y="1145">Note: Identifier attributes are underlined. Table reference details are handled in the relational schema.</text>
+  <!-- Employer attributes -->
+  <ellipse class="shape" cx="1900" cy="385" rx="100" ry="34"/>
+  <text class="idText" x="1900" y="385">employer_id</text>
+  <path class="line" d="M1850 398 L1950 398"/>
+  <path class="line" d="M1940 415 L2020 520"/>
+
+  <ellipse class="shape" cx="2160" cy="385" rx="120" ry="34"/>
+  <text class="attrText" x="2160" y="385">employer_name</text>
+  <path class="line" d="M2145 419 L2125 520"/>
+
+  <ellipse class="shape" cx="2285" cy="505" rx="74" ry="34"/>
+  <text class="attrText" x="2285" y="505">website</text>
+  <path class="line" d="M2225 525 L2235 530"/>
+
+  <ellipse class="shape" cx="1880" cy="705" rx="74" ry="34"/>
+  <text class="attrText" x="1880" y="705">industry</text>
+  <path class="line" d="M1920 678 L2010 600"/>
+
+  <!-- JobPosting attributes -->
+  <ellipse class="shape" cx="1765" cy="1125" rx="92" ry="34"/>
+  <text class="idText" x="1765" y="1125">posting_id</text>
+  <path class="line" d="M1722 1138 L1808 1138"/>
+  <path class="line" d="M1810 1100 L1945 1045"/>
+
+  <ellipse class="shape" cx="2100" cy="1145" rx="76" ry="34"/>
+  <text class="attrText" x="2100" y="1145">job_title</text>
+  <path class="line" d="M2100 1111 L2100 1045"/>
+
+  <ellipse class="shape" cx="2290" cy="1105" rx="80" ry="34"/>
+  <text class="attrText" x="2290" y="1105">deadline</text>
+  <path class="line" d="M2245 1078 L2205 1045"/>
+
+  <ellipse class="shape" cx="2275" cy="910" rx="90" ry="34"/>
+  <text class="attrText" x="2275" y="910">work_term</text>
+  <path class="line" d="M2210 935 L2165 965"/>
+
+  <!-- Offer attributes -->
+  <ellipse class="shape" cx="1670" cy="1440" rx="70" ry="34"/>
+  <text class="idText" x="1670" y="1440">offer_id</text>
+  <path class="line" d="M1638 1453 L1702 1453"/>
+  <path class="line" d="M1710 1412 L1780 1340"/>
+
+  <ellipse class="shape" cx="1880" cy="1465" rx="96" ry="34"/>
+  <text class="attrText" x="1880" y="1465">hourly_wage</text>
+  <path class="line" d="M1872 1431 L1855 1340"/>
+
+  <ellipse class="shape" cx="2090" cy="1440" rx="98" ry="34"/>
+  <text class="attrText" x="2090" y="1440">offer_status</text>
+  <path class="line" d="M2045 1412 L1930 1340"/>
+
+  <!-- Relationships -->
+  <polygon class="shape" points="665,690 765,760 665,830 565,760"/>
+  <text class="relText" x="665" y="760">Submits</text>
+  <path class="line" d="M400 655 L565 760"/>
+  <path class="line" d="M765 760 L1040 760"/>
+  <text class="mult" x="485" y="700">1</text>
+  <text class="mult" x="900" y="738">N</text>
+
+  <polygon class="shape" points="315,820 415,890 315,960 215,890"/>
+  <text class="relText" x="315" y="890">Owns</text>
+  <path class="line" d="M305 670 L315 820"/>
+  <path class="line" d="M315 960 L315 1120"/>
+  <text class="mult" x="335" y="745">1</text>
+  <text class="mult" x="338" y="1040">N</text>
+
+  <polygon class="shape" points="720,1070 820,1140 720,1210 620,1140"/>
+  <text class="relText" x="720" y="1140">Uses</text>
+  <path class="line" d="M485 1160 L620 1140"/>
+  <path class="line" d="M820 1140 L1040 815"/>
+  <text class="mult" x="545" y="1138">1</text>
+  <text class="mult" x="930" y="965">N</text>
+
+  <polygon class="shape" points="1165,430 1265,500 1165,570 1065,500"/>
+  <text class="relText" x="1165" y="500">Has</text>
+  <path class="line" d="M1165 310 L1165 430"/>
+  <path class="line" d="M1165 570 L1165 735"/>
+  <text class="mult" x="1190" y="370">1</text>
+  <text class="mult" x="1190" y="650">N</text>
+
+  <polygon class="shape" points="1190,990 1305,1060 1190,1130 1075,1060"/>
+  <text class="relText" x="1190" y="1060">HasStatus</text>
+  <path class="line" d="M1190 815 L1190 990"/>
+  <path class="line" d="M1190 1130 L1190 1260"/>
+  <text class="mult" x="1215" y="900">N</text>
+  <text class="mult" x="1215" y="1200">1</text>
+
+  <polygon class="shape" points="1580,700 1690,770 1580,840 1470,770"/>
+  <text class="relText" x="1580" y="770">Receives</text>
+  <path class="line" d="M1340 770 L1470 770"/>
+  <path class="line" d="M1690 770 L1935 1005"/>
+  <text class="mult" x="1405" y="748">N</text>
+  <text class="mult" x="1810" y="875">1</text>
+
+  <polygon class="shape" points="2100,705 2200,775 2100,845 2000,775"/>
+  <text class="relText" x="2100" y="775">Posts</text>
+  <path class="line" d="M2100 600 L2100 705"/>
+  <path class="line" d="M2100 845 L2100 965"/>
+  <text class="mult" x="2125" y="655">1</text>
+  <text class="mult" x="2125" y="915">N</text>
+
+  <polygon class="shape" points="1515,985 1645,1055 1515,1125 1385,1055"/>
+  <text class="relText" x="1515" y="1055">MayReceive</text>
+  <path class="line" d="M1240 815 L1435 1000"/>
+  <path class="line" d="M1590 1125 L1800 1260"/>
+  <text class="mult" x="1360" y="910">1</text>
+  <text class="mult" x="1650" y="1190">0..1</text>
+
+  <text class="note" x="70" y="1570">Note: Identifier attributes are underlined. Table reference details are handled in the relational schema.</text>
 </svg>
