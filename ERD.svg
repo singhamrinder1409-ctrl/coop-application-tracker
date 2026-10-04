@@ -222,8 +222,8 @@
 
   <polygon class="shape" points="1515,985 1645,1055 1515,1125 1385,1055"/>
   <text class="relText" x="1515" y="1055">MayReceive</text>
-  <path class="line" d="M1240 815 L1435 1000"/>
-  <path class="line" d="M1590 1125 L1800 1260"/>
+  <path class="line" d="M1240 815 L1457 1016"/>
+  <path class="line" d="M1590 1085 L1800 1260"/>
   <text class="mult" x="1360" y="910">1</text>
   <text class="mult" x="1650" y="1190">0..1</text>
 
