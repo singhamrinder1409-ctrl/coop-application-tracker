@@ -4,14 +4,14 @@
       .page { fill: #ffffff; }
       .shape { fill: #ffffff; stroke: #000000; stroke-width: 2.2; }
       .line { stroke: #000000; stroke-width: 2; fill: none; }
-      text { font-family: Arial, Helvetica, sans-serif; fill: #000000; }
+      text { font-family: Helvetica, Arial, sans-serif; fill: #000000; stroke: none; text-rendering: geometricPrecision; }
       .title { font-size: 36px; font-weight: 700; }
       .subtitle { font-size: 18px; font-weight: 400; }
-      .entityText { font-size: 18px; font-weight: 600; text-anchor: middle; dominant-baseline: middle; }
-      .relText { font-size: 18px; font-weight: 600; text-anchor: middle; dominant-baseline: middle; }
-      .attrText { font-size: 18px; font-weight: 400; text-anchor: middle; dominant-baseline: middle; }
-      .idText { font-size: 18px; font-weight: 400; text-anchor: middle; dominant-baseline: middle; }
-      .mult { font-size: 18px; font-weight: 400; text-anchor: middle; dominant-baseline: middle; }
+      .entityText { font-size: 20px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+      .relText { font-size: 20px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+      .attrText { font-size: 20px; font-weight: 500; text-anchor: middle; dominant-baseline: middle; }
+      .idText { font-size: 20px; font-weight: 500; text-anchor: middle; dominant-baseline: middle; }
+      .mult { font-size: 20px; font-weight: 500; text-anchor: middle; dominant-baseline: middle; }
       .note { font-size: 15px; font-weight: 400; }
     </style>
   </defs>
@@ -90,7 +90,7 @@
 
   <ellipse class="shape" cx="1440" cy="695" rx="72" ry="34"/>
   <text class="attrText" x="1440" y="695">priority</text>
-  <path class="line" d="M1375 715 L1340 740"/>
+  <path class="line" d="M1340 742 L1388 718"/>
 
   <!-- Interview attributes -->
   <ellipse class="shape" cx="925" cy="90" rx="92" ry="34"/>
@@ -173,7 +173,7 @@
   <!-- Relationships -->
   <polygon class="shape" points="665,690 765,760 665,830 565,760"/>
   <text class="relText" x="665" y="760">Submits</text>
-  <path class="line" d="M400 655 L565 760"/>
+  <path class="line" d="M430 655 L565 760"/>
   <path class="line" d="M765 760 L1040 760"/>
   <text class="mult" x="485" y="700">1</text>
   <text class="mult" x="900" y="738">N</text>
@@ -210,7 +210,7 @@
   <text class="relText" x="1580" y="770">Receives</text>
   <path class="line" d="M1340 770 L1470 770"/>
   <path class="line" d="M1690 770 L1935 1005"/>
-  <text class="mult" x="1405" y="735">N</text>
+  <text class="mult" x="1405" y="755">N</text>
   <text class="mult" x="1810" y="875">1</text>
 
   <polygon class="shape" points="2100,705 2200,775 2100,845 2000,775"/>
