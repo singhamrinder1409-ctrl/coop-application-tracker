@@ -50,19 +50,19 @@
   <ellipse class="shape" cx="125" cy="455" rx="90" ry="34"/>
   <text class="idText" x="125" y="455">student_id</text>
   <path class="line" d="M82 468 L168 468"/>
-  <path class="line" d="M155 485 L240 590"/>
+  <path class="line" d="M240 590 L155 485"/>
 
   <ellipse class="shape" cx="330" cy="455" rx="88" ry="34"/>
   <text class="attrText" x="330" y="455">full_name</text>
-  <path class="line" d="M325 489 L315 590"/>
+  <path class="line" d="M315 590 L325 489"/>
 
   <ellipse class="shape" cx="80" cy="545" rx="65" ry="34"/>
   <text class="attrText" x="80" y="545">email</text>
-  <path class="line" d="M135 562 L185 598"/>
+  <path class="line" d="M180 600 L135 562"/>
 
   <ellipse class="shape" cx="530" cy="545" rx="88" ry="34"/>
   <text class="attrText" x="530" y="545">username</text>
-  <path class="line" d="M470 565 L425 598"/>
+  <path class="line" d="M430 600 L470 565"/>
 
   <!-- ResumeVersion attributes -->
   <ellipse class="shape" cx="115" cy="1315" rx="88" ry="34"/>
@@ -96,15 +96,15 @@
   <ellipse class="shape" cx="925" cy="90" rx="92" ry="34"/>
   <text class="idText" x="925" y="90">interview_id</text>
   <path class="line" d="M880 103 L970 103"/>
-  <path class="line" d="M960 120 L1070 230"/>
+  <path class="line" d="M1070 230 L960 120"/>
 
   <ellipse class="shape" cx="1190" cy="90" rx="125" ry="34"/>
   <text class="attrText" x="1190" y="90">interview_round</text>
-  <path class="line" d="M1185 124 L1175 230"/>
+  <path class="line" d="M1175 230 L1185 124"/>
 
   <ellipse class="shape" cx="1435" cy="205" rx="100" ry="34"/>
   <text class="attrText" x="1435" y="205">scheduled_at</text>
-  <path class="line" d="M1345 225 L1315 235"/>
+  <path class="line" d="M1315 235 L1354 225"/>
 
   <!-- ApplicationStatus attributes -->
   <ellipse class="shape" cx="855" cy="1480" rx="86" ry="34"/>
@@ -124,19 +124,19 @@
   <ellipse class="shape" cx="1900" cy="385" rx="100" ry="34"/>
   <text class="idText" x="1900" y="385">employer_id</text>
   <path class="line" d="M1850 398 L1950 398"/>
-  <path class="line" d="M1940 415 L2020 520"/>
+  <path class="line" d="M2020 520 L1940 415"/>
 
   <ellipse class="shape" cx="2160" cy="385" rx="120" ry="34"/>
   <text class="attrText" x="2160" y="385">employer_name</text>
-  <path class="line" d="M2145 419 L2125 520"/>
+  <path class="line" d="M2125 520 L2145 419"/>
 
-  <ellipse class="shape" cx="2285" cy="505" rx="74" ry="34"/>
-  <text class="attrText" x="2285" y="505">website</text>
-  <path class="line" d="M2225 525 L2235 530"/>
+  <ellipse class="shape" cx="2310" cy="500" rx="74" ry="34"/>
+  <text class="attrText" x="2310" y="500">website</text>
+  <path class="line" d="M2235 530 L2254 522"/>
 
   <ellipse class="shape" cx="1880" cy="705" rx="74" ry="34"/>
   <text class="attrText" x="1880" y="705">industry</text>
-  <path class="line" d="M1920 678 L2010 600"/>
+  <path class="line" d="M2010 600 L1920 678"/>
 
   <!-- JobPosting attributes -->
   <ellipse class="shape" cx="1765" cy="1125" rx="92" ry="34"/>
