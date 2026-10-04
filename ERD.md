@@ -1,5 +1,9 @@
 # ERD
 
+## Rendered Diagram
+
+![Co-op Application Tracker ERD](ERD.svg)
+
 ## Conceptual Design
 
 The main idea is to describe what should be in the database before thinking too much about screens or code. For this project, the important things are students, employers, job postings, applications, statuses, resume versions, interviews, and offers.
