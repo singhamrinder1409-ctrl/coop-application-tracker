@@ -85,3 +85,10 @@ We have not received any TA/client requirements yet. Because of that, the curren
 
 We also need to add the final GitHub repository link and exact commit hash after the files are pushed.
 
+## Sources And AI Use
+
+The project was made using the CSC 370 project kick-off instructions, the attached grading rubric, and the course lecture slides up to the Advanced Relational Design material. The main course ideas we used were SQL DDL, conceptual design, ERDs, identifiers, multiplicity, functional dependencies, keys, BCNF, foreign keys, referential integrity, relational algebra constraints, and inheritance/weak entity sets for possible future design changes.
+
+Generative AI was used to help draft and organize the files in this repository. The group should still review the final work and be ready to explain the database design in our own words.
+
+More details are listed in `docs/ai-and-sources.md`.

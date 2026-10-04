@@ -52,4 +52,6 @@ If the group uses a different MySQL username, change the command as needed.
 - Copy the GitHub link and the exact commit hash.
 - Record a video that is no longer than 11 minutes because the group has 3 people.
 - In the video, show the ERD/schema, SQL DDL, sample data, demo queries, and next sprint plan.
-
+- Make sure one group member submits on Brightspace for the whole group.
+- If the GitHub repo is private, give access to the instructor and TA-client.
+- Include or point to `docs/ai-and-sources.md` so AI use and course sources are clear.
