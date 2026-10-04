@@ -15,7 +15,7 @@ CSC 370 Project Kick-Off - Fall 2026
 
 We are planning to build a Co-op Application Tracker. The main idea is to help students keep track of job postings, employers, applications, interviews, and offers in one database.
 
-To us, this is a good database project because the information is connected in many ways. One employer can post many jobs. One student can apply to many jobs. One application can have interviews and maybe an offer. There are also useful constraints, like one student should not have two applications for the exact same job posting.
+This is a good database project because the information is connected in many ways. One employer can post many jobs. One student can apply to many jobs. One application can have interviews and maybe an offer. There are also useful constraints, like one student should not have two applications for the exact same job posting.
 
 ## Main Submission Files
 

@@ -20,7 +20,7 @@ For this project, we decided to design a database system for students who are ap
 
 We chose this topic because co-op applications can become messy pretty quickly. A student might apply to many jobs at the same time, and each job can have different deadlines, statuses, interviews, and possible offers. If all of this is only tracked in a spreadsheet, it is easy to lose context or repeat the same information many times.
 
-To us, this fits well as a database project because the data is connected. For example, one employer can post many jobs, one student can submit many applications, and one application can be linked to interviews, a resume version, and maybe an offer.
+This fits well as a database project because the data is connected. For example, one employer can post many jobs, one student can submit many applications, and one application can be linked to interviews, a resume version, and maybe an offer.
 
 For the first version, our main user is a student. We are not building a full system for co-op advisors or employers yet. We kept the scope smaller because this is the kick-off stage, and we have not received TA-client requirements yet. Once we get feedback, we can adjust the design.
 
@@ -28,7 +28,7 @@ Our main sprint goals were to pick a clear project idea, write the project scope
 
 In `PROJECT_KICKOFF.md`, we also explain our assumptions. For example, we assume that one application belongs to one student and one job posting. We also assume that an application can have multiple interviews, because some jobs have more than one interview round.
 
-At this stage, we think the project is a good size. It is not too small, because there are enough entity sets and relationships to design properly. But it is also not too big for the first submission.
+At this stage, the project is a good size. It is not too small, because there are enough entity sets and relationships to design properly. But it is also not too big for the first submission.
 
 ## Speaker 2: Jaiman
 
@@ -61,7 +61,7 @@ One example is the `Application` table. It connects `Student`, `JobPosting`, `Ap
 
 Another example is the `Interview` table. It has a foreign key to `Application`, so interviews cannot exist without being connected to an application. This makes sense for our project because an interview is part of the application process.
 
-We think this schema is clear enough for the kick-off submission, but it is still flexible. If the TA-client says we need more details, like contacts, notes, or employer locations, we can add those later.
+This schema is clear for the kick-off submission, but it is still flexible. If the TA-client says we need more details, like contacts, notes, or employer locations, we can add those later.
 
 ## Speaker 3: Aashna
 
@@ -86,7 +86,7 @@ So we separated the data into tables based on what each table is actually about.
 
 We also wrote out the main functional dependencies in `NORMALIZATION.md`. For example, `student_id` determines the student information, `employer_id` determines the employer information, and `application_id` determines the details for one application.
 
-Acc to us, the design is close to BCNF because the main facts are separated into their own tables, and the non-key attributes depend on the key of that table. If we find a table later where some non-key attribute determines another non-key attribute, then we would need to split it more.
+The design is close to BCNF because the main facts are separated into their own tables, and the non-key attributes depend on the key of that table. If we find a table later where some non-key attribute determines another non-key attribute, then we would need to split it more.
 
 We also included `SOURCES.md`. That file lists the assignment instructions, rubric, and lecture slides we used while making this submission. We used the slides mainly to guide the ERD style, relational schema conversion, and normalization thinking.
 
@@ -96,7 +96,7 @@ This connects to Advanced Relational Design because we will be thinking more car
 
 If there is time in the video, we can also quickly show the optional demo queries. These queries show examples like listing applications with employer and job title, showing active applications, showing upcoming interviews, counting applications by status, and showing offers.
 
-Overall, we think this is a strong starting point for the project. We have a clear topic, an ERD, a relational schema, MySQL DDL, normalization notes, sources, and a plan for what to improve next.
+Overall, this is a strong starting point for the project. We have a clear topic, an ERD, a relational schema, MySQL DDL, normalization notes, sources, and a plan for what to improve next.
 
 ## Optional Demo If There Is Time
 

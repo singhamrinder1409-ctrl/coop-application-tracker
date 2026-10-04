@@ -10,7 +10,7 @@ At first this looks simple, but it would repeat a lot of data. The same employer
 
 ## Main Functional Dependencies
 
-These are the main functional dependencies we think should hold:
+These are the main functional dependencies for the current design:
 
 - `student_id -> full_name, username, email, program`
 - `employer_id -> employer_name, industry, website, city, province, country`
@@ -34,7 +34,7 @@ There are also some alternate uniqueness rules:
 
 In our design, each table has a primary key, and the other attributes depend on that key. For example, in `Employer`, the employer name, industry, website, and location all depend on `employer_id`.
 
-For BCNF, the main idea we used is that every non-trivial functional dependency should have a superkey on the left side. Based on the functional dependencies listed above, we think the design satisfies BCNF for the current scope because facts are separated into their own tables:
+For BCNF, the main idea we used is that every non-trivial functional dependency should have a superkey on the left side. Based on the functional dependencies listed above, the design satisfies BCNF for the current scope because facts are separated into their own tables:
 
 - employer facts are only in `Employer`
 - job posting facts are only in `JobPosting`
@@ -43,7 +43,7 @@ For BCNF, the main idea we used is that every non-trivial functional dependency 
 - interview facts are only in `Interview`
 - offer facts are only in `Offer`
 
-Acc to us, this avoids the main anomaly problem from putting everything in one relation. For example, deleting a rejected application will not delete the employer from the database. Also, changing an employer website does not require updating every application row.
+This avoids the main anomaly problem from putting everything in one relation. For example, deleting a rejected application will not delete the employer from the database. Also, changing an employer website does not require updating every application row.
 
 One rule we still want to check more carefully in the next sprint is that the resume used by an application should belong to the same student as that application. The current schema records both references, but this rule is better handled as an extra constraint after TA-client feedback.
 

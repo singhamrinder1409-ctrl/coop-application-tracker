@@ -32,13 +32,13 @@ We consider this sprint successful if:
 | Explain functional dependencies and BCNF | `NORMALIZATION.md` lists the main FDs and explains why the tables were split. |
 | Show the schema can support useful queries | `supporting-files/seed.sql` and `supporting-files/demo_queries.sql` give optional test data and demo queries. |
 
-We think this shows real progress because the project now has a structure that can be tested and changed. It is not just an idea anymore.
+This shows real progress because the project now has a structure that can be tested and changed. It is not just an idea anymore.
 
 ## Missed Or Uncertain Goals
 
 We have not received TA/client requirements yet, so the scope is based on our current understanding. This means the design may change after we talk to the TA-client.
 
-We also have not built an application UI yet. We think that is okay for this sprint because the given kick-off plan focuses on conceptual design, relational schema design, SQL DDL, and normalization up to BCNF.
+We also have not built an application UI yet. That is okay for this sprint because the given kick-off plan focuses on conceptual design, relational schema design, SQL DDL, and normalization up to BCNF.
 
 ## Plan For Next Sprint
 

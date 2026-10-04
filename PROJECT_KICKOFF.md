@@ -16,7 +16,7 @@ Group 3:
 
 For our CSC 370 project, we decided to make a Co-op Application Tracker. The system is meant to help students keep track of job postings, employers, applications, interviews, and offers.
 
-We think this topic works well because co-op applications can get hard to manage after a while. A student might apply to many jobs, one employer can post many jobs, and one application can move through different stages. To us, this is a real case where a database is better than one long spreadsheet.
+This topic works well because co-op applications can get hard to manage after a while. A student might apply to many jobs, one employer can post many jobs, and one application can move through different stages. This is a real case where a database is better than one long spreadsheet.
 
 ## Main User
 
@@ -36,7 +36,7 @@ The main user for the first version is a student applying for co-op jobs. Later,
 
 ## Why This Fits The Course
 
-In our view, this project fits CSC 370 because it uses the design ideas from the course in a direct way. We have entity sets, attributes, identifiers, relationships, multiplicities, keys, foreign keys, and SQL DDL.
+This project fits CSC 370 because it uses the design ideas from the course in a direct way. We have entity sets, attributes, identifiers, relationships, multiplicities, keys, foreign keys, and SQL DDL.
 
 The project also gives us normal database design problems to think about. For example, employer information should not be copied into every application row. If it was copied everywhere, changing an employer website would mean updating the same fact in many places.
 
@@ -61,7 +61,7 @@ We made these core files:
 - `schema.sql`
 - `SOURCES.md`
 
-Acc to us, this is enough evidence for the kick-off because the project now has a real database structure. The schema can be created in MySQL, and the design can be explained using course ideas.
+This is clear evidence for the kick-off because the project now has a real database structure. The schema can be created in MySQL, and the design can be explained using course ideas.
 
 ## Course Connection
 
@@ -75,7 +75,7 @@ The design also uses ideas from the slides, like conceptual design, identifiers,
 
 ## What Is Still Missing
 
-We have not received any TA/client requirements yet. Because of that, the current scope is based on what we think a co-op tracker should need. If the TA wants something different, we can change the design in the next sprint.
+We have not received any TA/client requirements yet. Because of that, the current scope is based on the main features a co-op tracker seems to need. If the TA wants something different, we can change the design in the next sprint.
 
 For Brightspace, we still need to submit the final GitHub link, the exact commit hash, and the video progress report.
 

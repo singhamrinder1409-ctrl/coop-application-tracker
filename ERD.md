@@ -8,7 +8,7 @@
 
 The main idea is to describe what should be in the database before thinking too much about screens or code. For this project, the important things are students, employers, job postings, applications, statuses, resume versions, interviews, and offers.
 
-We chose these entity sets because each one has its own information and its own identifier. For example, an employer has a name and website, while a job posting has a title, deadline, and work term. We think those should be separate because one employer can have many postings.
+We chose these entity sets because each one has its own information and its own identifier. For example, an employer has a name and website, while a job posting has a title, deadline, and work term. These should be separate because one employer can have many postings.
 
 The ER diagram follows the same general style as the lecture slides: entity sets are rectangles, attributes are ellipses, relationships are diamonds, and identifier attributes are underlined. Table reference details are handled later in the relational schema instead of being treated as ERD attributes.
 
