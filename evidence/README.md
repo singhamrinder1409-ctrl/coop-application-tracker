@@ -15,4 +15,4 @@ python3 scripts/verify.py
 
 `MYSQL_BIN`, `MYSQL_SOCKET` and `MYSQL_USER` customize the client. The verifier creates a fresh random database and retains it; it never drops an existing database. See the root README for authentication/setup. Test database names in the log are generated run identifiers, not credentials. Test stdout was saved after successful completion; a failed partial output must never be treated as complete evidence.
 
-The 4NF discussion is a domain/MVD argument, not an automated FD test result. Full official competency coverage and stakeholder acceptance require the confirmations identified in SPRINT_PLAN.md.
+The 4NF discussion is a domain/MVD argument, not an automated FD test result. The competency mapping uses the assignment and feedback, as the group confirmed no separate list or additional TA requirements exist. A live TA review has not occurred and remains disclosed in SPRINT_PLAN.md.

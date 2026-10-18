@@ -13,7 +13,7 @@
 
 ## Must be completed by the group before Brightspace submission
 
-- [ ] Compare competency matrix with official Brightspace course/module competencies. Official wording was not supplied.
+- [x] Requirements basis confirmed by the group: no separate competency list or additional TA-client requirements; use the supplied assignment and feedback.
 - [ ] Confirm TA-client assumptions or explicitly disclose review still pending.
 - [ ] Review code/theory and practice explaining it; do not claim unperformed work.
 - [ ] Record the actual team video. Target 7:30 including transitions and below 8:00 to satisfy both the formula and inconsistent example in the pasted instructions.

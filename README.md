@@ -46,4 +46,4 @@ The FD checker assumes that non-null alternate keys and the documented domain FD
 
 ## Remaining human submission steps
 
-Confirm the official competency wording and outstanding TA assumptions, record the team video, publish/share this repository, and submit its URL and exact commit hash with the video. No remote is configured in this checkout. See the checklist for commands. Historic kick-off material is retained in `PROJECT_KICKOFF.md` and `docs/archive/`.
+Review the documented design assumptions, record the team video, publish/share this repository, and submit its URL and exact commit hash with the video. No remote is configured in this checkout. See the checklist for commands. Historic kick-off material is retained in `PROJECT_KICKOFF.md` and `docs/archive/`.
