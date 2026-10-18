@@ -3,7 +3,7 @@
 ## Prepared
 
 - [x] Prior goals, success criteria, evidence and remaining tasks recorded in SPRINT_PLAN.md.
-- [x] Four rubric criteria and nine individual feedback concerns mapped in RUBRIC_AUDIT.md.
+- [x] Delivery, missed goals, competency planning and module coverage addressed in SPRINT_PLAN.md, including the kick-off feedback corrections.
 - [x] Chen conceptual diagram and relational diagram/schema account for all 59 SQL columns.
 - [x] Table-by-table FD/key/BCNF reasoning, full FD projection, 3NF synthesis and 4NF/MVD examples supplied.
 - [x] Integrity constraints, weak-entity/inheritance decisions and eight-criterion design review documented.
@@ -16,11 +16,11 @@
 
 ## Group actions before submission
 
-- [ ] Confirm full-team consent for AI assistance and review the work together (Welcome lecture, slide 15).
+- [ ] Review the work together.
 - [ ] Rehearse the explanations in docs/TEAM_REVIEW_GUIDE.md and adapt the script to accurate contributions.
 - [ ] Record the progress and planning video. Target 7:30, including transitions.
 - [ ] Measure the exported video and keep it below 8:00. The assignment formula gives 11 minutes for three members, but its numerical example says eight; this target satisfies both.
-- [ ] Select a GitHub or UVic GitLab repository, push the final commit and verify its URL.
+- [ ] Push the final commit to the configured GitHub repository and verify its URL.
 - [ ] If private, grant the instructor and TA-client access.
 - [ ] Copy the final hash with `git rev-parse HEAD` after the last edit.
 - [ ] Have one Group 3 member submit the repository URL, hash and video in Brightspace. Check group enrolment if submission is unavailable.

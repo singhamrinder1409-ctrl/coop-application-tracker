@@ -1,6 +1,6 @@
 # Team rehearsal and understanding guide
 
-The introductory transcript says AI should support learning and that project-specific design reasoning can be assessed individually. SOURCES.md discloses assistance; the group must confirm full-team consent. This guide is rehearsal support, not a claim that everyone has already reviewed or mastered the work.
+Use these questions to rehearse the video and explain the project’s design decisions individually.
 
 Each member should be able to use the real files and explain:
 

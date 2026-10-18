@@ -13,7 +13,7 @@ Sean Chester's CSC 370 materials were supplied in the Desktop `csc 370` folder. 
 
 | PDF | Use in this submission |
 | --- | --- |
-| CSC370-01_ Welcome!-1.pdf | Competency names, slides 6-8; team consent/responsible AI use, slide 15 |
+| CSC370-01_ Welcome!-1.pdf | Competency names, slides 6-8 |
 | CSC370-02_ Storing Data w_ SQL-1.pdf | CREATE/ALTER TABLE, scalar types and inserting data |
 | CSC370-03_ SQL DQL-2.pdf | Retrieval, projection, selection, renaming, joins and set operations |
 | CSC370-4 Conceptual Design .pdf | Chen notation, identifiers, attributes, relationships and roles |
@@ -44,4 +44,4 @@ The changes use the course methods and MySQL interfaces listed above.
 
 ## Assistance and review
 
-OpenAI Codex assisted with the SQL changes, verification scripts, diagrams, theory examples and draft documentation. The group must confirm full-team consent, review the work and represent individual contributions accurately. Recorded test results identify the environment and checks performed; they do not establish that a team video was recorded or a repository was published.
+OpenAI Codex assisted with the SQL changes, verification scripts, diagrams, theory examples and draft documentation.

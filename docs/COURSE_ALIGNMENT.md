@@ -16,7 +16,7 @@ The expanded `/Users/ammy/Desktop/csc 370` folder contains 15 PDFs (14 lecture d
 
 | Supplied lecture and relevant slides | Lesson objective, paraphrased | Sprint 1 evidence | Next-sprint continuation |
 | --- | --- | --- | --- |
-| 01 Welcome, 4-8, 15 | Name course goals; responsible team use of generative AI | This matrix uses the actual three competency names; SOURCES.md discloses Codex assistance | Team confirms full-team consent and can explain the project individually |
+| 01 Welcome, 4-8 | Name course goals | This matrix uses the actual three competency names | Explain how each next-sprint goal improves the named competency |
 | 02 Storing Data w/ SQL, 3, 30-36 | Execute CREATE/ALTER statements and insert typed scalar values | schema.sql; current seed; tested `migrations/001_sprint1.sql` uses ALTER TABLE while preserving kick-off data | Clean-load and migration regression after schema changes |
 | 03 Retrieving Data with SQL, 3, 9-22 | Retrieve data using simple SQL and relate it to selection/projection/rename/joins/set operations | Seven reports with exact expected rows; constraints use π, σ, ρ, difference and theta joins | S2-1 adds EXISTS, correlated queries, HAVING and set-operation reports, checking bag/NULL semantics |
 | 04 Conceptual Design, 4, 6-10, 14-18, 23-28 | Construct a conceptual ERD using entity sets, attributes, identifiers, relationships and roles | CONCEPTUAL_ERD.svg uses the course's Chen-style notation; 50 descriptive attributes/identifiers plus relationships; relational diagram accounts for every SQL column | Regenerate both levels of model after changes |

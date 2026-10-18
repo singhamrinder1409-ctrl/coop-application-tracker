@@ -2,7 +2,7 @@
 
 Group 3: Amrinder Singh (`amrinder`), Jaiman Singh (`jaiman1`), Aashna Sadeque (`aashnas`). The database tracks job postings, applications, resume selections, interviews and offers. Demo employers, jobs and workflow data are synthetic.
 
-The [progress report and next-sprint plan](SPRINT_PLAN.md) compares this sprint with the kick-off commitments. The [rubric audit](RUBRIC_AUDIT.md) maps the grading criteria and feedback to files and checks.
+The [progress report and next-sprint plan](SPRINT_PLAN.md) compares this sprint with the kick-off commitments.
 
 ## Review the submission
 
@@ -54,6 +54,6 @@ python3 scripts/conceptual_erd.py
 
 ## Submit
 
-The group still needs to confirm consent for AI assistance, review the work, record and measure the video, publish the repository and verify instructor/TA access. One member submits the repository URL, exact final commit hash and video in Brightspace. No remote is configured in this checkout.
+Review the work, record and measure the video, push the final commit to [GitHub](https://github.com/singhamrinder1409-ctrl/coop-application-tracker), and verify instructor/TA access. One member submits the repository URL, exact published commit hash and video in Brightspace.
 
 The original kick-off report is `PROJECT_KICKOFF.md`; its plan, DDL and seed are retained in `docs/archive/`.

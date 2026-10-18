@@ -6,7 +6,7 @@ Group 3: Amrinder Singh, Jaiman Singh, Aashna Sadeque. Baseline: kick-off commit
 
 | Prior goal / success criterion | Previous limitation | Sprint 1 result and independent evidence | Status |
 | --- | --- | --- | --- |
-| Review schema with TA-client and adjust scope | Kick-off design lacked a complete feedback response | Supplied written TA review incorporated into ERD, normalization and competency planning; traceable response in `RUBRIC_AUDIT.md` | Delivered using written review; no subsequent approval claimed |
+| Review schema with TA-client and adjust scope | Kick-off design lacked a complete feedback response | Supplied written TA review incorporated into ERD, normalization and competency planning; corrections and evidence listed in the feedback table below | Delivered using written review; no subsequent approval claimed |
 | Improve constraints, especially same-student resume ownership | FK accepted another student's resume; priority allowed NULL | ApplicationResume decomposition, ownership triggers, immutable owners, NOT NULL priority; `schema.sql`, rejected-write checks in `evidence/mysql-verification.txt` | Delivered |
 | At least five explicit SQL/algebra constraints | Rules were informally described | Ten formal rules and implementation mapping in `docs/CONSTRAINTS.md` | Delivered |
 | Decide whether weak entities/inheritance help | Mentioned but not decided | Interview's partial identifier, surrogate mapping, parent deletion policy, and decision against unnecessary posting subtypes in `docs/CONSTRAINTS.md` | Delivered |
