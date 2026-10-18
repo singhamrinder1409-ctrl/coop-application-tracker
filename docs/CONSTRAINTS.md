@@ -1,6 +1,6 @@
 # Constraints, relational algebra, and advanced design decisions
 
-Let A=Application, S=Student, J=JobPosting, R=ResumeVersion, AR=ApplicationResume, I=Interview, O=Offer, T=ApplicationStatus. Set difference must be empty for each inclusion constraint. Renaming resolves equal column names in joins. Comparisons on optional values below apply only to non-NULL supplied values.
+Let A=Application, S=Student, J=JobPosting, R=ResumeVersion, AR=ApplicationResume, I=Interview, O=Offer, T=ApplicationStatus. Set difference must be empty for each inclusion constraint. Aliases qualify equal column names in joins. In the ownership rule, join only on application_id and resume_id; a natural join that also equates student_id would incorrectly hide ownership violations. Comparisons on optional values below apply only to non-NULL supplied values.
 
 | Rule | Formal constraint | Implementation and evidence |
 | --- | --- | --- |
@@ -9,7 +9,7 @@ Let A=Application, S=Student, J=JobPosting, R=ResumeVersion, AR=ApplicationResum
 | Dates ordered | σ_(application_deadline < date_posted)(J) = ∅ | CHECK; reversed date rejected |
 | Unique application | For a,b ∈ A, a.student_id=b.student_id ∧ a.posting_id=b.posting_id ⇒ a.application_id=b.application_id | UNIQUE pair; duplicate rejected |
 | Unique interview round | For i,j ∈ I, same application and round ⇒ same interview_id | UNIQUE pair; duplicate rejected |
-| Selected resume belongs to applicant | σ_(A.student_id ≠ R.student_id)(A ⋈ AR ⋈ R) = ∅ | Two assignment triggers; two immutable-owner triggers; rejected INSERT and UPDATE tests |
+| Selected resume belongs to applicant | σ_(a.student_id ≠ r.student_id)((A a ⋈_(a.application_id = ar.application_id) AR ar) ⋈_(ar.resume_id = r.resume_id) R r) = ∅ | Two assignment triggers; two immutable-owner triggers; rejected INSERT and UPDATE tests |
 | Assignment parents exist | π_application_id(AR) ⊆ π_application_id(A), π_resume_id(AR) ⊆ π_resume_id(R) | NOT NULL FKs; parent deletes restricted |
 | Priority in range | σ_(priority < 1 ∨ priority > 5)(A) = ∅ | NOT NULL and CHECK; both boundaries and NULL rejected |
 | Offer dates ordered | σ_(response_deadline < offer_date)(O) = ∅ | CHECK; reverse rejected |
@@ -23,4 +23,4 @@ Interview rounds are conceptually existence-dependent on Application, with parti
 
 We considered JobPosting subtypes RemotePosting and OnSitePosting. They currently add no distinct attributes; location_type is sufficient and avoids duplicated posting columns. ENUM gives disjoint remote/in_person/hybrid categories and total participation through NOT NULL. This is a type discriminator, not an implemented ISA hierarchy. If separate subtype attributes arise, use JobPosting as supertype and subtype tables with posting_id as PK/FK, then decide total/partial and disjoint/overlap constraints explicitly. No fabricated subtype tables are required to demonstrate that decision.
 
-No TA interview or new client approval has been performed. The attached feedback is the actual client evidence used; scope assumptions are documented for the team to confirm.
+The supplied written TA feedback is the review evidence used. The prior plan and assignment do not require a live interview; none is claimed. The design assumptions remain explicit and can be revisited if the TA provides further requirements.

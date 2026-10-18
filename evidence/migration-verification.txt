@@ -1,0 +1,14 @@
+PASS archived kick-off schema and data load
+PASS capture original references
+PASS construct invalid legacy ownership
+PASS preflight rejects invalid legacy ownership
+PASS rejected preflight preserves old application column
+PASS rejected preflight creates no assignment table
+PASS restore legacy ownership
+PASS migration executes without database reset
+PASS all legacy resume associations retained
+PASS old resume column removed
+PASS legacy application and student rows retained
+PASS upgraded schema enforces resume ownership
+PASS four ownership triggers installed
+ALL MIGRATION CHECKS PASSED; retained disposable database: coop_sprint1_migration_ae49e3e90466

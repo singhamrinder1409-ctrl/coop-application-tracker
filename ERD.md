@@ -1,6 +1,6 @@
 # Complete ERD - Sprint 1
 
-Crow's-foot notation replaces the incomplete kick-off Chen diagram. Every SQL attribute appears below and in `ERD.svg`; the Mermaid source and relational schema also show SQL types. `PK` is the primary key, `FK` a reference, and `UK` a non-null alternate key component. See `RELATIONAL_SCHEMA.md` for nullable UNIQUE rules.
+This is the complete relational companion to the course-style conceptual diagram in `CONCEPTUAL_ERD.md`. Every SQL attribute appears below and in `ERD.svg`; the Mermaid source and relational schema also show SQL types. `PK` is the primary key, `FK` a reference, and `UK` a non-null alternate key component. See `RELATIONAL_SCHEMA.md` for nullable UNIQUE rules.
 
 ```mermaid
 erDiagram

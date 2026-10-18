@@ -22,3 +22,11 @@ rejected	1
 full_name	employer_name	job_title	hourly_wage	offer_date	response_deadline	offer_status
 Aashna Sadeque	Island Health Data Team	Health Data Analyst Co-op	28.50	2026-10-18	2026-10-25	pending
 Amrinder Singh	Northwind Software	Backend Developer Co-op	0.00	2026-10-18	2026-10-18	pending
+full_name	application_count
+Amrinder Singh	2
+Jaiman Singh	2
+Aashna Sadeque	2
+Demo Student	0
+application_id	full_name	job_title
+5	Jaiman Singh	Data Systems Co-op
+6	Aashna Sadeque	Backend Developer Co-op

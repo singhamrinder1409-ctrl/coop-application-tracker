@@ -3,6 +3,7 @@
 <style>text{font-family:ui-monospace,monospace;fill:#172a42} .title{font-family:Arial;font-weight:bold}</style>
 <text x="28" y="36" font-size="25" class="title">Co-op Application Tracker · Complete relational ERD</text>
 <text x="28" y="62" font-size="14">Every attribute shown · PK primary key · FK foreign key · ? nullable · relationship cardinalities below</text>
+<g id="entity-Student">
 <rect x="24" y="88" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
 <text x="38" y="118" font-size="19" class="title">Student</text>
 <text x="38" y="148" font-size="13">student_id PK </text>
@@ -11,6 +12,8 @@
 <text x="38" y="223" font-size="13">email ?</text>
 <text x="38" y="248" font-size="13">program ?</text>
 <text x="38" y="489" font-size="11">Keys: student_id; username</text>
+</g>
+<g id="entity-Employer">
 <rect x="456" y="88" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
 <text x="470" y="118" font-size="19" class="title">Employer</text>
 <text x="470" y="148" font-size="13">employer_id PK </text>
@@ -21,6 +24,8 @@
 <text x="470" y="273" font-size="13">province ?</text>
 <text x="470" y="298" font-size="13">country ?</text>
 <text x="470" y="489" font-size="11">Keys: employer_id</text>
+</g>
+<g id="entity-JobPosting">
 <rect x="888" y="88" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
 <text x="902" y="118" font-size="19" class="title">JobPosting</text>
 <text x="902" y="148" font-size="13">posting_id PK </text>
@@ -37,12 +42,16 @@
 <text x="902" y="423" font-size="13">salary_range ?</text>
 <text x="902" y="448" font-size="13">posting_status </text>
 <text x="902" y="489" font-size="11">Keys: posting_id</text>
+</g>
+<g id="entity-ApplicationStatus">
 <rect x="24" y="538" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
 <text x="38" y="568" font-size="19" class="title">ApplicationStatus</text>
 <text x="38" y="598" font-size="13">status_id PK </text>
 <text x="38" y="623" font-size="13">status_name </text>
 <text x="38" y="648" font-size="13">is_terminal </text>
 <text x="38" y="939" font-size="11">Keys: status_id; status_name</text>
+</g>
+<g id="entity-ResumeVersion">
 <rect x="456" y="538" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
 <text x="470" y="568" font-size="19" class="title">ResumeVersion</text>
 <text x="470" y="598" font-size="13">resume_id PK </text>
@@ -52,6 +61,8 @@
 <text x="470" y="698" font-size="13">created_on </text>
 <text x="470" y="723" font-size="13">file_name ?</text>
 <text x="470" y="939" font-size="11">Keys: resume_id; student_id + version_number</text>
+</g>
+<g id="entity-Application">
 <rect x="888" y="538" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
 <text x="902" y="568" font-size="19" class="title">Application</text>
 <text x="902" y="598" font-size="13">application_id PK </text>
@@ -63,6 +74,8 @@
 <text x="902" y="748" font-size="13">priority </text>
 <text x="902" y="773" font-size="13">notes ?</text>
 <text x="902" y="939" font-size="11">Keys: application_id; student_id + posting_id</text>
+</g>
+<g id="entity-Interview">
 <rect x="24" y="988" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
 <text x="38" y="1018" font-size="19" class="title">Interview</text>
 <text x="38" y="1048" font-size="13">interview_id PK </text>
@@ -74,6 +87,8 @@
 <text x="38" y="1198" font-size="13">interviewer_name ?</text>
 <text x="38" y="1223" font-size="13">result </text>
 <text x="38" y="1389" font-size="11">Keys: interview_id; application_id + interview_round</text>
+</g>
+<g id="entity-Offer">
 <rect x="456" y="988" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
 <text x="470" y="1018" font-size="19" class="title">Offer</text>
 <text x="470" y="1048" font-size="13">offer_id PK </text>
@@ -84,11 +99,14 @@
 <text x="470" y="1173" font-size="13">offer_status </text>
 <text x="470" y="1198" font-size="13">notes ?</text>
 <text x="470" y="1389" font-size="11">Keys: offer_id; application_id</text>
+</g>
+<g id="entity-ApplicationResume">
 <rect x="888" y="988" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
 <text x="902" y="1018" font-size="19" class="title">ApplicationResume</text>
 <text x="902" y="1048" font-size="13">application_id PK FK </text>
 <text x="902" y="1073" font-size="13">resume_id FK </text>
 <text x="902" y="1389" font-size="11">Keys: application_id</text>
+</g>
 <text x="28" y="1450" font-size="20" class="title">Relationship graph · each child references exactly one parent</text>
 <text x="28" y="1475" font-size="13">1 at parent end; 0..* or 0..1 at child end. Attributes for each node appear above.</text>
 <line x1="1130.0" y1="1564.0" x2="1130.0" y2="1656.0" stroke="#4b6d93" stroke-width="2"/>

@@ -4,6 +4,7 @@ FDs here are declared domain assumptions, not facts inferred from sample rows.
 """
 from pathlib import Path
 import re, itertools, html
+import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 text=(ROOT/'schema.sql').read_text()
 tables={}
@@ -47,15 +48,29 @@ def check():
     # Projection example: A->S, S->N, A->P. Project onto (A,N,P).
     assert closure({'A'},[(('A',),'S'),(('S',),'N'),(('A',),'P')]) >= {'A','N','P'}
     assert closure({'S'},[(('A',),'S'),(('S',),'N'),(('A',),'P')]) >= {'S','N'}
+    erd=(ROOT/'ERD.md').read_text()
+    svg=ET.parse(ROOT/'ERD.svg').getroot()
+    ns={'s':'http://www.w3.org/2000/svg'}
     for name,t in tables.items():
-        for attr,_ in t['cols']:
-            assert attr in (ROOT/'ERD.svg').read_text() and attr in (ROOT/'ERD.md').read_text(),(name,attr,'missing ERD attribute')
+        declared=[attr for attr,_ in t['cols']]
+        block=re.search(r'    '+name+r' \{\n(.*?)    \}',erd,re.S)
+        assert block is not None, (name,'missing Mermaid entity')
+        shown=[line.split()[1] for line in block[1].splitlines() if line.strip()]
+        assert shown==declared,(name,'Mermaid attribute mismatch',shown,declared)
+        group=svg.find("s:g[@id='entity-"+name+"']",ns)
+        assert group is not None,(name,'missing SVG entity')
+        labels=[e.text or '' for e in group.findall('s:text',ns)]
+        shown=[label.split()[0] for label in labels if label.split() and label.split()[0] in declared]
+        assert shown==declared,(name,'SVG attribute mismatch',shown,declared)
+    declared_edges={(parent,child) for child,t in tables.items() for parent in re.findall(r'REFERENCES (\w+)\(',t['body'])}
+    shown_edges=set(re.findall(r'^    (\w+) \|\|--o[|{] (\w+) :',erd,re.M))
+    assert shown_edges==declared_edges,('ERD foreign-key relationship mismatch',shown_edges,declared_edges)
     print('PASS complete ERD attribute coverage; projected A -> N; lossless intersection S -> (S,N)')
     print('NOTE: finite checks validate the declared FD model, not completeness of domain assumptions or 4NF.')
 
 def generate():
     md=['# Relational schema - Sprint 1','', 'Generated from `schema.sql` by `python3 scripts/design.py --generate`. All attributes are shown. Optional means SQL NULL is allowed.','']
-    er=['# Complete ERD - Sprint 1','','Crow\'s-foot notation replaces the incomplete kick-off Chen diagram. Every SQL attribute appears below and in `ERD.svg`; the Mermaid source and relational schema also show SQL types. `PK` is the primary key, `FK` a reference, and `UK` a non-null alternate key component. See `RELATIONAL_SCHEMA.md` for nullable UNIQUE rules.','','```mermaid','erDiagram']
+    er=['# Complete ERD - Sprint 1','','This is the complete relational companion to the course-style conceptual diagram in `CONCEPTUAL_ERD.md`. Every SQL attribute appears below and in `ERD.svg`; the Mermaid source and relational schema also show SQL types. `PK` is the primary key, `FK` a reference, and `UK` a non-null alternate key component. See `RELATIONAL_SCHEMA.md` for nullable UNIQUE rules.','','```mermaid','erDiagram']
     for name,t in tables.items():
         md += ['## '+name,'','| Attribute | SQL type | Optional |','| --- | --- | --- |']
         for a,typ in t['cols']:md.append(f"| {a} | {typ} | {'yes' if t['nullable'][a] else 'no'} |")
@@ -81,12 +96,13 @@ def generate():
     out=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">','<rect width="100%" height="100%" fill="#f4f7fb"/>','<style>text{font-family:ui-monospace,monospace;fill:#172a42} .title{font-family:Arial;font-weight:bold}</style>','<text x="28" y="36" font-size="25" class="title">Co-op Application Tracker · Complete relational ERD</text>','<text x="28" y="62" font-size="14">Every attribute shown · PK primary key · FK foreign key · ? nullable · relationship cardinalities below</text>']
     for i,(name,t) in enumerate(tables.items()):
         x=24+(i%3)*432;y=88+(i//3)*rowh
-        out += [f'<rect x="{x}" y="{y}" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>',f'<text x="{x+14}" y="{y+30}" font-size="19" class="title">{name}</text>']
+        out += [f'<g id="entity-{name}">', f'<rect x="{x}" y="{y}" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>',f'<text x="{x+14}" y="{y+30}" font-size="19" class="title">{name}</text>']
         fk=set(re.findall(r'FOREIGN KEY \((\w+)\)',t['body']))
         for j,(a,typ) in enumerate(t['cols']):
             flags=('PK ' if a in t['keys'][0] else '')+('FK ' if a in fk else '')+('?' if t['nullable'][a] else '')
             out += [f'<text x="{x+14}" y="{y+60+j*25}" font-size="13">{html.escape(a)} {flags}</text>']
         out += [f'<text x="{x+14}" y="{y+401}" font-size="11">Keys: {html.escape("; ".join(" + ".join(k) for k in t["keys"]))}</text>']
+        out += ['</g>']
     y=3*rowh+100
     out += [f'<text x="28" y="{y}" font-size="20" class="title">Relationship graph · each child references exactly one parent</text>', f'<text x="28" y="{y+25}" font-size="13">1 at parent end; 0..* or 0..1 at child end. Attributes for each node appear above.</text>']
     nodes={'Student':(150,y+90),'ApplicationStatus':(640,y+90),'Employer':(1130,y+90),

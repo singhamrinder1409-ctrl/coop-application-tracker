@@ -2,7 +2,7 @@
 
 Proposed speaking split: Amrinder 0:00-2:30, Jaiman 2:30-5:00, Aashna 5:00-7:30. Rehearse and adapt this to your actual contribution and understanding. The video is not recorded by this script. Keep final export below 8 minutes, including titles/transitions, to satisfy both the formula and inconsistent example in the supplied assignment text.
 
-Prepare: open the project folder, ERD.svg, NORMALIZATION.md, docs/CONSTRAINTS.md and SPRINT_PLAN.md. Have MySQL running and verify credentials before recording. Run `python3 scripts/design.py` and `python3 scripts/verify.py` live if possible. The saved evidence is available for inspection but should not be described as your own live run unless you actually run it. Show the exact submission commit via `git rev-parse HEAD`.
+Prepare: open the project folder, CONCEPTUAL_ERD.svg, ERD.svg, NORMALIZATION.md, docs/CONSTRAINTS.md and SPRINT_PLAN.md. Have MySQL running and verify credentials before recording. Run `python3 scripts/design.py` and `python3 scripts/verify.py` live if possible. The saved evidence is available for inspection but should not be described as your own live run unless you actually run it. Show the exact submission commit via `git rev-parse HEAD`.
 
 ## 0:00-2:30 - Amrinder: goals, feedback, complete model
 
@@ -12,11 +12,11 @@ Prepare: open the project folder, ERD.svg, NORMALIZATION.md, docs/CONSTRAINTS.md
 
 **0:35-1:00 — show feedback correction table.**
 
-“The feedback asked us to show every ERD attribute, prove BCNF per table, state current limitations against course competencies, and cover minimal bases, projecting FDs, 3NF and 4NF. Those now have explicit evidence. We used the written feedback, but a live TA review remains pending; we have not claimed it happened.”
+“The feedback asked us to show every ERD attribute, prove BCNF per table, state current limitations against course competencies, and cover minimal bases, projecting FDs, 3NF and 4NF. Those now have explicit evidence. We incorporated the written TA review into this revision. A live meeting was not a requirement, and we do not claim new TA approval.”
 
-**1:00-1:45 — zoom ERD.svg.**
+**1:00-1:45 — zoom CONCEPTUAL_ERD.svg and ERD.svg.**
 
-“Every SQL attribute appears in the new diagram, including all 13 JobPosting columns. One employer has zero or many postings, each posting has exactly one employer. Each application has one student, posting and status, zero or many interviews and at most one offer. Selected resumes are represented by ApplicationResume. A missing row means no resume has been selected. A resume can be reused across applications belonging to its owner.”
+“Our conceptual diagram follows the lecture’s Chen notation: rectangles, attribute ellipses, underlined identifiers and relationship diamonds. The companion relational diagram accounts for every SQL column, including all 13 JobPosting columns. One employer has zero or many postings, each posting has exactly one employer. Each application has one student, posting and status, zero or many interviews and at most one offer. Selected resumes are represented by ApplicationResume. A missing row means no resume has been selected. A resume can be reused across applications belonging to its owner. Multiplicity implies FDs such as posting_id determining employer_id, but not the reverse.”
 
 **1:45-2:30 — show schema.sql and docs/CONSTRAINTS.md.**
 
@@ -38,22 +38,22 @@ Prepare: open the project folder, ERD.svg, NORMALIZATION.md, docs/CONSTRAINTS.md
 
 **4:25-5:00 — show 3NF and 4NF examples, run design.py.**
 
-“3NF allows a non-key determinant if the right-side attribute is prime; BCNF does not. The allocation example shows why a lossless BCNF decomposition can lose local dependency enforcement. For 4NF, independently varying skills and cities create a cross-product and should be separate relations. We state the production model's single-valued assumptions; the FD checker alone does not prove 4NF. Here are the actual key, minimality and BCNF checks passing.”
+“3NF allows a non-key determinant if the right-side attribute is prime; BCNF does not. The allocation example shows why a lossless BCNF decomposition can lose local dependency enforcement. For 4NF, independently varying skills and cities create a cross-product and should be separate relations. We state the production model's single-valued assumptions; the FD checker alone does not prove 4NF. Here are the actual key, minimality and BCNF checks passing. The worked examples have separate reproducible checks.”
 
 ## 5:00-7:30 - Aashna: execution evidence, limits and next sprint
 
 **5:00-5:55 — run verify.py; show output.**
 
-“The database checks load the DDL and seed into a fresh test schema on MySQL. They test a valid application, resume selection, interview and offer in a transaction and then prove rollback restored the fixture. They also try invalid writes: another student's resume, duplicate applications and rounds, invalid priority, negative wages and reversed deadlines. Each expected rejection is checked against a MySQL error code, rather than treating any error as success.”
+“The database checks load the DDL and seed into a fresh test schema on MySQL. They test a valid application, resume selection, interview and offer in a transaction and then prove rollback restored the fixture. They also try invalid writes: another student's resume, duplicate applications and rounds, invalid priority, negative wages and reversed deadlines. Each expected rejection is checked against a MySQL error code. A separate migration test upgrades the original kick-off fixture and proves all four application/resume assignments survive.”
 
 **5:55-6:20 — show demo-output.tsv and fixture.**
 
-“We have four students and six applications, including one student with no applications and applications without selected resumes. The five reports show applications, active applications, upcoming interviews, status counts and offers. The upcoming-interview query uses a fixed demonstration date and excludes the earlier interview. Sample employers and jobs are synthetic.”
+“We have four students and six applications, including one student with no applications and applications without selected resumes. The seven reports show applications, active applications, upcoming interviews, status counts, offers, workload including students with zero applications, and missing resume selections. Every report is checked against expected rows. The upcoming-interview query uses a fixed demonstration date and excludes the earlier interview. Sample employers and jobs are synthetic.”
 
 **6:20-7:15 — show Sprint 2 matrix, emphasizing current limitations.**
 
-“For next sprint, the course competency areas are modelling, SQL querying, correctness and database-backed system development. Our current limitation is that reports use basic joins and filters, without a tested advanced query pack or reusable views. We plan eight reports covering outer joins, grouping, HAVING, correlated queries, EXISTS and set operations, with expected rows. We also plan two views and a transactional update with failure rollback. CTEs and window rankings are planned extensions within our Advanced SQL work. The plan includes named owners, effort, edge cases and measurable tests. It retains FD and integrity regression through Advanced Relational Design. There is no separate competency list or additional TA requirement; this matrix uses the assignment scope and written feedback.”
+“For next sprint, the three competency names from the Welcome lecture are Data Analytics, Data Modelling and Back-end Engineering. Our current limitations are basic reports without a chart or scaled timings, and no client API or restricted database account. We plan eight reports covering outer joins, grouping, HAVING, correlated queries, EXISTS and set operations, with expected rows. We also plan a chart validated against SQL, timed queries on 1,000 applications, two views, and a parameterized client operation with failure rollback and restricted-account checks. CTEs and window rankings are planned extensions within our Advanced SQL work. The plan includes named owners, effort, edge cases and measurable tests. It retains FD and integrity regression through Advanced Relational Design. The lecture-by-lecture matrix connects all nine supplied decks to evidence. The feedback-required advanced topics are included even though separate advanced decks were not in the folder.”
 
 **7:15-7:30 — show checklist and git rev-parse HEAD.**
 
-“The remaining tasks are recording and repository publication/access. The live TA review from our original plan remains pending and is reported honestly. Our submission must identify the exact commit shown here. We will submit one repository link, commit hash and measured video for Group 3.”
+“The remaining tasks are recording and repository publication/access. The written TA review and our resulting corrections are documented. Our submission must identify the exact commit shown here. We will submit one repository link, commit hash and measured video for Group 3.”

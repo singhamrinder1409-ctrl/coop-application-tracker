@@ -86,3 +86,20 @@ JOIN JobPosting AS jp
     ON jp.posting_id = a.posting_id
 JOIN Employer AS e
     ON e.employer_id = jp.employer_id;
+
+-- 6. Application workload for every student, including students with no applications.
+-- COUNT(application_id), rather than COUNT(*), makes the unmatched student count 0.
+SELECT s.full_name, COUNT(a.application_id) AS application_count
+FROM Student AS s
+LEFT JOIN Application AS a ON a.student_id = s.student_id
+GROUP BY s.student_id, s.full_name
+ORDER BY s.student_id;
+
+-- 7. Applications with no resume selected (a missing relationship, not an orphan FK).
+SELECT a.application_id, s.full_name, jp.job_title
+FROM Application AS a
+JOIN Student AS s ON s.student_id = a.student_id
+JOIN JobPosting AS jp ON jp.posting_id = a.posting_id
+LEFT JOIN ApplicationResume AS ar ON ar.application_id = a.application_id
+WHERE ar.application_id IS NULL
+ORDER BY a.application_id;

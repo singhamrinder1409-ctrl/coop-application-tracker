@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="2600" viewBox="0 0 2100 2600">
+<rect width="100%" height="100%" fill="#f7f9fc"/>
+<style>text{font-family:Arial,sans-serif;fill:#16304b}.key{text-decoration:underline;font-weight:bold}</style>
+<defs><marker id="one" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#43688e"/></marker></defs>
+<text x="30" y="38" font-size="28" font-weight="bold">Co-op Application Tracker · Chen conceptual ERD</text>
+<text x="30" y="67" font-size="17">Rectangles: entities · ellipses: all descriptive attributes · underlining: chosen identifiers · diamonds: relationships</text>
+<text x="30" y="94" font-size="16">Attribute panels and the relationship graph refer to the same named entities. SQL foreign keys are mapped through relationships.</text>
+<g id="concept-Student">
+<rect x="30" y="120" width="1000" height="380" rx="12" fill="white" stroke="#d0dce8"/>
+<line x1="425" y1="310" x2="400" y2="165" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="635" y1="310" x2="660" y2="165" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="425" y1="310" x2="400" y2="218" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="635" y1="310" x2="660" y2="218" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="425" y1="310" x2="400" y2="271" stroke="#7993b0" stroke-width="1.5"/>
+<rect x="425" y="283" width="210" height="54" fill="#edf4fb" stroke="#244c73" stroke-width="2"/>
+<text x="530" y="316" text-anchor="middle" font-size="20" font-weight="bold">Student</text>
+<ellipse cx="245" cy="165" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="170" text-anchor="middle" font-size="16" class="key">student_id</text>
+<ellipse cx="815" cy="165" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="815" y="170" text-anchor="middle" font-size="16">full_name</text>
+<ellipse cx="245" cy="218" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="223" text-anchor="middle" font-size="16">username</text>
+<ellipse cx="815" cy="218" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="815" y="223" text-anchor="middle" font-size="16">email</text>
+<ellipse cx="245" cy="271" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="276" text-anchor="middle" font-size="16">program</text>
+</g>
+<g id="concept-Employer">
+<rect x="1070" y="120" width="1000" height="380" rx="12" fill="white" stroke="#d0dce8"/>
+<line x1="1465" y1="310" x2="1440" y2="165" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1675" y1="310" x2="1700" y2="165" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1465" y1="310" x2="1440" y2="218" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1675" y1="310" x2="1700" y2="218" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1465" y1="310" x2="1440" y2="271" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1675" y1="310" x2="1700" y2="271" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1465" y1="310" x2="1440" y2="324" stroke="#7993b0" stroke-width="1.5"/>
+<rect x="1465" y="283" width="210" height="54" fill="#edf4fb" stroke="#244c73" stroke-width="2"/>
+<text x="1570" y="316" text-anchor="middle" font-size="20" font-weight="bold">Employer</text>
+<ellipse cx="1285" cy="165" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1285" y="170" text-anchor="middle" font-size="16" class="key">employer_id</text>
+<ellipse cx="1855" cy="165" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1855" y="170" text-anchor="middle" font-size="16">employer_name</text>
+<ellipse cx="1285" cy="218" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1285" y="223" text-anchor="middle" font-size="16">industry</text>
+<ellipse cx="1855" cy="218" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1855" y="223" text-anchor="middle" font-size="16">website</text>
+<ellipse cx="1285" cy="271" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1285" y="276" text-anchor="middle" font-size="16">city</text>
+<ellipse cx="1855" cy="271" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1855" y="276" text-anchor="middle" font-size="16">province</text>
+<ellipse cx="1285" cy="324" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1285" y="329" text-anchor="middle" font-size="16">country</text>
+</g>
+<g id="concept-JobPosting">
+<rect x="30" y="520" width="1000" height="380" rx="12" fill="white" stroke="#d0dce8"/>
+<line x1="425" y1="710" x2="400" y2="565" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="635" y1="710" x2="660" y2="565" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="425" y1="710" x2="400" y2="618" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="635" y1="710" x2="660" y2="618" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="425" y1="710" x2="400" y2="671" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="635" y1="710" x2="660" y2="671" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="425" y1="710" x2="400" y2="724" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="635" y1="710" x2="660" y2="724" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="425" y1="710" x2="400" y2="777" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="635" y1="710" x2="660" y2="777" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="425" y1="710" x2="400" y2="830" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="635" y1="710" x2="660" y2="830" stroke="#7993b0" stroke-width="1.5"/>
+<rect x="425" y="683" width="210" height="54" fill="#edf4fb" stroke="#244c73" stroke-width="2"/>
+<text x="530" y="716" text-anchor="middle" font-size="20" font-weight="bold">JobPosting</text>
+<ellipse cx="245" cy="565" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="570" text-anchor="middle" font-size="16" class="key">posting_id</text>
+<ellipse cx="815" cy="565" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="815" y="570" text-anchor="middle" font-size="16">job_title</text>
+<ellipse cx="245" cy="618" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="623" text-anchor="middle" font-size="16">work_term</text>
+<ellipse cx="815" cy="618" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="815" y="623" text-anchor="middle" font-size="16">location_type</text>
+<ellipse cx="245" cy="671" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="676" text-anchor="middle" font-size="16">city</text>
+<ellipse cx="815" cy="671" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="815" y="676" text-anchor="middle" font-size="16">province</text>
+<ellipse cx="245" cy="724" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="729" text-anchor="middle" font-size="16">country</text>
+<ellipse cx="815" cy="724" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="815" y="729" text-anchor="middle" font-size="16">posting_url</text>
+<ellipse cx="245" cy="777" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="782" text-anchor="middle" font-size="16">date_posted</text>
+<ellipse cx="815" cy="777" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="815" y="782" text-anchor="middle" font-size="16">application_deadline</text>
+<ellipse cx="245" cy="830" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="835" text-anchor="middle" font-size="16">salary_range</text>
+<ellipse cx="815" cy="830" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="815" y="835" text-anchor="middle" font-size="16">posting_status</text>
+</g>
+<g id="concept-ApplicationStatus">
+<rect x="1070" y="520" width="1000" height="380" rx="12" fill="white" stroke="#d0dce8"/>
+<line x1="1465" y1="710" x2="1440" y2="565" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1675" y1="710" x2="1700" y2="565" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1465" y1="710" x2="1440" y2="618" stroke="#7993b0" stroke-width="1.5"/>
+<rect x="1465" y="683" width="210" height="54" fill="#edf4fb" stroke="#244c73" stroke-width="2"/>
+<text x="1570" y="716" text-anchor="middle" font-size="20" font-weight="bold">ApplicationStatus</text>
+<ellipse cx="1285" cy="565" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1285" y="570" text-anchor="middle" font-size="16" class="key">status_id</text>
+<ellipse cx="1855" cy="565" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1855" y="570" text-anchor="middle" font-size="16">status_name</text>
+<ellipse cx="1285" cy="618" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1285" y="623" text-anchor="middle" font-size="16">is_terminal</text>
+</g>
+<g id="concept-ResumeVersion">
+<rect x="30" y="920" width="1000" height="380" rx="12" fill="white" stroke="#d0dce8"/>
+<line x1="425" y1="1110" x2="400" y2="965" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="635" y1="1110" x2="660" y2="965" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="425" y1="1110" x2="400" y2="1018" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="635" y1="1110" x2="660" y2="1018" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="425" y1="1110" x2="400" y2="1071" stroke="#7993b0" stroke-width="1.5"/>
+<rect x="425" y="1083" width="210" height="54" fill="#edf4fb" stroke="#244c73" stroke-width="2"/>
+<text x="530" y="1116" text-anchor="middle" font-size="20" font-weight="bold">ResumeVersion</text>
+<ellipse cx="245" cy="965" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="970" text-anchor="middle" font-size="16" class="key">resume_id</text>
+<ellipse cx="815" cy="965" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="815" y="970" text-anchor="middle" font-size="16">resume_label</text>
+<ellipse cx="245" cy="1018" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="1023" text-anchor="middle" font-size="16">version_number</text>
+<ellipse cx="815" cy="1018" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="815" y="1023" text-anchor="middle" font-size="16">created_on</text>
+<ellipse cx="245" cy="1071" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="1076" text-anchor="middle" font-size="16">file_name</text>
+</g>
+<g id="concept-Application">
+<rect x="1070" y="920" width="1000" height="380" rx="12" fill="white" stroke="#d0dce8"/>
+<line x1="1465" y1="1110" x2="1440" y2="965" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1675" y1="1110" x2="1700" y2="965" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1465" y1="1110" x2="1440" y2="1018" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1675" y1="1110" x2="1700" y2="1018" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1465" y1="1110" x2="1440" y2="1071" stroke="#7993b0" stroke-width="1.5"/>
+<rect x="1465" y="1083" width="210" height="54" fill="#edf4fb" stroke="#244c73" stroke-width="2"/>
+<text x="1570" y="1116" text-anchor="middle" font-size="20" font-weight="bold">Application</text>
+<ellipse cx="1285" cy="965" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1285" y="970" text-anchor="middle" font-size="16" class="key">application_id</text>
+<ellipse cx="1855" cy="965" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1855" y="970" text-anchor="middle" font-size="16">date_applied</text>
+<ellipse cx="1285" cy="1018" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1285" y="1023" text-anchor="middle" font-size="16">source</text>
+<ellipse cx="1855" cy="1018" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1855" y="1023" text-anchor="middle" font-size="16">priority</text>
+<ellipse cx="1285" cy="1071" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1285" y="1076" text-anchor="middle" font-size="16">notes</text>
+</g>
+<g id="concept-Interview">
+<rect x="30" y="1320" width="1000" height="380" rx="12" fill="white" stroke="#d0dce8"/>
+<line x1="425" y1="1510" x2="400" y2="1365" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="635" y1="1510" x2="660" y2="1365" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="425" y1="1510" x2="400" y2="1418" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="635" y1="1510" x2="660" y2="1418" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="425" y1="1510" x2="400" y2="1471" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="635" y1="1510" x2="660" y2="1471" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="425" y1="1510" x2="400" y2="1524" stroke="#7993b0" stroke-width="1.5"/>
+<rect x="425" y="1483" width="210" height="54" fill="#edf4fb" stroke="#244c73" stroke-width="2"/>
+<text x="530" y="1516" text-anchor="middle" font-size="20" font-weight="bold">Interview</text>
+<ellipse cx="245" cy="1365" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="1370" text-anchor="middle" font-size="16" class="key">interview_id</text>
+<ellipse cx="815" cy="1365" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="815" y="1370" text-anchor="middle" font-size="16">interview_round</text>
+<ellipse cx="245" cy="1418" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="1423" text-anchor="middle" font-size="16">interview_type</text>
+<ellipse cx="815" cy="1418" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="815" y="1423" text-anchor="middle" font-size="16">scheduled_at</text>
+<ellipse cx="245" cy="1471" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="1476" text-anchor="middle" font-size="16">location</text>
+<ellipse cx="815" cy="1471" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="815" y="1476" text-anchor="middle" font-size="16">interviewer_name</text>
+<ellipse cx="245" cy="1524" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="245" y="1529" text-anchor="middle" font-size="16">result</text>
+</g>
+<g id="concept-Offer">
+<rect x="1070" y="1320" width="1000" height="380" rx="12" fill="white" stroke="#d0dce8"/>
+<line x1="1465" y1="1510" x2="1440" y2="1365" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1675" y1="1510" x2="1700" y2="1365" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1465" y1="1510" x2="1440" y2="1418" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1675" y1="1510" x2="1700" y2="1418" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1465" y1="1510" x2="1440" y2="1471" stroke="#7993b0" stroke-width="1.5"/>
+<line x1="1675" y1="1510" x2="1700" y2="1471" stroke="#7993b0" stroke-width="1.5"/>
+<rect x="1465" y="1483" width="210" height="54" fill="#edf4fb" stroke="#244c73" stroke-width="2"/>
+<text x="1570" y="1516" text-anchor="middle" font-size="20" font-weight="bold">Offer</text>
+<ellipse cx="1285" cy="1365" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1285" y="1370" text-anchor="middle" font-size="16" class="key">offer_id</text>
+<ellipse cx="1855" cy="1365" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1855" y="1370" text-anchor="middle" font-size="16">hourly_wage</text>
+<ellipse cx="1285" cy="1418" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1285" y="1423" text-anchor="middle" font-size="16">offer_date</text>
+<ellipse cx="1855" cy="1418" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1855" y="1423" text-anchor="middle" font-size="16">response_deadline</text>
+<ellipse cx="1285" cy="1471" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1285" y="1476" text-anchor="middle" font-size="16">offer_status</text>
+<ellipse cx="1855" cy="1471" rx="155" ry="22" fill="white" stroke="#6586a8"/>
+<text x="1855" y="1476" text-anchor="middle" font-size="16">notes</text>
+</g>
+<text x="30" y="1770" font-size="25" font-weight="bold">Relationships and participation</text>
+<text x="30" y="1800" font-size="16">(min,max) labels count each entity’s participation; arrows point to an at-most-one related entity. N means many.</text>
+<line x1="200.0" y1="1908.0" x2="200.0" y2="2122.0" stroke="#43688e" stroke-width="2" marker-start="url(#one)"/>
+<polygon points="105.0,2015.0 200.0,1981.0 295.0,2015.0 200.0,2049.0" fill="#eaf1f9" stroke="#43688e" stroke-width="2"/>
+<text x="200.0" y="2020.0" text-anchor="middle" font-size="16">Owns</text>
+<text x="200.0" y="1926.82" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(0,N)</text>
+<text x="200.0" y="2085.18" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(1,1)</text>
+<line x1="288.14814814814815" y1="1908.0" x2="961.8518518518518" y2="2122.0" stroke="#43688e" stroke-width="2" marker-start="url(#one)"/>
+<polygon points="530.0,2015.0 625.0,1981.0 720.0,2015.0 625.0,2049.0" fill="#eaf1f9" stroke="#43688e" stroke-width="2"/>
+<text x="625.0" y="2020.0" text-anchor="middle" font-size="16">Submits</text>
+<text x="375.72962962962964" y="1926.82" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(0,N)</text>
+<text x="874.2703703703704" y="2085.18" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(1,1)</text>
+<line x1="1850.0" y1="1908.0" x2="1850.0" y2="2122.0" stroke="#43688e" stroke-width="2" marker-start="url(#one)"/>
+<polygon points="1755.0,2015.0 1850.0,1981.0 1945.0,2015.0 1850.0,2049.0" fill="#eaf1f9" stroke="#43688e" stroke-width="2"/>
+<text x="1850.0" y="2020.0" text-anchor="middle" font-size="16">Posts</text>
+<text x="1850.0" y="1926.82" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(0,N)</text>
+<text x="1850.0" y="2085.18" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(1,1)</text>
+<line x1="1050.0" y1="1908.0" x2="1050.0" y2="2122.0" stroke="#43688e" stroke-width="2" marker-start="url(#one)"/>
+<polygon points="955.0,2015.0 1050.0,1981.0 1145.0,2015.0 1050.0,2049.0" fill="#eaf1f9" stroke="#43688e" stroke-width="2"/>
+<text x="1050.0" y="2020.0" text-anchor="middle" font-size="16">Classifies</text>
+<text x="1050.0" y="1926.82" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(0,N)</text>
+<text x="1050.0" y="2085.18" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(1,1)</text>
+<line x1="1735.0" y1="2150.0" x2="1165.0" y2="2150.0" stroke="#43688e" stroke-width="2" marker-start="url(#one)"/>
+<polygon points="1355.0,2150.0 1450.0,2116.0 1545.0,2150.0 1450.0,2184.0" fill="#eaf1f9" stroke="#43688e" stroke-width="2"/>
+<text x="1450.0" y="2155.0" text-anchor="middle" font-size="16">For</text>
+<text x="1660.9" y="2141.0" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(0,N)</text>
+<text x="1239.1" y="2141.0" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(1,1)</text>
+<line x1="1010.0" y1="2178.0" x2="590.0" y2="2472.0" stroke="#43688e" stroke-width="2" marker-start="url(#one)"/>
+<polygon points="705.0,2325.0 800.0,2291.0 895.0,2325.0 800.0,2359.0" fill="#eaf1f9" stroke="#43688e" stroke-width="2"/>
+<text x="800.0" y="2330.0" text-anchor="middle" font-size="16">Has</text>
+<text x="955.4" y="2207.22" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(0,N)</text>
+<text x="644.6" y="2424.78" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(1,1)</text>
+<line x1="1090.0" y1="2178.0" x2="1510.0" y2="2472.0" stroke="#43688e" stroke-width="2" marker-start="url(#one)" marker-end="url(#one)"/>
+<polygon points="1205.0,2325.0 1300.0,2291.0 1395.0,2325.0 1300.0,2359.0" fill="#eaf1f9" stroke="#43688e" stroke-width="2"/>
+<text x="1300.0" y="2330.0" text-anchor="middle" font-size="16">Receives</text>
+<text x="1144.6" y="2207.22" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(0,1)</text>
+<text x="1455.4" y="2424.78" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(1,1)</text>
+<line x1="315.0" y1="2150.0" x2="935.0" y2="2150.0" stroke="#43688e" stroke-width="2" marker-start="url(#one)"/>
+<polygon points="530.0,2150.0 625.0,2116.0 720.0,2150.0 625.0,2184.0" fill="#eaf1f9" stroke="#43688e" stroke-width="2"/>
+<text x="625.0" y="2155.0" text-anchor="middle" font-size="16">Selected</text>
+<text x="395.6" y="2141.0" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(0,N)</text>
+<text x="854.4" y="2141.0" text-anchor="middle" font-size="15" style="paint-order:stroke;stroke:#f7f9fc;stroke-width:5">(0,1)</text>
+<rect x="85" y="1852" width="230" height="56" fill="white" stroke="#244c73" stroke-width="2"/>
+<text x="200" y="1886" text-anchor="middle" font-size="19" font-weight="bold">Student</text>
+<rect x="935" y="1852" width="230" height="56" fill="white" stroke="#244c73" stroke-width="2"/>
+<text x="1050" y="1886" text-anchor="middle" font-size="19" font-weight="bold">ApplicationStatus</text>
+<rect x="1735" y="1852" width="230" height="56" fill="white" stroke="#244c73" stroke-width="2"/>
+<text x="1850" y="1886" text-anchor="middle" font-size="19" font-weight="bold">Employer</text>
+<rect x="85" y="2122" width="230" height="56" fill="white" stroke="#244c73" stroke-width="2"/>
+<text x="200" y="2156" text-anchor="middle" font-size="19" font-weight="bold">ResumeVersion</text>
+<rect x="935" y="2122" width="230" height="56" fill="white" stroke="#244c73" stroke-width="2"/>
+<text x="1050" y="2156" text-anchor="middle" font-size="19" font-weight="bold">Application</text>
+<rect x="1735" y="2122" width="230" height="56" fill="white" stroke="#244c73" stroke-width="2"/>
+<text x="1850" y="2156" text-anchor="middle" font-size="19" font-weight="bold">JobPosting</text>
+<rect x="435" y="2472" width="230" height="56" fill="white" stroke="#244c73" stroke-width="2"/>
+<text x="550" y="2506" text-anchor="middle" font-size="19" font-weight="bold">Interview</text>
+<rect x="1435" y="2472" width="230" height="56" fill="white" stroke="#244c73" stroke-width="2"/>
+<text x="1550" y="2506" text-anchor="middle" font-size="19" font-weight="bold">Offer</text>
+</svg>

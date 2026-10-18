@@ -1,0 +1,8 @@
+PASS minimal basis preserves every closure and has no redundant FD or LHS attribute
+PASS projected basis matches all original closures restricted to A,N,P
+PASS Flat decomposition is lossless and preserves the original FD basis
+PASS assigned-resume decomposition is lossless and dependency-preserving
+PASS Allocation is 3NF but violates BCNF, with both candidate keys verified
+PASS BCNF projection counterexample demonstrates lost local SP -> M enforcement
+PASS 4NF independent-value decomposition reconstructs exactly four rows; missing combination disproves MVD
+ALL WORKED THEORY EXAMPLES PASSED; production MVD assumptions remain a domain review

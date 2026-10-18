@@ -4,6 +4,7 @@ MYSQL_BIN and MYSQL_SOCKET select the server. MYSQL_USER defaults to root.
 Use mysql_config_editor or MYSQL_PWD for authentication; passwords are not printed.
 """
 import os, subprocess, re, sys, uuid
+from collections import Counter
 from pathlib import Path
 root = Path(__file__).resolve().parents[1]
 db = 'coop_sprint1_test_' + uuid.uuid4().hex[:12]
@@ -36,13 +37,47 @@ for name,body in re.findall(r'CREATE TABLE (\w+) \((.*?)\n\);', (root/'schema.sq
     ok('live attribute coverage '+name, "SELECT GROUP_CONCAT(column_name ORDER BY ordinal_position) FROM information_schema.columns WHERE table_schema=DATABASE() AND table_name='"+name+"'", ','.join(declared))
 ok('nine tables', 'SELECT COUNT(*) FROM information_schema.tables WHERE table_schema=DATABASE()', '9')
 ok('fixture cardinalities', 'SELECT (SELECT COUNT(*) FROM Student),(SELECT COUNT(*) FROM Application),(SELECT COUNT(*) FROM Interview),(SELECT COUNT(*) FROM Offer)', '4\t6\t2\t2')
-ok('five reporting queries execute', (root/'supporting-files/demo_queries.sql').read_text().replace('coop_application_tracker_sprint1',db))
+# Independently specified expected rows test the report file itself, preserving duplicates.
+report_source = (root/'supporting-files/demo_queries.sql').read_text()
+report_statements = [part.strip() for part in re.sub(r'--[^\n]*', '', report_source).split(';') if part.strip()]
+reports = [part for part in report_statements if part.upper().startswith('SELECT')]
+expected_reports = [
+    ["Amrinder Singh\tOcean Analytics Lab\tData Systems Co-op\t2026-10-04\tinterview\t1",
+     "Amrinder Singh\tNorthwind Software\tBackend Developer Co-op\t2026-10-04\tapplied\t2",
+     "Jaiman Singh\tNorthwind Software\tBackend Developer Co-op\tNULL\tsaved\t3",
+     "Aashna Sadeque\tNorthwind Software\tBackend Developer Co-op\tNULL\tsaved\t3",
+     "Aashna Sadeque\tIsland Health Data Team\tHealth Data Analyst Co-op\t2026-10-01\toffer\t4",
+     "Jaiman Singh\tOcean Analytics Lab\tData Systems Co-op\tNULL\trejected\t5"],
+    ["Amrinder Singh\tOcean Analytics Lab\tData Systems Co-op\tinterview",
+     "Amrinder Singh\tNorthwind Software\tBackend Developer Co-op\tapplied",
+     "Jaiman Singh\tNorthwind Software\tBackend Developer Co-op\tsaved",
+     "Aashna Sadeque\tIsland Health Data Team\tHealth Data Analyst Co-op\toffer",
+     "Aashna Sadeque\tNorthwind Software\tBackend Developer Co-op\tsaved"],
+    ["Amrinder Singh\tOcean Analytics Lab\tData Systems Co-op\t2\ttechnical\t2026-10-21 14:00:00\tNULL"],
+    ["saved\t2", "applied\t1", "interview\t1", "offer\t1", "rejected\t1"],
+    ["Aashna Sadeque\tIsland Health Data Team\tHealth Data Analyst Co-op\t28.50\t2026-10-18\t2026-10-25\tpending",
+     "Amrinder Singh\tNorthwind Software\tBackend Developer Co-op\t0.00\t2026-10-18\t2026-10-18\tpending"],
+    ["Amrinder Singh\t2", "Jaiman Singh\t2", "Aashna Sadeque\t2", "Demo Student\t0"],
+    ["5\tJaiman Singh\tData Systems Co-op", "6\tAashna Sadeque\tBackend Developer Co-op"]
+]
+assert len(reports) == len(expected_reports) == 7
+for number,(statement,expected_rows) in enumerate(zip(reports,expected_reports),1):
+    r=sql(statement+';')
+    assert r.returncode == 0, (number,r.stderr)
+    assert Counter(r.stdout.splitlines()) == Counter(expected_rows), (number,r.stdout,expected_rows)
+    print('PASS report',number,'exact expected rows (including duplicate multiplicities)')
+
 ok('upcoming excludes past interview', "SELECT interview_round FROM Interview WHERE result='scheduled' AND scheduled_at >= '2026-10-18' ORDER BY interview_round", '2')
 ok('active application set', 'SELECT GROUP_CONCAT(a.application_id ORDER BY a.application_id) FROM Application a JOIN ApplicationStatus s USING(status_id) WHERE NOT s.is_terminal','1,2,3,4,6')
 ok('offer boundary values', 'SELECT COUNT(*) FROM Offer WHERE hourly_wage=0 AND response_deadline=offer_date','1')
 ok('optional resume absent', 'SELECT COUNT(*) FROM Application a LEFT JOIN ApplicationResume r USING(application_id) WHERE r.application_id IS NULL','2')
 ok('student with zero applications', 'SELECT s.student_id FROM Student s LEFT JOIN Application a USING(student_id) GROUP BY s.student_id HAVING COUNT(a.application_id)=0','4')
 reject('orphan student', 'INSERT INTO Application(student_id,posting_id,status_id) VALUES(999,1,1)',1452)
+reject('orphan posting', 'INSERT INTO Application(student_id,posting_id,status_id) VALUES(4,999,1)',1452)
+reject('orphan status', 'INSERT INTO Application(student_id,posting_id,status_id) VALUES(4,1,999)',1452)
+reject('missing assignment application', 'INSERT INTO ApplicationResume VALUES(999,1)',1644)
+reject('missing assignment resume', 'INSERT INTO ApplicationResume VALUES(5,999)',1644)
+reject('assigned resume cannot be deleted', 'DELETE FROM ResumeVersion WHERE resume_id=1',1451)
 reject('duplicate application', 'INSERT INTO Application(student_id,posting_id,status_id) VALUES(1,1,1)',1062)
 reject('priority lower bound','UPDATE Application SET priority=0 WHERE application_id=1',3819)
 reject('priority upper bound','UPDATE Application SET priority=6 WHERE application_id=1',3819)
@@ -62,6 +97,7 @@ reject('association application update','UPDATE ApplicationResume SET applicatio
 reject('application owner immutable','UPDATE Application SET student_id=2 WHERE application_id=1',1644)
 reject('resume owner immutable','UPDATE ResumeVersion SET student_id=2 WHERE resume_id=1',1644)
 reject('referenced student cannot be deleted','DELETE FROM Student WHERE student_id=1',1451)
+ok('ownership algebra invariant', 'SELECT COUNT(*) FROM Application a JOIN ApplicationResume ar ON ar.application_id=a.application_id JOIN ResumeVersion r ON r.resume_id=ar.resume_id WHERE a.student_id <> r.student_id', '0')
 ok('valid resume replacement rolls back','START TRANSACTION; UPDATE ApplicationResume SET resume_id=2 WHERE application_id=1; SELECT resume_id FROM ApplicationResume WHERE application_id=1; ROLLBACK;', '2')
 ok('workflow create apply interview offer then rollback', """START TRANSACTION;
 INSERT INTO Application(student_id,posting_id,status_id,date_applied) VALUES(4,1,2,'2026-10-18');

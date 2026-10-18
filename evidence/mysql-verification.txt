@@ -1,4 +1,4 @@
-Disposable database: coop_sprint1_test_4e754d47f790
+Disposable database: coop_sprint1_test_0d88223a31bd
 PASS DDL loads on MySQL
 PASS server version: 8.4.8
 PASS seed loads
@@ -13,13 +13,24 @@ PASS live attribute coverage Offer
 PASS live attribute coverage ApplicationResume
 PASS nine tables
 PASS fixture cardinalities
-PASS five reporting queries execute
+PASS report 1 exact expected rows (including duplicate multiplicities)
+PASS report 2 exact expected rows (including duplicate multiplicities)
+PASS report 3 exact expected rows (including duplicate multiplicities)
+PASS report 4 exact expected rows (including duplicate multiplicities)
+PASS report 5 exact expected rows (including duplicate multiplicities)
+PASS report 6 exact expected rows (including duplicate multiplicities)
+PASS report 7 exact expected rows (including duplicate multiplicities)
 PASS upcoming excludes past interview
 PASS active application set
 PASS offer boundary values
 PASS optional resume absent
 PASS student with zero applications
 PASS orphan student (expected MySQL error 1452)
+PASS orphan posting (expected MySQL error 1452)
+PASS orphan status (expected MySQL error 1452)
+PASS missing assignment application (expected MySQL error 1644)
+PASS missing assignment resume (expected MySQL error 1644)
+PASS assigned resume cannot be deleted (expected MySQL error 1451)
 PASS duplicate application (expected MySQL error 1062)
 PASS priority lower bound (expected MySQL error 3819)
 PASS priority upper bound (expected MySQL error 3819)
@@ -39,7 +50,8 @@ PASS association application update (expected MySQL error 1644)
 PASS application owner immutable (expected MySQL error 1644)
 PASS resume owner immutable (expected MySQL error 1644)
 PASS referenced student cannot be deleted (expected MySQL error 1451)
+PASS ownership algebra invariant
 PASS valid resume replacement rolls back
 PASS workflow create apply interview offer then rollback
 PASS rollback restores six applications
-ALL DATABASE CHECKS PASSED; retained database for inspection: coop_sprint1_test_4e754d47f790
+ALL DATABASE CHECKS PASSED; retained database for inspection: coop_sprint1_test_0d88223a31bd
