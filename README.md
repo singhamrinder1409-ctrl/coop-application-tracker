@@ -1,25 +1,39 @@
-# Co-op Application Tracker — CSC 370 Sprint 1
+# Co-op Application Tracker - CSC 370 Sprint 1
 
-Group 3: Amrinder Singh (`amrinder`), Jaiman Singh (`jaiman1`), Aashna Sadeque (`aashnas`). The database tracks job postings, applications, resume selections, interviews and offers. Demo employers, jobs and workflow data are synthetic.
+Group 3: Amrinder Singh (`amrinder`), Jaiman Singh (`jaiman1`), Aashna Sadeque (`aashnas`).
 
-The [progress report and next-sprint plan](SPRINT_PLAN.md) compares this sprint with the kick-off commitments.
+This MySQL database tracks students' co-op applications, job postings, resume selections, interview rounds and offers. Sprint 1 extends the kick-off implementation with a normalized resume-selection relationship, stronger integrity rules, complete diagrams and reproducible verification. All demonstration data is synthetic.
 
-## Review the submission
+## Guide to the submission
 
-| Evidence | Files |
+Start with the [Sprint 1 report and Sprint 2 plan](SPRINT_PLAN.md). It compares the prior commitments with delivered results, addresses the kick-off feedback and sets measurable goals through Advanced SQL.
+
+| Grading criterion | Evidence |
 | --- | --- |
-| Conceptual and relational design | [Chen ERD](CONCEPTUAL_ERD.md), [relational ERD](ERD.md), [schema reference](RELATIONAL_SCHEMA.md) |
-| Normalization and constraints | [FDs, keys, BCNF, 3NF and 4NF](NORMALIZATION.md), [integrity rules](docs/CONSTRAINTS.md) |
-| Course connection | [Competency mapping](docs/COURSE_ALIGNMENT.md), [conceptual-design review](docs/CONCEPTUAL_DESIGN_REVIEW.md), [material inventory](docs/MATERIALS_REVIEW.md) |
-| Upgrade from kick-off | [Migration instructions](migrations/README.md), [migration results](evidence/migration-verification.txt) |
-| Execution results | [Evidence index](evidence/README.md), [report output](evidence/demo-output.tsv), [clean-copy verification](evidence/clean-export-verification.txt) |
-| Recording and submission | [Team script](TEAM_VIDEO_SCRIPT.md), [rehearsal guide](docs/TEAM_REVIEW_GUIDE.md), [checklist](SUBMISSION_CHECKLIST.md), [sources and assistance](SOURCES.md) |
+| Achievement of sprint goals | The report's prior-commitment and feedback tables link each result to its implementation or verification. [Saved results](evidence/README.md) include seven report outputs, valid workflows, rejected writes and migration checks. |
+| Justification for missed goals | The report's technical-limits section distinguishes completed work, design assumptions and unverified submission actions. No subsequent TA meeting or approval is claimed. |
+| Improvement in course-level competencies | The next-sprint matrix names Data Analytics, Data Modelling and Back-end Engineering, with current limitations, proposed owners, effort and objective success criteria. |
+| Coverage of new module competencies | The [course mapping](docs/COURSE_ALIGNMENT.md) connects current work through Advanced Relational Design and planned work through Advanced SQL to evidence and checks. |
 
-## Create a fresh database
+## Design and feedback corrections
 
-Use Python 3 and MySQL 8.0.16 or later. Verification was run on MySQL 8.4.8. The Python scripts use the standard library. Every new table explicitly uses InnoDB for foreign keys and transactions.
+| Topic | Files |
+| --- | --- |
+| Complete conceptual model and participation | [Chen ERD and explanation](CONCEPTUAL_ERD.md) |
+| All nine tables and 59 columns | [Relational ERD](ERD.md), [schema reference](RELATIONAL_SCHEMA.md), [executable DDL](schema.sql) |
+| Table-by-table BCNF, FDs, keys, minimal bases, projection, 3NF and 4NF | [Normalization report](NORMALIZATION.md) |
+| SQL and relational-algebra constraints; weak entities and inheritance | [Integrity rules and design decisions](docs/CONSTRAINTS.md) |
+| Eight conceptual-design quality criteria | [Design review](docs/CONCEPTUAL_DESIGN_REVIEW.md) |
+| Preservation of the kick-off data | [Migration instructions](migrations/README.md), [migration results](evidence/migration-verification.txt) |
+| References and assistance acknowledgement | [Sources](SOURCES.md) |
 
-Use a MySQL account that can create databases, tables and triggers and run SELECT/INSERT/UPDATE/DELETE statements. The migration also needs ALTER, CREATE ROUTINE, ALTER ROUTINE and EXECUTE privileges. The [MySQL routine privilege reference](https://dev.mysql.com/doc/refman/8.4/en/stored-routines-privileges.html) explains the routine permissions.
+The [original kick-off report](docs/archive/PROJECT_KICKOFF.md), plan, DDL and seed are retained in `docs/archive/` as the comparison baseline. They describe the earlier version; the files linked above describe Sprint 1.
+
+## Run the database and reports
+
+Requirements: Python 3 and MySQL 8.0.16 or later. The Python scripts use the standard library. Recorded database verification used MySQL 8.4.8. All nine tables explicitly use InnoDB.
+
+Run these commands from the repository root with a MySQL account permitted to create databases, tables and triggers and execute SELECT, INSERT, UPDATE and DELETE:
 
 ```sh
 mysql -u root -p < schema.sql
@@ -27,11 +41,11 @@ mysql -u root -p < supporting-files/seed.sql
 mysql -u root -p < supporting-files/demo_queries.sql
 ```
 
-These commands create `coop_application_tracker_sprint1`. Existing tables cause the load to stop; no database is dropped. For a populated kick-off installation, follow the migration instructions instead of loading the new seed over existing data.
+This creates `coop_application_tracker_sprint1`. Existing tables cause the load to stop; the scripts do not drop a database. For an existing kick-off installation, follow the migration instructions instead. Migration also requires ALTER, CREATE ROUTINE, ALTER ROUTINE and EXECUTE privileges; see the [MySQL privilege reference](https://dev.mysql.com/doc/refman/8.4/en/stored-routines-privileges.html).
 
-## Reproduce the checks
+## Reproduce the verification
 
-Configure MySQL authentication through `mysql_config_editor` or the client's normal environment, then run:
+Configure authentication through `mysql_config_editor` or the MySQL client's normal environment, then run:
 
 ```sh
 python3 scripts/design.py
@@ -41,19 +55,13 @@ python3 scripts/verify.py
 python3 scripts/verify_migration.py
 ```
 
-The database verifiers create randomly named databases and retain them for inspection. `MYSQL_BIN`, `MYSQL_SOCKET` and `MYSQL_USER` select a different client, socket or account.
+`MYSQL_BIN`, `MYSQL_SOCKET` and `MYSQL_USER` select a different client, socket or account. The database verifiers create randomly named databases and retain them for inspection. The scripts reject `-O` and `PYTHONOPTIMIZE`, which disable their assertions.
 
-The scripts reject `-O` and `PYTHONOPTIMIZE`, which disable their assertions. A failed command is a failed run. The design checker verifies the declared FD model; domain assumptions and MVDs also require the reasoning in NORMALIZATION.md.
+The [evidence index](evidence/README.md) describes the saved results: 56 database checks, 15 migration checks, 12 worked theory checks, 10 design checks and two conceptual-diagram coverage checks. The [seven report outputs](evidence/demo-output.tsv) can be compared with a fresh run. These checks validate the stated models and tested cases; domain assumptions and 4NF reasoning are documented separately in the normalization report.
 
-After changing the DDL, regenerate both diagrams and the schema reference:
+To regenerate the relational diagram/schema and conceptual diagram after a design change:
 
 ```sh
 python3 scripts/design.py --generate
 python3 scripts/conceptual_erd.py
 ```
-
-## Submit
-
-Review the work, record and measure the video, push the final commit to [GitHub](https://github.com/singhamrinder1409-ctrl/coop-application-tracker), and verify instructor/TA access. One member submits the repository URL, exact published commit hash and video in Brightspace.
-
-The original kick-off report is `PROJECT_KICKOFF.md`; its plan, DDL and seed are retained in `docs/archive/`.

@@ -9,7 +9,7 @@
 
 ## Course material
 
-Sean Chester's CSC 370 materials were supplied in the Desktop `csc 370` folder. The inventory in `docs/MATERIALS_REVIEW.md` records exact names, sizes and SHA-256 fingerprints for 14 lecture PDFs, one practice-exam PDF, 16 transcripts and three worksheet archives. `docs/COURSE_ALIGNMENT.md` gives the relevant slide references and their connection to the project.
+Sean Chester's supplied CSC 370 materials include 14 lecture PDFs, one practice-exam PDF, 16 transcripts and three worksheet archives. `docs/COURSE_ALIGNMENT.md` gives the relevant slide references and their connection to the project.
 
 | PDF | Use in this submission |
 | --- | --- |

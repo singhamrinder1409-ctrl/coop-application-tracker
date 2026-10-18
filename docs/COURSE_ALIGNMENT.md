@@ -1,6 +1,6 @@
 # Course material alignment
 
-The expanded `/Users/ammy/Desktop/csc 370` folder contains 15 PDFs (14 lecture decks and one practice exam), 16 transcripts and three worksheet ZIP archives (34 source files). The inventory and SHA-256 fingerprints are in `docs/MATERIALS_REVIEW.md`. All added PDF slide text and worksheet HTML were reviewed, including the six packaged ERD figures. Transcript course/project/policy and advanced-design passages were reviewed after indexing all transcript text. The folder now directly supports Advanced Relational Design; a separate Advanced SQL deck is still absent.
+This maps the supplied course material to Sprint 1 evidence and the next-sprint plan. Current coverage extends through Advanced Relational Design. No separate Advanced SQL deck was supplied; the plan identifies the SQL operations it proposes to demonstrate.
 
 ## Actual course-level competency names
 
@@ -41,7 +41,7 @@ The added corrected 3NF deck resolves an inconsistent prime-key sentence in the 
 
 Advanced SQL remains planned through joins, aggregates/HAVING, subqueries/EXISTS, set operations, views, NULL/bag semantics and SQL transaction operations. CTE/window work, a chart, API and performance experiments are optional extensions, not asserted official module requirements.
 
-The practice-exam booklet, questions 16-21, reinforces project-specific reasoning about changed constraints, keys, multivalued facts and alternative conceptual designs. The rehearsal guide includes corresponding tracker prompts. The booklet does not add its example domains to Sprint 1.
+The practice-exam booklet, questions 16-21, reinforces project-specific reasoning about changed constraints, keys, multivalued facts and alternative conceptual designs. The booklet does not add its example domains to Sprint 1.
 
 ## Exact relational-algebra forms used for key/FD rules
 

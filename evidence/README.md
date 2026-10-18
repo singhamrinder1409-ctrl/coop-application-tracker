@@ -1,6 +1,6 @@
 # Actual Sprint 1 execution evidence
 
-Run date: 2026-10-18, America/Vancouver. Environment: macOS arm64, MySQL Community Server 8.4.8. Verification used an isolated server with networking disabled; the user's existing MySQL databases were not altered. Test data is synthetic. Video and publication are separate submission steps.
+Run date: 2026-10-18, America/Vancouver. Environment: macOS arm64, MySQL Community Server 8.4.8. Verification used an isolated server with networking disabled; existing application databases were not altered. Test data is synthetic. Video and publication are separate submission steps.
 
 - `clean-export-verification.txt`: all five verification commands passed from a clean copy of tracked/non-ignored project files without .git or virtualenv dependencies.
 - `verification-safety.txt`: ten checks confirming that each CLI rejects -O and PYTHONOPTIMIZE before printing a pass.
