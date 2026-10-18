@@ -1,11 +1,12 @@
 # Course-material review inventory
 
-Directory: `/Users/ammy/Desktop/csc 370`. Review updated 2026-10-18 after the user added material. There are **14 PDF decks, 16 transcripts and three worksheet ZIPs (33 source files)**. The original nine PDF fingerprints remain unchanged.
+Directory: `/Users/ammy/Desktop/csc 370`. Review updated 2026-10-18 after the user added material. There are **15 PDFs (14 lecture decks and one practice exam), 16 transcripts and three worksheet ZIPs (34 source files)**. The original nine PDF fingerprints remain unchanged.
 
-Review method: all PDF slide text was reviewed; relevant conceptual/normalization figures were rendered where necessary. All ZIP HTML was parsed as text without executing it, and the six packaged ERD figures were inspected. All transcript text was indexed; project/policy/competency and advanced-design passages were reviewed. Transcript speech/transcription errors and relative historical deadlines are not treated as authoritative replacements for the assignment or corrected slides. No source file was edited or redistributed.
+Review method: all PDF slide text was reviewed; relevant conceptual/normalization figures were rendered where necessary. The worksheet text and six packaged ERD figures were inspected. All transcript text was indexed; project/policy/competency and advanced-design passages were reviewed. Transcript speech/transcription errors and relative historical deadlines are not treated as authoritative replacements for the assignment or corrected slides. No source file was edited or redistributed.
 
 | Source file | Type / size | SHA-256 |
 | --- | --- | --- |
+| Fall 2026 CSC 370 A01 A02 X - Data Modelling Practice Exam (1 booklet).pdf | 10 practice-exam pages | `4859c7ef712897951c7ffc1c575300dde6b0ff50af9167e767245ee4a23c3137` |
 | Activity Worksheet Keys, ERD's, & SQL DDL.html.zip | worksheet HTML archive | `18ab9eca297eecc3a6625534a1dff722a56dec99362202df92494ce38c9ab51d` |
 | Activity Worksheet Projecting Functional Dependencies.html.zip | worksheet HTML archive | `e2a0ca3bf45223a8047d79ad04ddbc30479acdedd0d227db4a40ff2fb4cf90d1` |
 | Activity Worksheet Third Normal Form.html.zip | worksheet HTML archive | `7738bf6f59cab33f475b90e5b2cf468a383b431c9f09a8fd471ec3b2b9059287` |
@@ -40,6 +41,6 @@ Review method: all PDF slide text was reviewed; relevant conceptual/normalizatio
 | Lecture_ CSC 370 (Fa-transcript (9).txt | 8318 transcript words | `028ffc816575a97794da8754f6dcfa17ed0377e1f8fe6a0c193c7ef90eb487ab` |
 | Lecture_ CSC 370 (Fa-transcript.txt | 7875 transcript words | `3a972600cbca6398ebd716610cae15016c2fd45ce95c548ff51e1a37f4ddd6b7` |
 
-The file named `CSC 485A_586F Lectur-transcript.txt` identifies itself in its opening as the CSC 370 introductory lecture; its content was checked rather than classified by its filename alone. The three worksheet archives are study/practice sources, not extra project deliverables.
+The file named `CSC 485A_586F Lectur-transcript.txt` identifies itself in its opening as the CSC 370 introductory lecture; its content was checked rather than classified by its filename alone. The worksheets and practice exam are preparation sources. Their sample application domains are separate from the tracker requirements.
 
 The independent Desktop kick-off checkout has different commit IDs but matches every tracked file at research baseline `ac978f8` byte for byte (15 tracked files). Sprint 1 updates continue in `/Users/ammy/Documents/research/coop-application-tracker-kickoff`; the Desktop copy was not overwritten.

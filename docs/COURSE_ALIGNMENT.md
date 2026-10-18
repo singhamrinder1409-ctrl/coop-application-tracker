@@ -1,10 +1,10 @@
 # Course material alignment
 
-The expanded `/Users/ammy/Desktop/csc 370` folder contains 14 PDFs, 16 transcripts and three worksheet ZIP archives (33 source files). The inventory and SHA-256 fingerprints are in `docs/MATERIALS_REVIEW.md`. All added PDF slide text and worksheet HTML were reviewed, including the six packaged ERD figures. Transcript course/project/policy and advanced-design passages were reviewed after indexing all transcript text. The folder now directly supports Advanced Relational Design; a separate Advanced SQL deck is still absent.
+The expanded `/Users/ammy/Desktop/csc 370` folder contains 15 PDFs (14 lecture decks and one practice exam), 16 transcripts and three worksheet ZIP archives (34 source files). The inventory and SHA-256 fingerprints are in `docs/MATERIALS_REVIEW.md`. All added PDF slide text and worksheet HTML were reviewed, including the six packaged ERD figures. Transcript course/project/policy and advanced-design passages were reviewed after indexing all transcript text. The folder now directly supports Advanced Relational Design; a separate Advanced SQL deck is still absent.
 
 ## Actual course-level competency names
 
-`CSC370-01_ Welcome!-1.pdf`, slides 6-8, names **Data Analytics**, **Data Modelling**, and **Back-end Engineering**. These are the names used in the revised sprint plan, rather than invented competency labels.
+`CSC370-01_ Welcome!-1.pdf`, slides 6-8, names **Data Analytics**, **Data Modelling**, and **Back-end Engineering**. The sprint plan uses these names.
 
 | Competency | Meaning in the supplied lecture, paraphrased | Current project limitation | Measurable next-sprint improvement |
 | --- | --- | --- | --- |
@@ -33,13 +33,15 @@ The expanded `/Users/ammy/Desktop/csc 370` folder contains 14 PDFs, 16 transcrip
 
 ## Worksheets, transcripts and scope boundaries
 
-The three worksheets are practice material: primary/foreign keys from ERDs, projected minimal bases, and 3NF synthesis. Their methods are applied to the tracker and to clearly labelled project-shaped experiments, not treated as instructions to add their unrelated sample domains to the production schema.
+The three worksheets are practice material: primary/foreign keys from ERDs, projected minimal bases, and 3NF synthesis. Their methods are applied to the tracker and to clearly labelled project-shaped experiments. The production schema retains the co-op tracking scope.
 
-The introductory transcript is misleadingly named `CSC 485A_586F Lectur-transcript.txt`, but its opening and content explicitly identify CSC 370. It clarifies the competency progression and says visualization is outside scope; an API is an aspirational stage. We therefore corrected the prior plan's unnecessary mandatory chart/API goals. Transcript references to relative due dates are not used to infer this submission's deadline or replace the supplied assignment/rubric.
+The introductory transcript is misleadingly named `CSC 485A_586F Lectur-transcript.txt`, but its opening and content explicitly identify CSC 370. It clarifies the competency progression and says visualization is outside scope; an API is an aspirational stage. Charts and an API are optional extensions in the plan. Transcript references to relative due dates are not used to infer this submission's deadline or replace the supplied assignment/rubric.
 
 The added corrected 3NF deck resolves an inconsistent prime-key sentence in the 4NF deck's review: both city/title and theatre/title are keys in the cinema example. Closure calculations verify the result. The project does not repeat the inconsistent sentence.
 
 Advanced SQL remains planned through joins, aggregates/HAVING, subqueries/EXISTS, set operations, views, NULL/bag semantics and SQL transaction operations. CTE/window work, a chart, API and performance experiments are optional extensions, not asserted official module requirements.
+
+The practice-exam booklet, questions 16-21, reinforces project-specific reasoning about changed constraints, keys, multivalued facts and alternative conceptual designs. The rehearsal guide includes corresponding tracker prompts. The booklet does not add its example domains to Sprint 1.
 
 ## Exact relational-algebra forms used for key/FD rules
 

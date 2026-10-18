@@ -1,6 +1,6 @@
 # Relational schema - Sprint 1
 
-Generated from `schema.sql` by `python3 scripts/design.py --generate`. All attributes are shown. Optional means SQL NULL is allowed.
+Reference for `schema.sql`. All attributes are shown. Optional means SQL NULL is allowed.
 
 ## Student
 

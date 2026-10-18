@@ -1,5 +1,6 @@
-Clean project export verification after review of the expanded 33-file course-material inventory.
-Run date: 2026-10-18; MySQL 8.4.8; Python 3. No .git, virtualenv or untracked local dependency is needed.
+Clean project copy verification — 2026-10-18
+MySQL 8.4.8; Python 3.14.5; standard-library-only Python scripts.
+Source inventory: 34 files matched their recorded SHA-256 fingerprints.
 
 COMMAND: python3 scripts/design.py
 PASS Student : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
@@ -37,7 +38,7 @@ PASS all 9 SQL foreign-key columns represented through the conceptual relationsh
 RESULT: exit 0
 
 COMMAND: python3 scripts/verify.py
-Disposable database: coop_sprint1_test_1466beb7f91b
+Disposable database: coop_sprint1_test_68e63638e061
 PASS DDL loads on MySQL
 PASS server version: 8.4.8
 PASS seed loads
@@ -51,6 +52,7 @@ PASS live attribute coverage Interview
 PASS live attribute coverage Offer
 PASS live attribute coverage ApplicationResume
 PASS nine tables
+PASS explicit InnoDB despite nontransactional session default
 PASS fixture cardinalities
 PASS report 1 exact expected rows (including duplicate multiplicities)
 PASS report 2 exact expected rows (including duplicate multiplicities)
@@ -93,7 +95,7 @@ PASS ownership algebra invariant
 PASS valid resume replacement rolls back
 PASS workflow create apply interview offer then rollback
 PASS rollback restores six applications
-ALL DATABASE CHECKS PASSED; retained database for inspection: coop_sprint1_test_1466beb7f91b
+ALL DATABASE CHECKS PASSED; retained database for inspection: coop_sprint1_test_68e63638e061
 RESULT: exit 0
 
 COMMAND: python3 scripts/verify_migration.py
@@ -110,5 +112,7 @@ PASS old resume column removed
 PASS legacy application and student rows retained
 PASS upgraded schema enforces resume ownership
 PASS four ownership triggers installed
-ALL MIGRATION CHECKS PASSED; retained disposable database: coop_sprint1_migration_ace8474f21be
+PASS nontransactional legacy fixture loads
+PASS preflight rejects non-InnoDB legacy tables
+ALL MIGRATION CHECKS PASSED; retained disposable databases: coop_sprint1_migration_b68e53bd5af9 coop_sprint1_migration_b68e53bd5af9_myisam
 RESULT: exit 0

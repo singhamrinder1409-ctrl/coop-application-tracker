@@ -1,4 +1,4 @@
-Disposable database: coop_sprint1_test_0d88223a31bd
+Disposable database: coop_sprint1_test_bd9552ff8eea
 PASS DDL loads on MySQL
 PASS server version: 8.4.8
 PASS seed loads
@@ -12,6 +12,7 @@ PASS live attribute coverage Interview
 PASS live attribute coverage Offer
 PASS live attribute coverage ApplicationResume
 PASS nine tables
+PASS explicit InnoDB despite nontransactional session default
 PASS fixture cardinalities
 PASS report 1 exact expected rows (including duplicate multiplicities)
 PASS report 2 exact expected rows (including duplicate multiplicities)
@@ -54,4 +55,4 @@ PASS ownership algebra invariant
 PASS valid resume replacement rolls back
 PASS workflow create apply interview offer then rollback
 PASS rollback restores six applications
-ALL DATABASE CHECKS PASSED; retained database for inspection: coop_sprint1_test_0d88223a31bd
+ALL DATABASE CHECKS PASSED; retained database for inspection: coop_sprint1_test_bd9552ff8eea

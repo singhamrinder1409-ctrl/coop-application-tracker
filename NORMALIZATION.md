@@ -24,7 +24,7 @@ For each row below, let `P` be the primary key and `N` every other attribute lis
 
 Key closures reach every attribute. For example, `{student_id, version_number}+` first reaches resume_id, then resume_label, created_on and file_name. Neither student_id alone nor version_number alone reaches resume_id. In Application, student_id and posting_id separately are not keys. In Offer, application_id reaches offer_id and then every offer attribute.
 
-Minimality: each RHS is one attribute; deleting a key component destroys its ability to identify the record; removing any listed FD makes that RHS unreachable from its LHS. `scripts/design.py` tests each deletion and each LHS component. It also enumerates subsets of every relation, computes closures, checks all candidate keys, and rejects any non-key determinant with a nontrivial closure. Thus the BCNF decision checks implied dependencies too. This verifies the declared model, not whether our domain assumptions are complete.
+Minimality: each RHS is one attribute; deleting a key component destroys its ability to identify the record; removing any listed FD makes that RHS unreachable from its LHS. `scripts/design.py` tests each deletion and each LHS component. It searches attribute subsets, skips supersets of established keys, computes the remaining closures and rejects non-key determinants with a nontrivial closure. Thus the BCNF decision checks implied dependencies too. This verifies the declared model, not whether our domain assumptions are complete.
 
 ## FDs in the ERD
 
@@ -32,7 +32,7 @@ An entity identifier determines its attributes. A many-to-one relationship gives
 
 ## The resume dependency and a lossless BCNF decomposition
 
-Consider an assigned-resume fragment `R(A, S, R)` where A is application_id, S student_id, and R resume_id (using R for the attribute only in this paragraph). The domain gives A -> S,R and R -> S, because each resume has exactly one owner. A is the key; R is not a key because the same resume may serve several applications. R -> S violates BCNF. A composite FK enforcing ownership in the original Application table would enforce consistency but would not remove that dependency.
+Consider an assigned-resume fragment `R(A, S, R)` where A is application_id, S student_id, and R resume_id (R denotes resume_id in this paragraph). The domain gives A -> S,R and R -> S, because each resume has exactly one owner. A is the key; R is not a key because the same resume may serve several applications. R -> S violates BCNF. A composite FK enforcing ownership in the original Application table would enforce consistency but would not remove that dependency.
 
 Decompose the fragment into `Assigned(A,R)` and `ResumeOwner(R,S)`. Their intersection is {R}; R -> ResumeOwner, so the decomposition is lossless. Both dependencies are preserved through these relations: A -> R and R -> S imply A -> S. ResumeOwner is already represented by ResumeVersion; Assigned is ApplicationResume. The full Application also retains student_id because saved applications without a resume still need an owner. That produces a cross-relation consistency rule: Application.student_id must equal ResumeVersion.student_id for each assignment. Triggers enforce this rule on insert/update, and owner IDs are immutable. A missing assignment represents an optional resume, instead of introducing a NULL resume determinant in Application.
 

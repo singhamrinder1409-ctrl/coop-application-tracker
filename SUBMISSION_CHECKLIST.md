@@ -1,44 +1,28 @@
 # Sprint 1 submission checklist
 
-## Completed in this repository
+## Prepared
 
-- [x] All four rubric criteria and every specific feedback issue audited in RUBRIC_AUDIT.md.
-- [x] Five verification commands passed from a clean project export, without repository-local dependencies.
+- [x] Prior goals, success criteria, evidence and remaining tasks recorded in SPRINT_PLAN.md.
+- [x] Four rubric criteria and nine individual feedback concerns mapped in RUBRIC_AUDIT.md.
+- [x] Chen conceptual diagram and relational diagram/schema account for all 59 SQL columns.
+- [x] Table-by-table FD/key/BCNF reasoning, full FD projection, 3NF synthesis and 4NF/MVD examples supplied.
+- [x] Integrity constraints, weak-entity/inheritance decisions and eight-criterion design review documented.
+- [x] Synthetic fixtures and seven reports checked against independently specified result rows.
+- [x] Kick-off migration tested for assignment preservation and invalid-data/engine rejection.
+- [x] Course mapping covers the supplied 15 PDFs (14 lecture decks and one practice exam), 16 transcripts and three worksheet archives.
+- [x] Core next-sprint plan covers Advanced SQL; optional extensions are labelled.
+- [x] Recording script, rehearsal guide and source/assistance disclosure supplied.
+- [x] Verification commands passed from a clean project copy; results are in evidence/.
 
-- [x] Every kick-off commitment recapped with status and evidence in SPRINT_PLAN.md.
-- [x] All four written feedback gaps addressed, including Advanced Relational Design topics.
-- [x] Course-style Chen conceptual ERD and complete relational diagram/schema, with all 59 SQL columns accounted for.
-- [x] Expanded material set reviewed (14 PDFs, 16 transcripts, three worksheets); actual course-level competency names and transcript scope clarifications used.
-- [x] Upgrade from the original kick-off schema tested without losing original assignments.
-- [x] Table-by-table FD, key, minimal basis and BCNF checks; worked projection, 3NF and 4NF explanations.
-- [x] Resume ownership enforcement and more than five formal integrity rules.
-- [x] Synthetic normal/edge data, seven reporting queries with expected-row assertions and actual MySQL execution evidence.
-- [x] Workflow and rejected-write verification; next sprint plan through proposed Advanced SQL scope.
-- [x] Full 3NF synthesis/key-relation, formal MVD rules and all eight conceptual-design quality criteria covered with evidence.
-- [x] Charts/APIs are optional extensions, consistent with the introductory transcript.
-- [x] Team recording script and sources provided.
+## Group actions before submission
 
-## Must be completed by the group before Brightspace submission
+- [ ] Confirm full-team consent for AI assistance and review the work together (Welcome lecture, slide 15).
+- [ ] Rehearse the explanations in docs/TEAM_REVIEW_GUIDE.md and adapt the script to accurate contributions.
+- [ ] Record the progress and planning video. Target 7:30, including transitions.
+- [ ] Measure the exported video and keep it below 8:00. The assignment formula gives 11 minutes for three members, but its numerical example says eight; this target satisfies both.
+- [ ] Select a GitHub or UVic GitLab repository, push the final commit and verify its URL.
+- [ ] If private, grant the instructor and TA-client access.
+- [ ] Copy the final hash with `git rev-parse HEAD` after the last edit.
+- [ ] Have one Group 3 member submit the repository URL, hash and video in Brightspace. Check group enrolment if submission is unavailable.
 
-- [x] Requirements basis confirmed by the group: no separate competency list or additional TA-client requirements; use the supplied assignment and feedback.
-- [x] Respond to the supplied written TA review; no live meeting is required or claimed. Design assumptions and absence of new approval are disclosed.
-- [ ] Confirm full-team consent for AI assistance (Welcome lecture, slide 15); assistance is disclosed in SOURCES.md.
-- [ ] Review code/theory and practice explaining it using docs/TEAM_REVIEW_GUIDE.md; do not claim unperformed work.
-- [ ] Record the actual team video. Target 7:30 including transitions and below 8:00 to satisfy both the formula and inconsistent example in the pasted instructions.
-- [ ] Measure the exported recording's length; do not rely on the script's estimate.
-- [ ] Create or select a GitHub/UVic GitLab remote. None is configured locally.
-- [ ] Push the submission commit to the chosen remote and verify the URL resolves to that commit.
-- [ ] For a private repository, grant instructor and TA-client access.
-- [ ] Include repository URL, exact full commit hash, and video in Brightspace; only one member submits for Group 3.
-
-After the final edit, commit and inspect:
-
-```sh
-git status --short
-git add .
-git commit -m "Complete CSC 370 Sprint 1 evidence and Advanced SQL plan"
-git rev-parse HEAD
-git remote -v
-```
-
-Run these commands inside this project's own Git repository, not the surrounding research repository. If this session already created the final commit, use `git rev-parse HEAD`; do not make an empty replacement commit. Add a remote and push only after selecting the intended account/repository.
+Run Git commands inside this project's repository. Inspect `git status --short` before committing; use the hash of the published commit, not an earlier revision. A separate PDF report, slide deck or ZIP upload is not specified in the supplied submission instructions.

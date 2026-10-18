@@ -8,6 +8,6 @@ For a new installation use the root `schema.sql` and current seed. For an existi
 mysql -u root -p < migrations/001_sprint1.sql
 ```
 
-Use the normal mysql client without `--force`: it must stop on errors. A preflight rejects cross-student resume selections, NULL priorities and invalid terminal booleans before table changes. Correct the reported data issue explicitly and retry. MySQL DDL commits implicitly: this migration is not an atomic transaction, and failures after preflight require inspection/recovery from backup rather than blind reruns. It never drops a database.
+Use the normal mysql client without `--force`: it must stop on errors. A preflight requires InnoDB tables and rejects cross-student resume selections, NULL priorities and invalid terminal booleans before table changes. Correct the reported data issue explicitly and retry. MySQL DDL commits implicitly: this migration is not an atomic transaction, and failures after preflight require inspection/recovery from backup rather than blind reruns. It never drops a database.
 
-`python3 scripts/verify_migration.py` proves the migration on the archived kick-off fixture, including an invalid ownership preflight and preservation of every original assignment. Actual results are in `evidence/migration-verification.txt`. Verification uses fresh random schemas on an isolated server; the user's existing databases and Desktop copy have not been migrated.
+`python3 scripts/verify_migration.py` proves the migration on the archived kick-off fixture, including an invalid ownership preflight and preservation of every original assignment. Actual results are in `evidence/migration-verification.txt`. Verification uses fresh schemas on an isolated server. It does not migrate an existing installation.

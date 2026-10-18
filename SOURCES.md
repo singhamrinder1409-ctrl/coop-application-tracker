@@ -1,81 +1,47 @@
-# Sources Used
+# Sources and assistance
 
-The project idea and database design were based on the CSC 370 kick-off instructions, rubric, and lecture slides provided for the course.
+## Assignment and baseline
 
-## Course Instructions
+- `Feedback for Project Kick-Off - Fall 2026 CSC 370 A01 A02 X - University of Victoria.pdf`: feedback on BCNF evidence, ERD completeness, competency/current-limitation planning and Advanced Relational Design coverage.
+- `Project Sprint 1 - Fall 2026 CSC 370 A01 A02 X - University of Victoria.pdf`: the four grading criteria.
+- Sprint 1 assignment text supplied with this project: current scope through Advanced Relational Design, next scope through Advanced SQL, repository URL/hash and video requirements.
+- Kick-off commit `ac978f8`: the original plan, schema and data. Copies are in `docs/archive/`.
 
-- `Project Kick-Off - Fall 2026 CSC 370 A01 A02 X - University of Victoria.pdf`
-- Brightspace kick-off instructions pasted by the group
+## Course material
 
-## Lecture Slides Used
+Sean Chester's CSC 370 materials were supplied in the Desktop `csc 370` folder. The inventory in `docs/MATERIALS_REVIEW.md` records exact names, sizes and SHA-256 fingerprints for 14 lecture PDFs, one practice-exam PDF, 16 transcripts and three worksheet archives. `docs/COURSE_ALIGNMENT.md` gives the relevant slide references and their connection to the project.
 
-- `CSC370-01_ Welcome!-1.pdf`
-- `CSC370-02_ Storing Data w_ SQL-1.pdf`
-- `CSC370-03_ SQL DQL-2.pdf`
-- `CSC370-4 Conceptual Design .pdf`
-- `CSC370-05 Multiplicity.pdf`
-- `CSC370-06 FD's & Keys.pdf`
-- `CSC370-07 BCNF Decomposition.pdf`
-- `CSC370-08_ Constraints in Relational Algebra.pdf`
-- `CSC370-09_ Inheritance.pdf`
+| PDF | Use in this submission |
+| --- | --- |
+| CSC370-01_ Welcome!-1.pdf | Competency names, slides 6-8; team consent/responsible AI use, slide 15 |
+| CSC370-02_ Storing Data w_ SQL-1.pdf | CREATE/ALTER TABLE, scalar types and inserting data |
+| CSC370-03_ SQL DQL-2.pdf | Retrieval, projection, selection, renaming, joins and set operations |
+| CSC370-4 Conceptual Design .pdf | Chen notation, identifiers, attributes, relationships and roles |
+| CSC370-05 Multiplicity.pdf | Participation, relationship keys and relational mapping |
+| CSC370-06 FD's & Keys.pdf | Domain FDs, closures, keys and superkeys |
+| CSC370-07 BCNF Decomposition.pdf | Violating FDs, decomposition and lossless joins |
+| CSC370-08_ Constraints in Relational Algebra.pdf | Empty-result/subset constraints, self-joins and referential integrity |
+| CSC370-09_ Inheritance.pdf | Subtype and weak-entity alternatives |
+| CSC370-10_ Improving Conceptual Designs.pdf | Eight design-quality criteria and transformation classification |
+| CSC370-11_ ERDs to FDs_.pdf | Checking identifier/link FDs and conceptual normality |
+| CSC370-12_ Projecting FD's.pdf | FD-set equivalence, minimal bases and projection |
+| CSC370-23_ 3NF - corrected.pdf | Prime attributes, preservation tradeoffs and synthesis with key augmentation |
+| CSC370-24_ 4NF & MVD's.pdf | Tuple-swap definition, MVD properties and 4NF decomposition |
 
-## Main Course Ideas Used
+The three worksheets provide practice in ERD keys/DDL, projecting FDs and 3NF synthesis. Their methods are applied to project-shaped examples. The file named `CSC 485A_586F Lectur-transcript.txt` identifies CSC 370 in its opening; it supplies the introductory guidance that visualization is outside scope and APIs are aspirational. Other transcripts support the corresponding lessons. Relative dates in transcripts are not used to set this submission's deadline.
 
-- SQL DDL and `CREATE TABLE`
-- relational databases as tables with tuples and attributes
-- conceptual design and ERDs
-- entity sets, attributes, identifiers, and relationships
-- relationship multiplicity
-- functional dependencies
-- keys and superkeys
-- BCNF and decomposition
-- foreign keys and referential integrity
-- constraints in relational algebra
-- inheritance and weak entity sets as possible future design ideas
+The corrected 3NF deck and closure calculations identify both {city,title} and {theatre,title} as cinema keys. The inconsistent sentence in the 4NF review slide is discussed in NORMALIZATION.md. Course files are referenced without redistributing the supplied PDFs or transcripts.
 
-## External Sources
+The ten-page `Fall 2026 CSC 370 A01 A02 X - Data Modelling Practice Exam (1 booklet).pdf` supplies rehearsal formats: explain changed constraints with counterexamples, derive ERD FDs, adjust keys/DDL, and justify design alternatives (questions 16-21). Its movie/ticket examples are not tracker requirements.
 
-No external code sources were used for the SQL files in this kick-off stage.
+## MySQL documentation
 
-## Sprint 1 sources and provenance (2026-10-18)
+- [CREATE TABLE](https://dev.mysql.com/doc/refman/8.4/en/create-table.html): table constraints and explicit storage-engine selection.
+- [Trigger syntax and examples](https://dev.mysql.com/doc/refman/8.4/en/trigger-syntax.html): trigger bodies and OLD/NEW references.
+- [Stored routines and privileges](https://dev.mysql.com/doc/refman/8.4/en/stored-routines-privileges.html): CREATE ROUTINE, ALTER ROUTINE and EXECUTE permissions.
 
-- User-supplied `Feedback for Project Kick-Off - Fall 2026 CSC 370 A01 A02 X - University of Victoria.pdf`: specific feedback on BCNF, ERD completeness, current limitations/course competencies, minimal bases, projecting FDs, 3NF and 4NF.
-- User-supplied `Project Sprint 1 - Fall 2026 CSC 370 A01 A02 X - University of Victoria.pdf`: four-criterion grading rubric (delivery evidence, missed goals, course-level planning and module-level planning).
-- Assignment text pasted by the user: scope through Advanced Relational Design now, planning through Advanced SQL next, git URL/hash and video requirements.
-- Existing kick-off commit `ac978f8`: actual baseline plan and schema. The original slide list above was inherited from kick-off. The original nine PDFs were found and read in the Desktop course folder, followed by the expanded 33-file source review documented below. There is no separate competency list or additional TA requirement beyond the supplied materials.
-- [MySQL 8.4 CREATE TABLE reference](https://dev.mysql.com/doc/refman/8.4/en/create-table.html): key, foreign key and check syntax.
-- [MySQL trigger syntax and examples](https://dev.mysql.com/doc/refman/8.4/en/trigger-syntax.html): trigger structure and OLD/NEW access. Code was written for this project, not copied from an external implementation.
+The changes use the course methods and MySQL interfaces listed above.
 
-The Sprint 1 implementation, test scripts, theory examples, diagram generator and draft report/script were prepared with OpenAI Codex assistance. The group must review them, understand the reasoning, and accurately represent contributions under applicable course policy. Test evidence records actual MySQL 8.4.8 and Python runs; it does not establish that a TA interview, video recording, or publication occurred.
+## Assistance and review
 
-## Original nine-deck review (followed by expanded review below)
-
-Directory: `/Users/ammy/Desktop/csc 370`. Exact filenames, page counts and SHA-256 digests are recorded in `docs/MATERIALS_REVIEW.md`. The original nine decks were reviewed, not merely listed; the current inventory also includes the additions recorded in the next section:
-
-- `CSC370-01_ Welcome!-1.pdf`
-- `CSC370-02_ Storing Data w_ SQL-1.pdf`
-- `CSC370-03_ SQL DQL-2.pdf`
-- `CSC370-05 Multiplicity.pdf`
-- `CSC370-06 FD's & Keys.pdf`
-- `CSC370-07 BCNF Decomposition.pdf`
-- `CSC370-08_ Constraints in Relational Algebra.pdf`
-- `CSC370-09_ Inheritance.pdf`
-- `CSC370-4 Conceptual Design .pdf`
-
-Welcome slides 6-8 supply the actual competency names and descriptions. Slide 15 states the full-team-consent/responsible-use condition for generative AI. Conceptual Design slides 9-10 specify the class's Chen-style notation; the new conceptual diagram follows it. Lecture 08 guides the empty-result, self-join and subset constraint forms. Lecture 09 guides the subtype/weak-entity alternatives. At that initial review the advanced-topic decks were absent. The five subsequently supplied decks now provide direct source support, as recorded in the expanded review below.
-
-These are privately supplied course references. The repository records their names and relevant slide numbers without redistributing lecture PDFs. `RUBRIC_AUDIT.md` and `docs/COURSE_ALIGNMENT.md` map each source requirement to project evidence.
-
-## Expanded source review after additional material was supplied
-
-The current verified inventory is `docs/MATERIALS_REVIEW.md`: 14 PDFs, 16 transcripts and three worksheet ZIP archives. This supersedes earlier statements about only nine decks being available. The five added decks are:
-
-- `CSC370-10_ Improving Conceptual Designs.pdf`: eight design-quality criteria and information-preserving/changing transformations.
-- `CSC370-11_ ERDs to FDs_.pdf`: identifier/link FDs, relational mapping and normality checks.
-- `CSC370-12_ Projecting FD's.pdf`: equivalent FD sets, minimal bases and full closure-based projection.
-- `CSC370-23_ 3NF - corrected.pdf`: prime attributes, preservation tradeoffs and the complete synthesis algorithm, including key-relation augmentation.
-- `CSC370-24_ 4NF & MVD's.pdf`: formal tuple-swap definition, MVD properties and 4NF decomposition.
-
-The Keys/ERD/SQL, Projecting Functional Dependencies and Third Normal Form worksheets were parsed and reviewed, including packaged diagrams. They guide the methods used; their example domains were not added as invented tracker requirements. Sixteen transcripts were indexed, with relevant project, policy, competency and advanced-design passages reviewed. The introductory transcript (misnamed `CSC 485A_586F Lectur-transcript.txt`, but identifying CSC 370 in its body) clarifies that visualization is outside course scope and APIs are aspirational. These clarifications corrected the prior mandatory chart/API plan. Historical relative due dates in transcripts do not set the current deadline.
-
-The added corrected 3NF deck takes precedence over an inconsistent prime-key statement in the 4NF review slide; closures and tests independently verify both keys. The new project-shaped synthesis and MVD counterexamples were written for this project, not copied as worksheet solutions. `docs/UPDATED_MATERIALS_AUDIT.md` records the exact impact of the new material.
+OpenAI Codex assisted with the SQL changes, verification scripts, diagrams, theory examples and draft documentation. The group must confirm full-team consent, review the work and represent individual contributions accurately. Recorded test results identify the environment and checks performed; they do not establish that a team video was recorded or a repository was published.

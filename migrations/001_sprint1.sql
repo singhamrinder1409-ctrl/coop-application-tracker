@@ -5,6 +5,15 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS csc370_sprint1_preflight$$
 CREATE PROCEDURE csc370_sprint1_preflight()
 BEGIN
+    IF EXISTS (
+        SELECT 1 FROM information_schema.tables
+        WHERE table_schema = DATABASE()
+          AND table_name IN ('Student', 'Employer', 'JobPosting', 'ApplicationStatus',
+                             'ResumeVersion', 'Application', 'Interview', 'Offer')
+          AND engine <> 'InnoDB'
+    ) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Migration stopped: legacy tables must use InnoDB';
+    END IF;
     IF EXISTS (SELECT 1 FROM Application a JOIN ResumeVersion r ON r.resume_id=a.resume_id
                WHERE a.student_id <> r.student_id) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Migration stopped: cross-student resume assignment';
@@ -25,7 +34,7 @@ CREATE TABLE ApplicationResume (
     resume_id INT NOT NULL,
     FOREIGN KEY (application_id) REFERENCES Application(application_id),
     FOREIGN KEY (resume_id) REFERENCES ResumeVersion(resume_id)
-);
+) ENGINE=InnoDB;
 
 INSERT INTO ApplicationResume(application_id,resume_id)
 SELECT application_id,resume_id FROM Application WHERE resume_id IS NOT NULL;
@@ -81,4 +90,3 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
-

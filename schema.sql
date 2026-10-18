@@ -11,7 +11,7 @@ CREATE TABLE Student (
     program VARCHAR(80),
     UNIQUE (username),
     UNIQUE (email)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE Employer (
     employer_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -22,7 +22,7 @@ CREATE TABLE Employer (
     province VARCHAR(40),
     country VARCHAR(60) DEFAULT 'Canada',
     UNIQUE (employer_name, website)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE JobPosting (
     posting_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -41,7 +41,7 @@ CREATE TABLE JobPosting (
     FOREIGN KEY (employer_id) REFERENCES Employer(employer_id),
     UNIQUE (posting_url),
     CHECK (application_deadline IS NULL OR date_posted IS NULL OR application_deadline >= date_posted)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE ApplicationStatus (
     status_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -49,7 +49,7 @@ CREATE TABLE ApplicationStatus (
     is_terminal BOOLEAN NOT NULL DEFAULT FALSE,
     CHECK (is_terminal IN (0, 1)),
     UNIQUE (status_name)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE ResumeVersion (
     resume_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -61,7 +61,7 @@ CREATE TABLE ResumeVersion (
     FOREIGN KEY (student_id) REFERENCES Student(student_id),
     UNIQUE (student_id, version_number),
     CHECK (version_number > 0)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE Application (
     application_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -77,7 +77,7 @@ CREATE TABLE Application (
     FOREIGN KEY (status_id) REFERENCES ApplicationStatus(status_id),
     UNIQUE (student_id, posting_id),
     CHECK (priority BETWEEN 1 AND 5)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE Interview (
     interview_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -91,7 +91,7 @@ CREATE TABLE Interview (
     FOREIGN KEY (application_id) REFERENCES Application(application_id),
     UNIQUE (application_id, interview_round),
     CHECK (interview_round > 0)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE Offer (
     offer_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -105,7 +105,7 @@ CREATE TABLE Offer (
     UNIQUE (application_id),
     CHECK (hourly_wage IS NULL OR hourly_wage >= 0),
     CHECK (response_deadline IS NULL OR response_deadline >= offer_date)
-);
+) ENGINE=InnoDB;
 
 
 -- Decomposition avoids resume_id -> student_id inside Application.
@@ -114,7 +114,7 @@ CREATE TABLE ApplicationResume (
     resume_id INT NOT NULL,
     FOREIGN KEY (application_id) REFERENCES Application(application_id),
     FOREIGN KEY (resume_id) REFERENCES ResumeVersion(resume_id)
-);
+) ENGINE=InnoDB;
 
 -- Cross-relation ownership is not expressible as a MySQL CHECK.
 -- Lock referenced parents so concurrent ownership changes cannot race inserts.

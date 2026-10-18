@@ -20,3 +20,14 @@ Each member should be able to use the real files and explain:
 Run the five verification commands in README.md and inspect their outputs. Explain an expected failure as well as a successful workflow. A passing test log demonstrates the test run, not individual understanding, a recorded video, a published repository, full ACID certification or an approved TA review.
 
 For the recording, use TEAM_VIDEO_SCRIPT.md as an outline, adapt the wording to your own understanding, show real evidence and measure the exported duration. Do not claim that any member performed a particular step unless that is accurate.
+
+## Practice-exam style changes
+
+Use the practice booklet's project-question format to rehearse changes to this tracker:
+
+- If multiple offers per application became valid, identify the affected UNIQUE constraint, cardinality and candidate-key claim. Give two rows that the revised model would accept and the present model would reject.
+- List the FDs implied by the Employer and JobPosting entities and their relationship. Separate implications of identifiers from implications of multiplicity.
+- If a student could record multiple independent preferred cities and skills, draw the change and explain the MVD decomposition without inserting comma-separated lists.
+- Compare Application as an entity with a student/posting relationship carrying lifecycle attributes. Use the design criteria and its links to Interview and Offer to justify a choice.
+
+These are preparation questions. Changes proposed in the practice exam are not requirements to implement in the submitted tracker.

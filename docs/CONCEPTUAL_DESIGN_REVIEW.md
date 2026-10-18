@@ -1,6 +1,6 @@
 # Conceptual design quality review
 
-This applies the eight criteria in CSC370-10, slides 11-13, to the existing kick-off tracker. It is a project-specific argument, not a claim that every optional course example must become a feature.
+This applies the eight criteria in CSC370-10, slides 11-13, to the existing kick-off tracker. The review covers the student-facing tracker scope.
 
 | Criterion | Review of this project | Change / observable evidence |
 | --- | --- | --- |
@@ -16,10 +16,10 @@ This applies the eight criteria in CSC370-10, slides 11-13, to the existing kick
 ## Classify the transformations, as in lecture 10 slides 34-37
 
 - Completing the attribute drawing is an information-preserving documentation correction: the omitted columns already existed in the kick-off DDL.
-- Splitting selected-resume assignment from Application is information-preserving **for legal same-owner states**, with a lossless assigned-resume fragment and a tested migration. It changes which invalid states are permitted: cross-student selections and NULL priority are now rejected. We do not claim all historically permitted invalid states survive.
+- Splitting selected-resume assignment from Application is information-preserving **for legal same-owner states**, with a lossless assigned-resume fragment and a tested migration. It also restricts permitted states: cross-student selections and NULL priority are now rejected. A legacy row that violates these rules needs correction before migration.
 - Moving resume selection to its own relationship preserves the distinction between “no selection” and a real assigned resume; applications without a selection still keep their student owner.
 - The extra fixture rows and two new reports increase demonstration evidence; they do not add a new domain requirement.
-- Avoiding unnecessary subtypes prevents extra structure without deleting a requirement. It is a reasoned decision, not an implemented inheritance hierarchy.
+- Avoiding unnecessary subtypes prevents extra structure without deleting a requirement. The current implementation uses a location-type discriminator.
 
 ## Explicit ERD-to-FD verification (lecture 11)
 

@@ -2,7 +2,7 @@
 
 Proposed speaking split: Amrinder 0:00-2:30, Jaiman 2:30-5:00, Aashna 5:00-7:30. Rehearse and adapt this to your actual contribution and understanding. The video is not recorded by this script. Keep final export below 8 minutes, including titles/transitions, to satisfy both the formula and inconsistent example in the supplied assignment text.
 
-Prepare: open the project folder, CONCEPTUAL_ERD.svg, ERD.svg, NORMALIZATION.md, docs/CONSTRAINTS.md and SPRINT_PLAN.md. Have MySQL running and verify credentials before recording. Run `python3 scripts/design.py` and `python3 scripts/verify.py` live if possible. The saved evidence is available for inspection but should not be described as your own live run unless you actually run it. Show the exact submission commit via `git rev-parse HEAD`.
+Prepare: open the project folder, CONCEPTUAL_ERD.svg, ERD.svg, NORMALIZATION.md, docs/CONSTRAINTS.md and SPRINT_PLAN.md. Have MySQL running and verify credentials before recording. Run `python3 scripts/design.py` and `python3 scripts/verify.py` live if possible. Use saved output for preparation; identify saved and live results accurately during the recording. Show the exact submission commit via `git rev-parse HEAD`.
 
 ## 0:00-2:30 - Amrinder: goals, feedback, complete model
 
@@ -12,7 +12,7 @@ Prepare: open the project folder, CONCEPTUAL_ERD.svg, ERD.svg, NORMALIZATION.md,
 
 **0:35-1:00 — show feedback correction table.**
 
-“The feedback asked us to show every ERD attribute, prove BCNF per table, state current limitations against course competencies, and cover minimal bases, projecting FDs, 3NF and 4NF. Those now have explicit evidence. We incorporated the written TA review into this revision. A live meeting was not a requirement, and we do not claim new TA approval.”
+“The feedback asked us to show every ERD attribute, prove BCNF per table, state current limitations against course competencies, and cover minimal bases, projecting FDs, 3NF and 4NF. We used the written feedback to revise the design and the next-sprint plan.”
 
 **1:00-1:45 — zoom CONCEPTUAL_ERD.svg and ERD.svg.**
 
@@ -26,7 +26,7 @@ Prepare: open the project folder, CONCEPTUAL_ERD.svg, ERD.svg, NORMALIZATION.md,
 
 **2:30-3:20 — show NORMALIZATION.md, nine-table table.**
 
-“Our BCNF claim is now relative to stated domain FDs. Each table has a singleton-right-side minimal basis and all candidate keys listed. For example, a student and version number identify a resume, and an application and round identify an interview. Closures prove these keys. Nullable unique emails and URLs are not treated as unconditional classical keys. The checker computes closures for all attribute subsets and checks that every nontrivial determinant is a superkey.”
+“Our BCNF claim is now relative to stated domain FDs. Each table has a singleton-right-side minimal basis and all candidate keys listed. For example, a student and version number identify a resume, and an application and round identify an interview. Closures prove these keys. Nullable unique emails and URLs are not treated as unconditional classical keys. The checker searches determinant sets, skips supersets of known keys and checks that each nontrivial determinant is a superkey under the stated FD model.”
 
 **3:20-3:55 — show resume decomposition.**
 
@@ -38,7 +38,7 @@ Prepare: open the project folder, CONCEPTUAL_ERD.svg, ERD.svg, NORMALIZATION.md,
 
 **4:25-5:00 — show 3NF and 4NF examples, run design.py.**
 
-“3NF allows a non-key determinant if the right-side attribute is prime; BCNF does not. The allocation example shows why a lossless BCNF decomposition can lose local dependency enforcement. For 4NF, independently varying skills and cities create a cross-product and should be separate relations. We state the production model's single-valued assumptions; the FD checker alone does not prove 4NF. Here are the actual key, minimality and BCNF checks passing. The worked examples have separate reproducible checks, including the full 3NF synthesis step that adds a missing key relation, and the tuple-swap definition of an MVD.”
+“3NF allows a non-key determinant if the right-side attribute is prime; BCNF does not. The allocation example shows why a lossless BCNF decomposition can lose local dependency enforcement. For 4NF, independently varying skills and cities create a cross-product and should be separate relations. The production model's MVD assumptions are reviewed separately from its FD checks. The key, minimality and BCNF results are shown here. The worked examples have separate reproducible checks, including the full 3NF synthesis step that adds a missing key relation, and the tuple-swap definition of an MVD.”
 
 ## 5:00-7:30 - Aashna: execution evidence, limits and next sprint
 
