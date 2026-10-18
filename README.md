@@ -8,12 +8,14 @@ Start with the [criterion-by-criterion audit](RUBRIC_AUDIT.md) and [Sprint 1 rep
 
 - [Chen conceptual ERD](CONCEPTUAL_ERD.md) and [complete relational ERD](ERD.md)
 - [All supplied lecture objectives and actual course competencies](docs/COURSE_ALIGNMENT.md)
+- [Expanded material audit](docs/UPDATED_MATERIALS_AUDIT.md) and [eight-criterion conceptual-design review](docs/CONCEPTUAL_DESIGN_REVIEW.md)
 - [Upgrade from the existing kick-off schema](migrations/README.md), with [migration evidence](evidence/migration-verification.txt)
 - [All relation attributes, keys and references](RELATIONAL_SCHEMA.md)
 - [FDs, minimal bases, projections, BCNF, 3NF and 4NF](NORMALIZATION.md)
 - [Relational algebra constraints and advanced design decisions](docs/CONSTRAINTS.md)
 - [Clean export verification](evidence/clean-export-verification.txt)
 - [Actual MySQL verification output](evidence/mysql-verification.txt), [design checks](evidence/design-verification.txt), [worked theory examples](evidence/theory-examples.txt), [report results](evidence/demo-output.tsv)
+- [Team understanding/rehearsal guide](docs/TEAM_REVIEW_GUIDE.md)
 - [Timed team video script](TEAM_VIDEO_SCRIPT.md), [submission checklist](SUBMISSION_CHECKLIST.md), [sources](SOURCES.md)
 
 ## Run on MySQL

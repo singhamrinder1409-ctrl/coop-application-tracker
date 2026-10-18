@@ -59,3 +59,49 @@ The production model stores single values for program, location, file_name and o
 ## Reproducible worked-example checks
 
 Run `python3 scripts/verify_theory.py` to check every subset closure for the minimal-basis and projected-basis examples, the lossless-intersection and preservation conditions, both Allocation candidate keys, its 3NF/BCNF distinction, a concrete dependency-preservation counterexample, and the four-row MVD reconstruction. Actual output is saved in `evidence/theory-examples.txt`. These checks complement the nine production-table checks and the stated domain assumptions.
+
+## Full 3NF synthesis with a key relation
+
+The corrected 3NF lecture (CSC370-23, slide 24) and Third Normal Form worksheet require more than recognizing prime attributes: construct relations from a minimal basis and add a key relation if necessary.
+
+Consider a design experiment, not extra production tables:
+`FlatApplicationNotes(A,S,P,N,Q,T)` with A=application_id, S=student_id, P=posting_id, N=student_name, Q=note_id and T=note_text. Let `F = {A->S, A->P, S->N, Q->T}`. Here notes are reusable note snippets that may be attached to more than one application, and an application may use several snippets; no A->Q or Q->A dependency is assumed in this experiment.
+
+1. F already has singleton RHSs, no redundant FD and no extraneous LHS attribute, so it is a minimal basis.
+2. Create AS, AP, SN and QT, one projection per FD. Each has a key determinant for its nontrivial FDs, so each is BCNF and hence 3NF.
+3. The only candidate key of the original relation is {A,Q}. Neither A nor Q appears on any RHS, so every key must include both; their combined closure reaches all six attributes. None of the first four projections contains a superkey of the original.
+4. Add AQ. Its projected FD set has no nontrivial dependencies, and {A,Q} is its key. Omitting this step would lose which application-note pairs existed and could create spurious combinations.
+5. The synthesized design is `{AS, AP, SN, QT, AQ}`. Every original FD is enforced in one projection, so dependencies are preserved. The minimal-basis synthesis theorem gives a lossless decomposition when the key relation is present. `verify_theory.py` also joins a three-row legal example and checks exact reconstruction.
+
+AS and AP may be combined into ASP because they share the same determinant A; this optional simplification is not necessary for the construction. A normalized production model should not be weakened merely to demonstrate 3NF: our actual tables retain their BCNF design. The earlier Allocation example separately explains when preserving a non-BCNF 3NF relation is useful.
+
+## Formal MVD reasoning and a rule that does not carry over
+
+The 4NF deck (CSC370-24, slide 22) defines `X ->> Y` by tuple swapping. Let Z be all attributes outside X∪Y. For any t,u agreeing on X, a tuple v must exist with the same X, t's Y values and u's Z values. This is a constraint on **all legal instances**, not evidence that a dependency holds merely because a small sample happens to satisfy it.
+
+An MVD is trivial if Y⊆X or X∪Y is the entire schema. If X->>Y, then X->>Z by complementarity. Every FD is an MVD; consequently 4NF implies BCNF, which implies 3NF. The opposite implications need not hold. Worksheet 3NF Question 4's proposed “BCNF but not 3NF” alternative is therefore impossible.
+
+Unlike an FD, `A ->> BC` cannot in general be split into `A ->> B` and `A ->> C`. For R(A,B,C,D), take the four tuples formed by correlated pairs (b1,c1),(b2,c2), independently combined with d1,d2 for one a. A->>BC holds, but A->>B fails because a tuple combining b1 with c2 is absent. The verifier checks this and the exact swap definition, complementarity, both trivial cases, and the earlier independent skill/city example.
+
+For a nontrivial violation X->>Y with a non-superkey X, the 4NF decomposition is XY and XZ, recursing after projecting dependencies. In the preference example, X={student}, Y={skill}, Z={city}; the two projections are precisely StudentSkill and StudentPreferredCity. A binary relation with just student and skill has a trivial MVD student->>skill because X∪Y is the whole schema, so that dependency does not call for another decomposition.
+
+## Reading corrected slides consistently
+
+The corrected 3NF deck, slides 16 and 23, correctly identifies both {city,title} and {theatre,title} as keys of CinemaShowings. The 4NF deck's review slide 7 says only the latter is a key, conflicting with its own following explanation. Computing closures resolves this: city,title determines theatre, and theatre determines city. We follow the corrected deck and the closure calculations, not the inconsistent review sentence. No FD or MVD property is justified solely by copying a slide summary.
+
+## Complete projection table for the project-shaped Flat example
+
+For the earlier `Flat(A,S,N,P)` minimal basis `{A->S, A->P, S->N}`, project onto {A,N,P} as prescribed by lecture 12 and the projecting-FDs worksheet:
+
+| Subset X | Original closure X+ | Restriction X+ ∩ {A,N,P} |
+| --- | --- | --- |
+| ∅ | ∅ | ∅ |
+| A | A,S,N,P | A,N,P |
+| N | N | N |
+| P | P | P |
+| A,N | A,S,N,P | A,N,P |
+| A,P | A,S,N,P | A,N,P |
+| N,P | N,P | N,P |
+| A,N,P | A,S,N,P | A,N,P |
+
+After singleton splitting and removal of trivial/redundant implications, `{A->N, A->P}` is a minimal basis of this projection. In particular A->N survives even though S is absent. The verifier checks every row's restricted closure rather than retaining only syntactically present original FDs.

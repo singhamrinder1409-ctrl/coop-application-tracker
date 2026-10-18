@@ -1,6 +1,6 @@
 # Course material alignment
 
-Reviewed all nine PDFs in `/Users/ammy/Desktop/csc 370`. The full inventory is in `SOURCES.md`. The folder contains lectures 01-09; it does not contain a separate Advanced Relational Design or Advanced SQL slide deck. The supplied assignment and feedback still explicitly require those topic areas, so their worked examples and future plan are included rather than omitted. This document distinguishes lecture-supported requirements from proposed extensions.
+The expanded `/Users/ammy/Desktop/csc 370` folder contains 14 PDFs, 16 transcripts and three worksheet ZIP archives (33 source files). The inventory and SHA-256 fingerprints are in `docs/MATERIALS_REVIEW.md`. All added PDF slide text and worksheet HTML were reviewed, including the six packaged ERD figures. Transcript course/project/policy and advanced-design passages were reviewed after indexing all transcript text. The folder now directly supports Advanced Relational Design; a separate Advanced SQL deck is still absent.
 
 ## Actual course-level competency names
 
@@ -8,9 +8,9 @@ Reviewed all nine PDFs in `/Users/ammy/Desktop/csc 370`. The full inventory is i
 
 | Competency | Meaning in the supplied lecture, paraphrased | Current project limitation | Measurable next-sprint improvement |
 | --- | --- | --- | --- |
-| Data Analytics | Use expressive SQL to derive insights and communicate them through coherent visualizations within practical execution time | Seven verified basic reports; no complex report pack, visualization or scaled timing evidence | S2-1 adds 8 advanced reports and one chart whose values match the SQL result; record EXPLAIN and timings on a fixed larger fixture, clearly separating measured results from targets |
+| Data Analytics | Use correct SQL, progressing to aggregation/subqueries and then efficient idiomatic queries; prepare analysis-ready results. The introductory transcript says visualization is out of scope | Seven verified basic reports; no comprehensive advanced query pack | S2-1 adds 8 advanced reports and labelled tabular/CSV output, all checked against expected rows. Charts and scaled performance experiments are optional |
 | Data Modelling | Turn application requirements into normalized abstractions with clear conceptual/relational schemata and trustworthy populated instances | Current assumptions and synthetic fixture cover one student-facing workflow; future requirements could introduce new FDs/MVDs | S2-5 keeps the Chen diagram, relational model and FD/MVD decisions synchronized; rerun all coverage/key/normalization and migration checks; record fixture provenance and any new requirements |
-| Back-end Engineering | Connect applications and databases using compatible API/SQL and appropriate access, consistency and concurrency controls | Database enforcement exists, but there is no client API or tested role-restricted access | S2-3 builds a parameterized client/API operation with transaction success/failure tests and a restricted DB user; test expected allowed/denied operations; explicitly defer a full concurrent workload benchmark |
+| Back-end Engineering | Connect applications and databases using compatible API/SQL and appropriate access, consistency and concurrency controls | Integrity and rollback are tested, but reusable views and a documented multi-step transaction are missing | S2-3 adds two views and a SQL operation with success, induced-failure rollback and committed-read tests. APIs and restricted-account integration are optional later work; the introductory transcript presents an API as aspirational |
 
 ## Lecture-by-lecture mapping
 
@@ -25,10 +25,21 @@ Reviewed all nine PDFs in `/Users/ammy/Desktop/csc 370`. The full inventory is i
 | 07 BCNF Decomposition, 4, 20, 24-30, 36-39 | Decompose using violating FDs and reconstruct through lossless joins | Resume-selection decomposition and worked Flat example; verified closure/intersection conditions | Retain dependency-preservation reasoning and exact migration tests |
 | 08 Constraints in Relational Algebra, 3, 19-20, 39, 45, 50-58 | Express value, key, FD and referential integrity constraints algebraically | docs/CONSTRAINTS.md includes empty-result/subset rules and renamed self-join constraints; database checks exercise enforcement | Rerun all constraint counterexamples and translate any new cross-table rule carefully |
 | 09 Weak Entity Sets & Inheritance, 3, 14-23, 25-27 | Simplify modelling through subsets and borrowed identifiers | Explicit Interview weak-entity alternative and chosen surrogate mapping; considered/rejected unnecessary posting inheritance; subtype PK/FK approach explained | Add a subtype only if distinct attributes or restricted relationships justify it |
+| 10 Improving Conceptual Designs, 3, 11-13, 34-44 | Evaluate completeness, correctness, minimality, expressiveness, readability, self-explanation, extensibility and normality; classify transformations | docs/CONCEPTUAL_DESIGN_REVIEW.md applies every criterion to this tracker, including the conditional resume-owner cycle and preservation of legal states | S2-5 revisits each criterion after changes |
+| 11 ERDs to FDs, 2, 4-8, 13-29 | Verify relational mappings, identifier FDs, relationship FDs and conceptual normality | Production table proofs plus explicit entity/link verification in the design-quality review; exact diagram/FK coverage checks | Reject multiplicities or identifiers inconsistent with changed domain FDs |
+| 12 Projecting FDs, 3, 11-22, 29-38 | Compare FD-set closures, compute a minimal basis and project implied dependencies | Full projected closure table in NORMALIZATION.md; equivalence/minimality and every-subset projection tests | Recompute projected dependencies for every changed decomposition |
+| 23 Third Normal Form - corrected, 3, 12-24 | Identify prime attributes, reason about dependency preservation and synthesize a lossless 3NF design | Allocation tradeoff plus a complete project-shaped synthesis requiring the added AQ key relation; executable preservation/normality/reconstruction checks | Reuse synthesis when preservation justifies 3NF; do not weaken already-BCNF production tables gratuitously |
+| 24 4NF & MVDs, 4, 22, 26, 31-39 | Use the MVD tuple-swap definition, identify violations and recursively decompose into 4NF | Formal MVD tests, triviality/complementarity, a no-splitting counterexample and lossless independent-value decomposition | Review domain independence, not merely scalar SQL types or seed coincidences |
 
-## Feedback topics beyond the supplied slide inventory
+## Worksheets, transcripts and scope boundaries
 
-FDs in ERDs, minimal bases, projected FDs, 3NF and 4NF are each covered in NORMALIZATION.md with production implications and worked examples. `scripts/verify_theory.py` verifies those examples. Advanced SQL is planned through joins, aggregates/HAVING, subqueries/EXISTS, set operations, views, NULL/bag semantics and transactional client operations. CTEs/window functions are explicitly proposed extensions, not claims about an unavailable module's exact contents.
+The three worksheets are practice material: primary/foreign keys from ERDs, projected minimal bases, and 3NF synthesis. Their methods are applied to the tracker and to clearly labelled project-shaped experiments, not treated as instructions to add their unrelated sample domains to the production schema.
+
+The introductory transcript is misleadingly named `CSC 485A_586F Lectur-transcript.txt`, but its opening and content explicitly identify CSC 370. It clarifies the competency progression and says visualization is outside scope; an API is an aspirational stage. We therefore corrected the prior plan's unnecessary mandatory chart/API goals. Transcript references to relative due dates are not used to infer this submission's deadline or replace the supplied assignment/rubric.
+
+The added corrected 3NF deck resolves an inconsistent prime-key sentence in the 4NF deck's review: both city/title and theatre/title are keys in the cinema example. Closure calculations verify the result. The project does not repeat the inconsistent sentence.
+
+Advanced SQL remains planned through joins, aggregates/HAVING, subqueries/EXISTS, set operations, views, NULL/bag semantics and SQL transaction operations. CTE/window work, a chart, API and performance experiments are optional extensions, not asserted official module requirements.
 
 ## Exact relational-algebra forms used for key/FD rules
 

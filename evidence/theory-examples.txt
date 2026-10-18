@@ -5,4 +5,9 @@ PASS assigned-resume decomposition is lossless and dependency-preserving
 PASS Allocation is 3NF but violates BCNF, with both candidate keys verified
 PASS BCNF projection counterexample demonstrates lost local SP -> M enforcement
 PASS 4NF independent-value decomposition reconstructs exactly four rows; missing combination disproves MVD
-ALL WORKED THEORY EXAMPLES PASSED; production MVD assumptions remain a domain review
+PASS full 3NF synthesis: AS, AP, SN, QT, added key relation AQ; all projected relations in 3NF and all FDs preserved
+PASS synthesized key relation supports exact reconstruction of the application-note example
+PASS formal MVD tuple-swap test, complementarity and missing-combination rejection
+PASS MVDs cannot use the FD splitting rule; both trivial cases and FD-implied MVD tested
+PASS corrected 3NF lecture: both cinema keys verified despite inconsistent 4NF review slide
+ALL WORKED THEORY EXAMPLES PASSED (including extended course checks); production MVD assumptions remain a domain review

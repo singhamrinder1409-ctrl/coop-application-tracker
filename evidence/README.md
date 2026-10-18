@@ -5,7 +5,7 @@ Run date: 2026-10-18, America/Vancouver. Environment: macOS arm64, MySQL Communi
 - `clean-export-verification.txt`: all five verification commands passed from a clean copy of tracked/non-ignored project files without .git or virtualenv dependencies.
 - `mysql-verification.txt`: 55 passing checks, including schema load, all live columns, fixture cardinalities, seven reports compared with independent expected rows, valid workflow, rollback, and expected rejected writes. Negative checks require specific MySQL error codes.
 - `design-verification.txt`: nine relations checked for candidate keys, minimal FD bases and BCNF under declared assumptions; ERD coverage, projected FD and lossless-intersection checks.
-- `theory-examples.txt`: seven passing worked-example checks for minimal bases, complete FD projection, losslessness/preservation, 3NF versus BCNF, lost dependency enforcement, and a 4NF MVD decomposition.
+- `theory-examples.txt`: 12 passing worked-example checks for minimal bases, complete FD projection, losslessness/preservation, 3NF versus BCNF, lost dependency enforcement, a full 3NF synthesis with key augmentation, formal MVD rules, and a 4NF decomposition.
 - `migration-verification.txt`: 13 passing checks on the archived kick-off schema, preflight rejection and preservation of all original assignments.
 - `conceptual-erd-verification.txt`: Chen descriptive-attribute coverage and mapping of all SQL FK columns through relationships.
 - `demo-output.tsv`: actual output from the seven supplied report queries on the same successful test database. Upcoming interviews use 2026-10-18 as a fixed demonstration date.

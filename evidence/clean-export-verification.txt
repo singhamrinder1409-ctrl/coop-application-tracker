@@ -1,6 +1,5 @@
-Clean tracked/non-ignored project file export; no .git, virtualenv or hidden local dependencies.
-Run date: 2026-10-18. MySQL 8.4.8; Python 3.
-Export includes the current proposed commit contents; every command is run with export as working directory.
+Clean project export verification after review of the expanded 33-file course-material inventory.
+Run date: 2026-10-18; MySQL 8.4.8; Python 3. No .git, virtualenv or untracked local dependency is needed.
 
 COMMAND: python3 scripts/design.py
 PASS Student : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
@@ -24,7 +23,12 @@ PASS assigned-resume decomposition is lossless and dependency-preserving
 PASS Allocation is 3NF but violates BCNF, with both candidate keys verified
 PASS BCNF projection counterexample demonstrates lost local SP -> M enforcement
 PASS 4NF independent-value decomposition reconstructs exactly four rows; missing combination disproves MVD
-ALL WORKED THEORY EXAMPLES PASSED; production MVD assumptions remain a domain review
+PASS full 3NF synthesis: AS, AP, SN, QT, added key relation AQ; all projected relations in 3NF and all FDs preserved
+PASS synthesized key relation supports exact reconstruction of the application-note example
+PASS formal MVD tuple-swap test, complementarity and missing-combination rejection
+PASS MVDs cannot use the FD splitting rule; both trivial cases and FD-implied MVD tested
+PASS corrected 3NF lecture: both cinema keys verified despite inconsistent 4NF review slide
+ALL WORKED THEORY EXAMPLES PASSED (including extended course checks); production MVD assumptions remain a domain review
 RESULT: exit 0
 
 COMMAND: python3 scripts/conceptual_erd.py
@@ -33,7 +37,7 @@ PASS all 9 SQL foreign-key columns represented through the conceptual relationsh
 RESULT: exit 0
 
 COMMAND: python3 scripts/verify.py
-Disposable database: coop_sprint1_test_786fb0550544
+Disposable database: coop_sprint1_test_1466beb7f91b
 PASS DDL loads on MySQL
 PASS server version: 8.4.8
 PASS seed loads
@@ -89,7 +93,7 @@ PASS ownership algebra invariant
 PASS valid resume replacement rolls back
 PASS workflow create apply interview offer then rollback
 PASS rollback restores six applications
-ALL DATABASE CHECKS PASSED; retained database for inspection: coop_sprint1_test_786fb0550544
+ALL DATABASE CHECKS PASSED; retained database for inspection: coop_sprint1_test_1466beb7f91b
 RESULT: exit 0
 
 COMMAND: python3 scripts/verify_migration.py
@@ -106,5 +110,5 @@ PASS old resume column removed
 PASS legacy application and student rows retained
 PASS upgraded schema enforces resume ownership
 PASS four ownership triggers installed
-ALL MIGRATION CHECKS PASSED; retained disposable database: coop_sprint1_migration_fba8a048d46a
+ALL MIGRATION CHECKS PASSED; retained disposable database: coop_sprint1_migration_ace8474f21be
 RESULT: exit 0
