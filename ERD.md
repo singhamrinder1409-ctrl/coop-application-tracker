@@ -1,38 +1,97 @@
-# ERD
+# Complete ERD - Sprint 1
 
-## Rendered Diagram
+Crow's-foot notation replaces the incomplete kick-off Chen diagram. Every SQL attribute appears below and in `ERD.svg`; the Mermaid source and relational schema also show SQL types. `PK` is the primary key, `FK` a reference, and `UK` a non-null alternate key component. See `RELATIONAL_SCHEMA.md` for nullable UNIQUE rules.
 
-![Co-op Application Tracker ERD](ERD.svg)
+```mermaid
+erDiagram
+    Student {
+        INT student_id PK
+        VARCHAR_100_ full_name
+        VARCHAR_40_ username UK
+        VARCHAR_120_ email
+        VARCHAR_80_ program
+    }
+    Employer {
+        INT employer_id PK
+        VARCHAR_120_ employer_name
+        VARCHAR_80_ industry
+        VARCHAR_200_ website
+        VARCHAR_80_ city
+        VARCHAR_40_ province
+        VARCHAR_60_ country
+    }
+    JobPosting {
+        INT posting_id PK
+        INT employer_id FK
+        VARCHAR_120_ job_title
+        VARCHAR_40_ work_term
+        ENUM__remote____in_person____hybrid__ location_type
+        VARCHAR_80_ city
+        VARCHAR_40_ province
+        VARCHAR_60_ country
+        VARCHAR_500_ posting_url
+        DATE date_posted
+        DATE application_deadline
+        VARCHAR_80_ salary_range
+        ENUM__open____closed____cancelled__ posting_status
+    }
+    ApplicationStatus {
+        INT status_id PK
+        VARCHAR_40_ status_name UK
+        BOOLEAN is_terminal
+    }
+    ResumeVersion {
+        INT resume_id PK
+        INT student_id FK,UK
+        VARCHAR_80_ resume_label
+        INT version_number UK
+        DATE created_on
+        VARCHAR_200_ file_name
+    }
+    Application {
+        INT application_id PK
+        INT student_id FK,UK
+        INT posting_id FK,UK
+        INT status_id FK
+        DATE date_applied
+        VARCHAR_80_ source
+        INT priority
+        TEXT notes
+    }
+    Interview {
+        INT interview_id PK
+        INT application_id FK,UK
+        INT interview_round UK
+        ENUM__phone____video____in_person____technical____hr__ interview_type
+        DATETIME scheduled_at
+        VARCHAR_200_ location
+        VARCHAR_120_ interviewer_name
+        ENUM__scheduled____passed____failed____cancelled____unknown__ result
+    }
+    Offer {
+        INT offer_id PK
+        INT application_id FK,UK
+        DECIMAL_6_2_ hourly_wage
+        DATE offer_date
+        DATE response_deadline
+        ENUM__pending____accepted____declined____expired__ offer_status
+        TEXT notes
+    }
+    ApplicationResume {
+        INT application_id PK,FK
+        INT resume_id FK
+    }
+    Employer ||--o{ JobPosting : posts
+    Student ||--o{ ResumeVersion : owns
+    Student ||--o{ Application : submits
+    JobPosting ||--o{ Application : receives
+    ApplicationStatus ||--o{ Application : classifies
+    Application ||--o{ Interview : has
+    Application ||--o| Offer : receives
+    Application ||--o| ApplicationResume : selects
+    ResumeVersion ||--o{ ApplicationResume : used_by
+```
 
-## Conceptual Design
+Every child has exactly one parent for each listed reference; each parent has zero or many children, except Offer and ApplicationResume (zero or one). An application without ApplicationResume has no selected resume. Ownership consistency also requires the triggers described in `docs/CONSTRAINTS.md`.
 
-The main idea is to describe what should be in the database before thinking too much about screens or code. For this project, the important things are students, employers, job postings, applications, statuses, resume versions, interviews, and offers.
-
-We chose these entity sets because each one has its own information and its own identifier. For example, an employer has a name and website, while a job posting has a title, deadline, and work term. These should be separate because one employer can have many postings.
-
-The ER diagram follows the same general style as the lecture slides: entity sets are rectangles, attributes are ellipses, relationships are diamonds, and identifier attributes are underlined. Table reference details are handled later in the relational schema instead of being treated as ERD attributes.
-
-## Entity Sets And Identifiers
-
-| Entity Set | Identifier | Notes |
-| --- | --- | --- |
-| Student | `student_id` | A student using the tracker |
-| Employer | `employer_id` | A company or organization |
-| JobPosting | `posting_id` | A job posted by an employer |
-| ApplicationStatus | `status_id` | Lookup table for statuses |
-| ResumeVersion | `resume_id` | A resume version owned by a student |
-| Application | `application_id` | A student's application to a posting |
-| Interview | `interview_id` | One interview round for an application |
-| Offer | `offer_id` | An offer for an application |
-
-## Main Relationships And Multiplicities
-
-- One employer can create many job postings.
-- Each job posting belongs to exactly one employer.
-- One student can have many resume versions.
-- One student can submit many applications.
-- One job posting can have many applications.
-- Each application belongs to one student and one job posting.
-- Each application has one current status.
-- One application can have many interviews.
-- One application can have zero or one offer in this first design.
+![Complete ERD](ERD.svg)

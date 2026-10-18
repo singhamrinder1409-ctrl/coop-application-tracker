@@ -1,6 +1,7 @@
-DROP DATABASE IF EXISTS coop_application_tracker;
-CREATE DATABASE coop_application_tracker;
-USE coop_application_tracker;
+-- Sprint 1. MySQL 8.0.16+ (enforced CHECK constraints).
+-- Creates a separate database; fails on existing tables instead of deleting data.
+CREATE DATABASE IF NOT EXISTS coop_application_tracker_sprint1;
+USE coop_application_tracker_sprint1;
 
 CREATE TABLE Student (
     student_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -46,6 +47,7 @@ CREATE TABLE ApplicationStatus (
     status_id INT AUTO_INCREMENT PRIMARY KEY,
     status_name VARCHAR(40) NOT NULL,
     is_terminal BOOLEAN NOT NULL DEFAULT FALSE,
+    CHECK (is_terminal IN (0, 1)),
     UNIQUE (status_name)
 );
 
@@ -66,15 +68,13 @@ CREATE TABLE Application (
     student_id INT NOT NULL,
     posting_id INT NOT NULL,
     status_id INT NOT NULL,
-    resume_id INT,
     date_applied DATE,
     source VARCHAR(80),
-    priority INT DEFAULT 3,
+    priority INT NOT NULL DEFAULT 3,
     notes TEXT,
     FOREIGN KEY (student_id) REFERENCES Student(student_id),
     FOREIGN KEY (posting_id) REFERENCES JobPosting(posting_id),
     FOREIGN KEY (status_id) REFERENCES ApplicationStatus(status_id),
-    FOREIGN KEY (resume_id) REFERENCES ResumeVersion(resume_id),
     UNIQUE (student_id, posting_id),
     CHECK (priority BETWEEN 1 AND 5)
 );
@@ -107,3 +107,58 @@ CREATE TABLE Offer (
     CHECK (response_deadline IS NULL OR response_deadline >= offer_date)
 );
 
+
+-- Decomposition avoids resume_id -> student_id inside Application.
+CREATE TABLE ApplicationResume (
+    application_id INT PRIMARY KEY,
+    resume_id INT NOT NULL,
+    FOREIGN KEY (application_id) REFERENCES Application(application_id),
+    FOREIGN KEY (resume_id) REFERENCES ResumeVersion(resume_id)
+);
+
+-- Cross-relation ownership is not expressible as a MySQL CHECK.
+-- Lock referenced parents so concurrent ownership changes cannot race inserts.
+DELIMITER $$
+CREATE TRIGGER application_resume_insert BEFORE INSERT ON ApplicationResume
+FOR EACH ROW
+BEGIN
+    DECLARE applicant INT DEFAULT NULL;
+    DECLARE owner_id INT DEFAULT NULL;
+    SELECT student_id INTO applicant FROM Application
+        WHERE application_id = NEW.application_id FOR UPDATE;
+    SELECT student_id INTO owner_id FROM ResumeVersion
+        WHERE resume_id = NEW.resume_id FOR UPDATE;
+    IF applicant IS NULL OR owner_id IS NULL OR applicant <> owner_id THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Resume must belong to application student';
+    END IF;
+END$$
+CREATE TRIGGER application_resume_update BEFORE UPDATE ON ApplicationResume
+FOR EACH ROW
+BEGIN
+    DECLARE applicant INT DEFAULT NULL;
+    DECLARE owner_id INT DEFAULT NULL;
+    SELECT student_id INTO applicant FROM Application
+        WHERE application_id = NEW.application_id FOR UPDATE;
+    SELECT student_id INTO owner_id FROM ResumeVersion
+        WHERE resume_id = NEW.resume_id FOR UPDATE;
+    IF applicant IS NULL OR owner_id IS NULL OR applicant <> owner_id THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Resume must belong to application student';
+    END IF;
+END$$
+-- Ownership identifiers are immutable; reassign by deleting/recreating the record.
+-- This avoids silent changes invalidating existing associations.
+CREATE TRIGGER application_student_immutable BEFORE UPDATE ON Application
+FOR EACH ROW
+BEGIN
+    IF NEW.student_id <> OLD.student_id THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Application student is immutable';
+    END IF;
+END$$
+CREATE TRIGGER resume_student_immutable BEFORE UPDATE ON ResumeVersion
+FOR EACH ROW
+BEGIN
+    IF NEW.student_id <> OLD.student_id THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Resume student is immutable';
+    END IF;
+END$$
+DELIMITER ;

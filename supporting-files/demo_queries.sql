@@ -1,4 +1,4 @@
-USE coop_application_tracker;
+USE coop_application_tracker_sprint1;
 
 -- 1. All applications with their current status.
 SELECT
@@ -54,7 +54,8 @@ JOIN JobPosting AS jp
     ON jp.posting_id = a.posting_id
 JOIN Employer AS e
     ON e.employer_id = jp.employer_id
-WHERE i.result = 'scheduled'
+-- Fixed as-of date makes the recording and automated assertions repeatable.
+WHERE i.result = 'scheduled' AND i.scheduled_at >= '2026-10-18 00:00:00'
 ORDER BY i.scheduled_at;
 
 -- 4. Number of applications in each status.

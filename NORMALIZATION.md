@@ -1,72 +1,57 @@
-# Normalization Notes
+# Functional dependencies and normalization - Sprint 1
 
-## Starting Point
+## Domain assumptions and SQL NULL
 
-If we made this project as one big table, it might look like this:
+FDs describe all legal states, not patterns observed in the seed. Each ID identifies one fact; student usernames and status names are stable unique identifiers; a student has at most one application per posting and one resume per version number; each application has at most one interview per round and one offer. Names, cities, programs, wages and URLs shared across records imply no additional dependencies. In particular, city does not determine province, employer name alone does not identify an employer, and a posting title does not identify a posting.
 
-`CoopTracker(student_name, username, employer_name, employer_website, job_title, deadline, status_name, resume_file, interview_round, interview_time, offer_wage)`
+For classical FD analysis, NULL denotes an optional fact outside the ordinary value model. We do **not** treat nullable SQL UNIQUE columns as unconditional candidate keys: Student.email, JobPosting.posting_url, and Employer(employer_name, website) permit multiple NULLs. On the subset with supplied non-NULL values, their uniqueness still applies. Our BCNF claim is relative to the declared domain dependencies, with optional attributes treated as single optional values; it is not a proof about every possible SQL NULL interpretation.
 
-At first this looks simple, but it would repeat a lot of data. The same employer could appear in many rows. The same student could appear in many rows. One application could also need several rows if it has more than one interview. This can lead to update, insertion, and deletion problems.
+## Complete bases and table-by-table checks
 
-## Main Functional Dependencies
+For each row below, let `P` be the primary key and `N` every other attribute listed in `RELATIONAL_SCHEMA.md`. The notation `P -> each N` means one singleton-right-hand-side FD per non-key attribute, not one multivalued FD. Add exactly the listed alternate-key-to-P dependencies. This defines the complete FD model for each relation and a minimal basis for it.
 
-These are the main functional dependencies for the current design:
+| Relation | P | Additional basis FDs | All candidate keys | BCNF decision |
+| --- | --- | --- | --- | --- |
+| Student | student_id | username -> student_id | {student_id}, {username} | Both determinants are keys |
+| Employer | employer_id | none | {employer_id} | Only ID determines other attributes |
+| JobPosting | posting_id | none | {posting_id} | Only ID determines other attributes |
+| ApplicationStatus | status_id | status_name -> status_id | {status_id}, {status_name} | Both determinants are keys |
+| ResumeVersion | resume_id | student_id, version_number -> resume_id | {resume_id}, {student_id, version_number} | Both determinants are keys |
+| Application | application_id | student_id, posting_id -> application_id | {application_id}, {student_id, posting_id} | Both determinants are keys |
+| Interview | interview_id | application_id, interview_round -> interview_id | {interview_id}, {application_id, interview_round} | Both determinants are keys |
+| Offer | offer_id | application_id -> offer_id | {offer_id}, {application_id} | Both determinants are keys |
+| ApplicationResume | application_id | none | {application_id} | application_id -> resume_id; resume_id is reusable |
 
-- `student_id -> full_name, username, email, program`
-- `employer_id -> employer_name, industry, website, city, province, country`
-- `posting_id -> employer_id, job_title, work_term, location_type, city, province, country, posting_url, date_posted, application_deadline, salary_range, posting_status`
-- `status_id -> status_name, is_terminal`
-- `resume_id -> student_id, resume_label, version_number, created_on, file_name`
-- `application_id -> student_id, posting_id, status_id, resume_id, date_applied, source, priority, notes`
-- `interview_id -> application_id, interview_round, interview_type, scheduled_at, location, interviewer_name, result`
-- `offer_id -> application_id, hourly_wage, offer_date, response_deadline, offer_status, notes`
+Key closures reach every attribute. For example, `{student_id, version_number}+` first reaches resume_id, then resume_label, created_on and file_name. Neither student_id alone nor version_number alone reaches resume_id. In Application, student_id and posting_id separately are not keys. In Offer, application_id reaches offer_id and then every offer attribute.
 
-There are also some alternate uniqueness rules:
+Minimality: each RHS is one attribute; deleting a key component destroys its ability to identify the record; removing any listed FD makes that RHS unreachable from its LHS. `scripts/design.py` tests each deletion and each LHS component. It also enumerates subsets of every relation, computes closures, checks all candidate keys, and rejects any non-key determinant with a nontrivial closure. Thus the BCNF decision checks implied dependencies too. This verifies the declared model, not whether our domain assumptions are complete.
 
-- `username -> student_id`
-- `status_name -> status_id`
-- `posting_url -> posting_id` when a posting URL is provided
-- `(student_id, posting_id) -> application_id`
-- `(application_id, interview_round) -> interview_id`
-- `application_id -> offer_id` for offers, because we are allowing at most one offer per application
+## FDs in the ERD
 
-## Keys And BCNF
+An entity identifier determines its attributes. A many-to-one relationship gives a child-to-parent FD: posting_id -> employer_id; application_id -> student_id, posting_id, status_id; resume_id -> student_id; interview_id -> application_id. At-most-one offer gives application_id -> offer_id in Offer. Zero-or-one selected resume gives application_id -> resume_id in ApplicationResume. The reverse resume_id -> application_id does not hold: a student may reuse a resume. Multiplicity gives these dependencies; FDs alone cannot assert that the referenced parent exists, which requires foreign keys.
 
-In our design, each table has a primary key, and the other attributes depend on that key. For example, in `Employer`, the employer name, industry, website, and location all depend on `employer_id`.
+## The resume dependency and a lossless BCNF decomposition
 
-For BCNF, the main idea we used is that every non-trivial functional dependency should have a superkey on the left side. Based on the functional dependencies listed above, the design satisfies BCNF for the current scope because facts are separated into their own tables:
+Consider an assigned-resume fragment `R(A, S, R)` where A is application_id, S student_id, and R resume_id (using R for the attribute only in this paragraph). The domain gives A -> S,R and R -> S, because each resume has exactly one owner. A is the key; R is not a key because the same resume may serve several applications. R -> S violates BCNF. A composite FK enforcing ownership in the original Application table would enforce consistency but would not remove that dependency.
 
-- employer facts are only in `Employer`
-- job posting facts are only in `JobPosting`
-- student facts are only in `Student`
-- status facts are only in `ApplicationStatus`
-- interview facts are only in `Interview`
-- offer facts are only in `Offer`
+Decompose the fragment into `Assigned(A,R)` and `ResumeOwner(R,S)`. Their intersection is {R}; R -> ResumeOwner, so the decomposition is lossless. Both dependencies are preserved through these relations: A -> R and R -> S imply A -> S. ResumeOwner is already represented by ResumeVersion; Assigned is ApplicationResume. The full Application also retains student_id because saved applications without a resume still need an owner. That produces a cross-relation consistency rule: Application.student_id must equal ResumeVersion.student_id for each assignment. Triggers enforce this rule on insert/update, and owner IDs are immutable. A missing assignment represents an optional resume, instead of introducing a NULL resume determinant in Application.
 
-This avoids the main anomaly problem from putting everything in one relation. For example, deleting a rejected application will not delete the employer from the database. Also, changing an employer website does not require updating every application row.
+## Minimal basis and FD projection worked example
 
-One rule we still want to check more carefully in the next sprint is that the resume used by an application should belong to the same student as that application. The current schema records both references, but this rule is better handled as an extra constraint after TA-client feedback.
+For `Flat(A,S,N,P)` (application, student, student name, posting), start with
+`F = { A -> S,N,P; S -> N; A,P -> S }`.
+Split RHS: A->S, A->N, A->P, S->N, AP->S. P is extraneous in AP->S because A->S already holds. Remove the duplicate A->S, then remove A->N because A->S and S->N imply it. A minimal basis is `{A->S, A->P, S->N}`. No remaining FD or LHS attribute can be removed.
 
-## Small BCNF Example From Our Design
+Project onto T(A,N,P): compute closures under the original basis, then intersect with T. A+ = {A,S,N,P}, so the projected basis is `{A->N, A->P}`. Simply retaining FDs whose symbols occur in T would miss A->N. Project onto U(S,N): basis `{S->N}`. The decomposition of Flat into V(A,S,P) and U(S,N) is lossless because their intersection S determines U; it preserves A->S, A->P, S->N. V and U are BCNF.
 
-Suppose we had this relation:
+## 3NF: why it differs from BCNF
 
-`ApplicationFlat(application_id, student_id, student_name, posting_id, employer_name, status_name)`
+3NF permits X -> a if X is a superkey **or** a is prime (belongs to some candidate key); BCNF permits only the superkey condition for a nontrivial FD. All nine project tables satisfy BCNF under the model, so also 3NF.
 
-Some FDs would be:
+A teaching example (not a production table) is `Allocation(Student, Project, Mentor)` with `{Student,Project}->Mentor` and `Mentor->Project`. Candidate keys are {Student,Project} and {Student,Mentor}. Mentor is not a superkey, so Mentor->Project violates BCNF; Project is prime, so it satisfies 3NF. Decomposing into MentorProject(Mentor,Project) and StudentMentor(Student,Mentor) is lossless (intersection Mentor determines MentorProject) but loses local enforcement of Student,Project->Mentor. A 3NF synthesis can retain Allocation to preserve that dependency. This is the dependency-preservation versus BCNF tradeoff; the project does not need that compromise for its declared FD model.
 
-- `application_id -> student_id, posting_id, status_name`
-- `student_id -> student_name`
-- `posting_id -> employer_name`
+## 4NF and independent multivalued facts
 
-This is not in BCNF because `student_id` determines `student_name`, but `student_id` is not a superkey for the whole relation. Also, `posting_id` determines `employer_name`, but `posting_id` is not a superkey for the whole relation.
+BCNF alone does not imply 4NF. Consider a proposed `StudentPreference(student_id, skill, preferred_city)` where skills and preferred cities vary independently. Then student_id ->> skill and student_id ->> preferred_city are nontrivial MVDs, but student_id is not a superkey. For skills {SQL,Python} and cities {Victoria,Vancouver}, the representation needs four combinations. Split into StudentSkill(student_id,skill) and StudentPreferredCity(student_id,preferred_city). Their natural join reconstructs exactly those four combinations under the independence assumption: a lossless 4NF decomposition. A missing combination in the original would mean the claimed independence/MVD was false.
 
-So we decomposed it into separate relations like:
-
-- `Student(student_id, full_name, username, email, program)`
-- `JobPosting(posting_id, employer_id, job_title, ...)`
-- `Employer(employer_id, employer_name, ...)`
-- `Application(application_id, student_id, posting_id, status_id, ...)`
-- `ApplicationStatus(status_id, status_name, is_terminal)`
-
-This is why the schema has more tables, even though it may look longer.
+The production model stores single values for program, location, file_name and other scalar attributes; interviews and resume versions already live in separate relations rather than an independent resume/interview cross-product. We have identified no further independent nontrivial MVDs with a non-superkey determinant. Under that explicit assumption the nine relations satisfy 4NF; this is a domain review, not something the FD-only verifier proves. Multiple skills/cities are not secretly stored as comma-separated lists. If such requirements arise, add separate relations and revisit MVDs.

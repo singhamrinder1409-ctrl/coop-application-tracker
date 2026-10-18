@@ -1,4 +1,4 @@
-USE coop_application_tracker;
+USE coop_application_tracker_sprint1;
 
 INSERT INTO Student (full_name, username, email, program)
 VALUES
@@ -40,12 +40,12 @@ VALUES
     (2, 'General software resume', 1, '2026-09-26', 'jaiman_resume_v1.pdf'),
     (3, 'Data analyst resume', 1, '2026-09-26', 'aashna_resume_data_v1.pdf');
 
-INSERT INTO Application (student_id, posting_id, status_id, resume_id, date_applied, source, priority, notes)
+INSERT INTO Application (student_id, posting_id, status_id, date_applied, source, priority, notes)
 VALUES
-    (1, 1, 3, 1, '2026-10-04', 'UVic Co-op Portal', 1, 'Interview booked. Review SQL notes.'),
-    (1, 2, 2, 2, '2026-10-04', 'Company Website', 2, 'Backend role looks interesting.'),
-    (2, 2, 1, 3, NULL, 'UVic Co-op Portal', 3, 'Saved but not applied yet.'),
-    (3, 3, 4, 4, '2026-10-01', 'UVic Co-op Portal', 4, 'Sample application with an offer.');
+    (1, 1, 3, '2026-10-04', 'UVic Co-op Portal', 1, 'Interview booked. Review SQL notes.'),
+    (1, 2, 2, '2026-10-04', 'Company Website', 2, 'Backend role looks interesting.'),
+    (2, 2, 1, NULL, 'UVic Co-op Portal', 3, 'Saved but not applied yet.'),
+    (3, 3, 4, '2026-10-01', 'UVic Co-op Portal', 4, 'Sample application with an offer.');
 
 INSERT INTO Interview (application_id, interview_round, interview_type, scheduled_at, location, interviewer_name, result)
 VALUES
@@ -54,3 +54,14 @@ VALUES
 INSERT INTO Offer (application_id, hourly_wage, offer_date, response_deadline, offer_status, notes)
 VALUES
     (4, 28.50, '2026-10-18', '2026-10-25', 'pending', 'Sample offer row for demo only.');
+
+INSERT INTO ApplicationResume VALUES (1, 1), (2, 2), (3, 3), (4, 4);
+-- Edge cases: no applications, no resume selected, multiple interview rounds,
+-- NULL unique values, zero wage, and a rejected application.
+INSERT INTO Student VALUES (4, 'Demo Student', 'demo_student', NULL, 'Computer Science');
+INSERT INTO Application (student_id, posting_id, status_id, priority)
+VALUES (2, 1, 5, 5), (3, 2, 1, 3);
+INSERT INTO Interview (application_id, interview_round, interview_type, scheduled_at, result)
+VALUES (1, 2, 'technical', '2026-10-21 14:00:00', 'scheduled');
+INSERT INTO Offer (application_id, hourly_wage, offer_date, response_deadline)
+VALUES (2, 0.00, '2026-10-18', '2026-10-18');

@@ -1,0 +1,45 @@
+Disposable database: coop_sprint1_test_4e754d47f790
+PASS DDL loads on MySQL
+PASS server version: 8.4.8
+PASS seed loads
+PASS live attribute coverage Student
+PASS live attribute coverage Employer
+PASS live attribute coverage JobPosting
+PASS live attribute coverage ApplicationStatus
+PASS live attribute coverage ResumeVersion
+PASS live attribute coverage Application
+PASS live attribute coverage Interview
+PASS live attribute coverage Offer
+PASS live attribute coverage ApplicationResume
+PASS nine tables
+PASS fixture cardinalities
+PASS five reporting queries execute
+PASS upcoming excludes past interview
+PASS active application set
+PASS offer boundary values
+PASS optional resume absent
+PASS student with zero applications
+PASS orphan student (expected MySQL error 1452)
+PASS duplicate application (expected MySQL error 1062)
+PASS priority lower bound (expected MySQL error 3819)
+PASS priority upper bound (expected MySQL error 3819)
+PASS NULL priority (expected MySQL error 1048)
+PASS posting date order (expected MySQL error 3819)
+PASS resume version positive (expected MySQL error 3819)
+PASS duplicate resume version (expected MySQL error 1062)
+PASS interview round positive (expected MySQL error 3819)
+PASS duplicate interview round (expected MySQL error 1062)
+PASS negative wage (expected MySQL error 3819)
+PASS offer deadline order (expected MySQL error 3819)
+PASS one offer per application (expected MySQL error 1062)
+PASS boolean domain (expected MySQL error 3819)
+PASS resume ownership insert (expected MySQL error 1644)
+PASS resume ownership update (expected MySQL error 1644)
+PASS association application update (expected MySQL error 1644)
+PASS application owner immutable (expected MySQL error 1644)
+PASS resume owner immutable (expected MySQL error 1644)
+PASS referenced student cannot be deleted (expected MySQL error 1451)
+PASS valid resume replacement rolls back
+PASS workflow create apply interview offer then rollback
+PASS rollback restores six applications
+ALL DATABASE CHECKS PASSED; retained database for inspection: coop_sprint1_test_4e754d47f790

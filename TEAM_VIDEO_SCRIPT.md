@@ -1,130 +1,59 @@
-# Team Video Script
+# Sprint 1 team recording script - target 7:30
 
-Group size is 3, so the video must be 11 minutes or less. A safe target is around 9-10 minutes.
+Proposed speaking split: Amrinder 0:00-2:30, Jaiman 2:30-5:00, Aashna 5:00-7:30. Rehearse and adapt this to your actual contribution and understanding. The video is not recorded by this script. Keep final export below 8 minutes, including titles/transitions, to satisfy both the formula and inconsistent example in the supplied assignment text.
 
-This script is written so the speaking and showing parts are split almost equally between the three members.
+Prepare: open the project folder, ERD.svg, NORMALIZATION.md, docs/CONSTRAINTS.md and SPRINT_PLAN.md. Have MySQL running and verify credentials before recording. Run `python3 scripts/design.py` and `python3 scripts/verify.py` live if possible. The saved evidence is available for inspection but should not be described as your own live run unless you actually run it. Show the exact submission commit via `git rev-parse HEAD`.
 
-## Speaker 1: Amrinder
+## 0:00-2:30 - Amrinder: goals, feedback, complete model
 
-Target time: 0:00-3:10
+**0:00-0:35 — show SPRINT_PLAN.md, delivery table.**
 
-### Show
+“We are Group 3, Amrinder, Jaiman and Aashna. Our Co-op Application Tracker connects students, employers, postings, applications, resume versions, interviews and offers. We are reporting against our kick-off plan, preserved in the archive. We promised a schema review, stronger constraints, relational algebra rules, advanced modelling decisions, edge-case data, reports and a working workflow demo.”
 
-- `README.md`
-- `PROJECT_KICKOFF.md`
-- project folder structure
+**0:35-1:00 — show feedback correction table.**
 
-### Say
+“The feedback asked us to show every ERD attribute, prove BCNF per table, state current limitations against course competencies, and cover minimal bases, projecting FDs, 3NF and 4NF. Those now have explicit evidence. We used the written feedback, but a live TA review remains pending; we have not claimed it happened.”
 
-Hi, we are Group 3. Our project is the Co-op Application Tracker. Our team members are Amrinder, Jaiman, and Aashna.
+**1:00-1:45 — zoom ERD.svg.**
 
-For this project, we decided to design a database system for students who are applying to co-op jobs. The main idea is to keep job postings, applications, interviews, employers, resume versions, and offers in one organized system.
+“Every SQL attribute appears in the new diagram, including all 13 JobPosting columns. One employer has zero or many postings, each posting has exactly one employer. Each application has one student, posting and status, zero or many interviews and at most one offer. Selected resumes are represented by ApplicationResume. A missing row means no resume has been selected. A resume can be reused across applications belonging to its owner.”
 
-We chose this topic because co-op applications can become messy pretty quickly. A student might apply to many jobs at the same time, and each job can have different deadlines, statuses, interviews, and possible offers. If all of this is only tracked in a spreadsheet, it is easy to lose context or repeat the same information many times.
+**1:45-2:30 — show schema.sql and docs/CONSTRAINTS.md.**
 
-This fits well as a database project because the data is connected. For example, one employer can post many jobs, one student can submit many applications, and one application can be linked to interviews, a resume version, and maybe an offer.
+“Resume ownership was previously unenforced. We now check it when an assignment is inserted or changed, and prevent changing a record's owner. The rules include foreign keys, uniqueness, date ordering and bounded priority. Interview has a conceptual partial key, the round number within its application; our surrogate key is supplemented by that unique pair. Separate posting subtype tables would currently add no distinct facts, so we keep a required location type and explain when inheritance would become useful.”
 
-For the first version, our main user is a student. We are not building a full system for co-op advisors or employers yet. We kept the scope smaller because this is the kick-off stage, and we have not received TA-client requirements yet. Once we get feedback, we can adjust the design.
+## 2:30-5:00 - Jaiman: normalization and Advanced Relational Design
 
-Our main sprint goals were to pick a clear project idea, write the project scope, create the ERD, convert the ERD into a relational schema, write the MySQL DDL, and explain the normalization choices up to BCNF.
+**2:30-3:20 — show NORMALIZATION.md, nine-table table.**
 
-In `PROJECT_KICKOFF.md`, we also explain our assumptions. For example, we assume that one application belongs to one student and one job posting. We also assume that an application can have multiple interviews, because some jobs have more than one interview round.
+“Our BCNF claim is now relative to stated domain FDs. Each table has a singleton-right-side minimal basis and all candidate keys listed. For example, a student and version number identify a resume, and an application and round identify an interview. Closures prove these keys. Nullable unique emails and URLs are not treated as unconditional classical keys. The checker computes closures for all attribute subsets and checks that every nontrivial determinant is a superkey.”
 
-At this stage, the project is a good size. It is not too small, because there are enough entity sets and relationships to design properly. But it is also not too big for the first submission.
+**3:20-3:55 — show resume decomposition.**
 
-### Transition
+“Adding a same-owner constraint to the old table would leave resume determining student within Application. A resume can be reused, so resume is not an application key. We removed resume selection from Application. The selected-resume relation stores application and resume, while ResumeVersion stores its owner. Joining on resume is lossless for the assigned-resume fragment because resume determines the owner. A cross-table trigger still ensures the applicant equals that owner.”
 
-Now Jaiman will go through the ERD and the relational schema.
+**3:55-4:25 — show minimal basis / projection example.**
 
-## Speaker 2: Jaiman
+“In the example, application determines student and posting; student determines name. Application determining name is redundant by transitivity. Projecting onto application, name and posting must nevertheless retain application determining name. Projection means deriving implied FDs using closures, not just deleting FDs that mention removed attributes.”
 
-Target time: 3:10-6:35
+**4:25-5:00 — show 3NF and 4NF examples, run design.py.**
 
-### Show
+“3NF allows a non-key determinant if the right-side attribute is prime; BCNF does not. The allocation example shows why a lossless BCNF decomposition can lose local dependency enforcement. For 4NF, independently varying skills and cities create a cross-product and should be separate relations. We state the production model's single-valued assumptions; the FD checker alone does not prove 4NF. Here are the actual key, minimality and BCNF checks passing.”
 
-- `ERD.svg`
-- `ERD.md`
-- `RELATIONAL_SCHEMA.md`
-- `schema.sql`
+## 5:00-7:30 - Aashna: execution evidence, limits and next sprint
 
-### Say
+**5:00-5:55 — run verify.py; show output.**
 
-This is our ERD diagram. We made it in a Chen-style format like the lecture slides. Rectangles are entity sets, ellipses are attributes, diamonds are relationships, and the underlined attributes are identifiers.
+“The database checks load the DDL and seed into a fresh test schema on MySQL. They test a valid application, resume selection, interview and offer in a transaction and then prove rollback restored the fixture. They also try invalid writes: another student's resume, duplicate applications and rounds, invalid priority, negative wages and reversed deadlines. Each expected rejection is checked against a MySQL error code, rather than treating any error as success.”
 
-The main entity sets are `Student`, `Employer`, `JobPosting`, `Application`, `ApplicationStatus`, `ResumeVersion`, `Interview`, and `Offer`.
+**5:55-6:20 — show demo-output.tsv and fixture.**
 
-Each entity set has an identifier. For example, `Student` has `student_id`, `Employer` has `employer_id`, `JobPosting` has `posting_id`, and `Application` has `application_id`.
+“We have four students and six applications, including one student with no applications and applications without selected resumes. The five reports show applications, active applications, upcoming interviews, status counts and offers. The upcoming-interview query uses a fixed demonstration date and excludes the earlier interview. Sample employers and jobs are synthetic.”
 
-Some of the relationships are simple but important. One student can submit many applications. One employer can post many job postings. Each application is for one job posting, and it also has one current status. An application can have many interviews, because there may be first round and second round interviews. Also, in our first design, an application may receive zero or one offer.
+**6:20-7:15 — show Sprint 2 matrix, emphasizing current limitations.**
 
-We also included resume versions because students often use different resumes for different jobs. So an application can use one resume version, and a student can own many resume versions.
+“For next sprint, the course competency areas are modelling, SQL querying, correctness and database-backed system development. Our current limitation is that reports use basic joins and filters, without a tested advanced query pack or reusable views. We plan eight reports covering outer joins, grouping, HAVING, correlated queries, EXISTS and set operations, with expected rows. We also plan two views and a transactional update with failure rollback. CTEs and window rankings are proposed pending confirmation of the exact module scope. The plan includes named owners, effort, edge cases and measurable tests. It retains FD and integrity regression through Advanced Relational Design. The official Brightspace competency wording was not supplied, so the group must reconcile this matrix before submitting.”
 
-After making the ERD, we converted it into a relational schema. In `RELATIONAL_SCHEMA.md`, we list the tables and show the keys and references. This helped us check if the ERD could actually become relational tables.
+**7:15-7:30 — show checklist and git rev-parse HEAD.**
 
-In `schema.sql`, we implemented the design in MySQL. The SQL file creates the database and all the tables. It includes primary keys, foreign keys, unique constraints, and check constraints.
-
-One example is the `Application` table. It connects `Student`, `JobPosting`, `ApplicationStatus`, and `ResumeVersion`. We also added a unique constraint on `student_id` and `posting_id`. This means the same student should not apply twice to the exact same posting.
-
-Another example is the `Interview` table. It has a foreign key to `Application`, so interviews cannot exist without being connected to an application. This makes sense for our project because an interview is part of the application process.
-
-This schema is clear for the kick-off submission, but it is still flexible. If the TA-client says we need more details, like contacts, notes, or employer locations, we can add those later.
-
-### Transition
-
-Now Aashna will explain the normalization work, sources, and next sprint plan.
-
-## Speaker 3: Aashna
-
-Target time: 6:35-9:55
-
-### Show
-
-- `NORMALIZATION.md`
-- `SPRINT_PLAN.md`
-- `SOURCES.md`
-- optional: `supporting-files/demo_queries.sql`
-
-### Say
-
-For normalization, we first thought about what would happen if everything was stored in one big table. At first, that might look easier, but it would repeat a lot of data.
-
-For example, the same employer name and website could show up again and again for different job postings and applications. Student information could also repeat across many applications. This can cause problems when data changes.
-
-If an employer website changes, we do not want to update it in many different rows. If a student deletes one application, we also do not want to accidentally lose employer or job posting information. These are the kinds of issues we were trying to avoid.
-
-So we separated the data into tables based on what each table is actually about. Employer information is stored in `Employer`. Job posting information is stored in `JobPosting`. Student information is stored in `Student`. Application-specific information is stored in `Application`.
-
-We also wrote out the main functional dependencies in `NORMALIZATION.md`. For example, `student_id` determines the student information, `employer_id` determines the employer information, and `application_id` determines the details for one application.
-
-The design is close to BCNF because the main facts are separated into their own tables, and the non-key attributes depend on the key of that table. If we find a table later where some non-key attribute determines another non-key attribute, then we would need to split it more.
-
-We also included `SOURCES.md`. That file lists the assignment instructions, rubric, and lecture slides we used while making this submission. We used the slides mainly to guide the ERD style, relational schema conversion, and normalization thinking.
-
-For the next sprint, our plan is to review the schema with the TA-client, update the requirements, and improve the constraints. We also want to write relational algebra constraints and add better sample data.
-
-This connects to Advanced Relational Design because we will be thinking more carefully about constraints, referential integrity, and whether ideas like weak entity sets or inheritance are useful for this project.
-
-If there is time in the video, we can also quickly show the optional demo queries. These queries show examples like listing applications with employer and job title, showing active applications, showing upcoming interviews, counting applications by status, and showing offers.
-
-Overall, this is a strong starting point for the project. We have a clear topic, an ERD, a relational schema, MySQL DDL, normalization notes, sources, and a plan for what to improve next.
-
-## Optional Demo If There Is Time
-
-Target time: 9:55-10:45
-
-### Show
-
-- `supporting-files/seed.sql`
-- `supporting-files/demo_queries.sql`
-
-### Say
-
-We also made optional sample data and demo queries. These are not the main required files, but they help show that the schema can answer useful questions.
-
-For example, the demo queries can show all applications with employer and job title, active applications, upcoming interviews, application counts by status, and offers with deadlines.
-
-This helps us show that the schema is usable and not just a diagram.
-
-## Final Reminder
-
-Do not go over 11 minutes. If the video is getting long, skip the optional demo section and only mention that the files are included in `supporting-files`.
+“The remaining tasks are the TA review, official competency check, recording, and repository publication/access. Our submission must identify the exact commit shown here. We will submit one repository link, commit hash and measured video for Group 3.”

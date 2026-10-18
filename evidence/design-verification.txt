@@ -1,0 +1,11 @@
+PASS Student : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
+PASS Employer : minimal singleton-RHS basis; 1 candidate key(s); BCNF under declared FDs
+PASS JobPosting : minimal singleton-RHS basis; 1 candidate key(s); BCNF under declared FDs
+PASS ApplicationStatus : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
+PASS ResumeVersion : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
+PASS Application : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
+PASS Interview : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
+PASS Offer : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
+PASS ApplicationResume : minimal singleton-RHS basis; 1 candidate key(s); BCNF under declared FDs
+PASS complete ERD attribute coverage; projected A -> N; lossless intersection S -> (S,N)
+NOTE: finite checks validate the declared FD model, not completeness of domain assumptions or 4NF.

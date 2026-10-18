@@ -1,0 +1,24 @@
+full_name	employer_name	job_title	date_applied	status_name	priority
+Amrinder Singh	Ocean Analytics Lab	Data Systems Co-op	2026-10-04	interview	1
+Amrinder Singh	Northwind Software	Backend Developer Co-op	2026-10-04	applied	2
+Jaiman Singh	Northwind Software	Backend Developer Co-op	NULL	saved	3
+Aashna Sadeque	Northwind Software	Backend Developer Co-op	NULL	saved	3
+Aashna Sadeque	Island Health Data Team	Health Data Analyst Co-op	2026-10-01	offer	4
+Jaiman Singh	Ocean Analytics Lab	Data Systems Co-op	NULL	rejected	5
+full_name	employer_name	job_title	status_name
+Jaiman Singh	Northwind Software	Backend Developer Co-op	saved
+Aashna Sadeque	Northwind Software	Backend Developer Co-op	saved
+Amrinder Singh	Northwind Software	Backend Developer Co-op	applied
+Amrinder Singh	Ocean Analytics Lab	Data Systems Co-op	interview
+Aashna Sadeque	Island Health Data Team	Health Data Analyst Co-op	offer
+full_name	employer_name	job_title	interview_round	interview_type	scheduled_at	location
+Amrinder Singh	Ocean Analytics Lab	Data Systems Co-op	2	technical	2026-10-21 14:00:00	NULL
+status_name	application_count
+saved	2
+applied	1
+interview	1
+offer	1
+rejected	1
+full_name	employer_name	job_title	hourly_wage	offer_date	response_deadline	offer_status
+Aashna Sadeque	Island Health Data Team	Health Data Analyst Co-op	28.50	2026-10-18	2026-10-25	pending
+Amrinder Singh	Northwind Software	Backend Developer Co-op	0.00	2026-10-18	2026-10-18	pending

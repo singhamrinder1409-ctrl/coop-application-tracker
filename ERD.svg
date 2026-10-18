@@ -1,231 +1,148 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1600" viewBox="0 0 2400 1600">
-  <defs>
-    <style>
-      .page { fill: #ffffff; }
-      .shape { fill: #ffffff; stroke: #000000; stroke-width: 2.2; }
-      .line { stroke: #000000; stroke-width: 2; fill: none; }
-      text { font-family: Helvetica, Arial, sans-serif; fill: #000000; stroke: none; text-rendering: geometricPrecision; }
-      .title { font-size: 36px; font-weight: 700; }
-      .subtitle { font-size: 18px; font-weight: 400; }
-      .entityText { font-size: 20px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
-      .relText { font-size: 20px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
-      .attrText { font-size: 20px; font-weight: 500; text-anchor: middle; dominant-baseline: middle; }
-      .idText { font-size: 20px; font-weight: 500; text-anchor: middle; dominant-baseline: middle; }
-      .mult { font-size: 20px; font-weight: 500; text-anchor: middle; dominant-baseline: middle; }
-      .note { font-size: 15px; font-weight: 400; }
-    </style>
-  </defs>
-
-  <rect class="page" x="0" y="0" width="2400" height="1600"/>
-  <text class="title" x="70" y="65">Co-op Application Tracker ERD</text>
-  <text class="subtitle" x="70" y="100">Chen-style ERD: rectangles = entity sets, diamonds = relationships, ellipses = attributes.</text>
-  <text class="subtitle" x="70" y="128">Identifier attributes are underlined once.</text>
-
-  <!-- Entity sets -->
-  <rect class="shape" x="180" y="590" width="250" height="80"/>
-  <text class="entityText" x="305" y="630">Student</text>
-
-  <rect class="shape" x="155" y="1120" width="330" height="80"/>
-  <text class="entityText" x="320" y="1160">ResumeVersion</text>
-
-  <rect class="shape" x="1040" y="735" width="300" height="80"/>
-  <text class="entityText" x="1190" y="775">Application</text>
-
-  <rect class="shape" x="1015" y="230" width="300" height="80"/>
-  <text class="entityText" x="1165" y="270">Interview</text>
-
-  <rect class="shape" x="990" y="1260" width="400" height="80"/>
-  <text class="entityText" x="1190" y="1300">ApplicationStatus</text>
-
-  <rect class="shape" x="1965" y="520" width="270" height="80"/>
-  <text class="entityText" x="2100" y="560">Employer</text>
-
-  <rect class="shape" x="1935" y="965" width="330" height="80"/>
-  <text class="entityText" x="2100" y="1005">JobPosting</text>
-
-  <rect class="shape" x="1705" y="1260" width="270" height="80"/>
-  <text class="entityText" x="1840" y="1300">Offer</text>
-
-  <!-- Student attributes -->
-  <ellipse class="shape" cx="125" cy="455" rx="90" ry="34"/>
-  <text class="idText" x="125" y="455">student_id</text>
-  <path class="line" d="M82 468 L168 468"/>
-  <path class="line" d="M240 590 L155 485"/>
-
-  <ellipse class="shape" cx="330" cy="455" rx="88" ry="34"/>
-  <text class="attrText" x="330" y="455">full_name</text>
-  <path class="line" d="M315 590 L325 489"/>
-
-  <ellipse class="shape" cx="80" cy="545" rx="65" ry="34"/>
-  <text class="attrText" x="80" y="545">email</text>
-  <path class="line" d="M180 600 L135 562"/>
-
-  <ellipse class="shape" cx="530" cy="545" rx="88" ry="34"/>
-  <text class="attrText" x="530" y="545">username</text>
-  <path class="line" d="M430 600 L470 565"/>
-
-  <!-- ResumeVersion attributes -->
-  <ellipse class="shape" cx="115" cy="1315" rx="88" ry="34"/>
-  <text class="idText" x="115" y="1315">resume_id</text>
-  <path class="line" d="M72 1328 L158 1328"/>
-  <path class="line" d="M150 1286 L235 1200"/>
-
-  <ellipse class="shape" cx="335" cy="1325" rx="110" ry="34"/>
-  <text class="attrText" x="335" y="1325">resume_label</text>
-  <path class="line" d="M330 1291 L325 1200"/>
-
-  <ellipse class="shape" cx="580" cy="1315" rx="118" ry="34"/>
-  <text class="attrText" x="580" y="1315">version_number</text>
-  <path class="line" d="M520 1286 L420 1200"/>
-
-  <!-- Application attributes -->
-  <ellipse class="shape" cx="960" cy="620" rx="112" ry="34"/>
-  <text class="idText" x="960" y="620">application_id</text>
-  <path class="line" d="M902 633 L1018 633"/>
-  <path class="line" d="M1000 650 L1100 735"/>
-
-  <ellipse class="shape" cx="1300" cy="620" rx="100" ry="34"/>
-  <text class="attrText" x="1300" y="620">date_applied</text>
-  <path class="line" d="M1280 654 L1235 735"/>
-
-  <ellipse class="shape" cx="1440" cy="695" rx="72" ry="34"/>
-  <text class="attrText" x="1440" y="695">priority</text>
-  <path class="line" d="M1340 742 L1388 718"/>
-
-  <!-- Interview attributes -->
-  <ellipse class="shape" cx="925" cy="90" rx="92" ry="34"/>
-  <text class="idText" x="925" y="90">interview_id</text>
-  <path class="line" d="M880 103 L970 103"/>
-  <path class="line" d="M1070 230 L960 120"/>
-
-  <ellipse class="shape" cx="1190" cy="90" rx="125" ry="34"/>
-  <text class="attrText" x="1190" y="90">interview_round</text>
-  <path class="line" d="M1175 230 L1185 124"/>
-
-  <ellipse class="shape" cx="1435" cy="205" rx="100" ry="34"/>
-  <text class="attrText" x="1435" y="205">scheduled_at</text>
-  <path class="line" d="M1315 235 L1354 225"/>
-
-  <!-- ApplicationStatus attributes -->
-  <ellipse class="shape" cx="855" cy="1480" rx="86" ry="34"/>
-  <text class="idText" x="855" y="1480">status_id</text>
-  <path class="line" d="M813 1493 L897 1493"/>
-  <path class="line" d="M895 1450 L1060 1340"/>
-
-  <ellipse class="shape" cx="1190" cy="1480" rx="105" ry="34"/>
-  <text class="attrText" x="1190" y="1480">status_name</text>
-  <path class="line" d="M1190 1446 L1190 1340"/>
-
-  <ellipse class="shape" cx="1435" cy="1480" rx="92" ry="34"/>
-  <text class="attrText" x="1435" y="1480">is_terminal</text>
-  <path class="line" d="M1400 1450 L1295 1340"/>
-
-  <!-- Employer attributes -->
-  <ellipse class="shape" cx="1900" cy="385" rx="100" ry="34"/>
-  <text class="idText" x="1900" y="385">employer_id</text>
-  <path class="line" d="M1850 398 L1950 398"/>
-  <path class="line" d="M2020 520 L1940 415"/>
-
-  <ellipse class="shape" cx="2160" cy="385" rx="120" ry="34"/>
-  <text class="attrText" x="2160" y="385">employer_name</text>
-  <path class="line" d="M2125 520 L2145 419"/>
-
-  <ellipse class="shape" cx="2310" cy="500" rx="74" ry="34"/>
-  <text class="attrText" x="2310" y="500">website</text>
-  <path class="line" d="M2235 530 L2254 522"/>
-
-  <ellipse class="shape" cx="1880" cy="705" rx="74" ry="34"/>
-  <text class="attrText" x="1880" y="705">industry</text>
-  <path class="line" d="M2010 600 L1920 678"/>
-
-  <!-- JobPosting attributes -->
-  <ellipse class="shape" cx="1765" cy="1125" rx="92" ry="34"/>
-  <text class="idText" x="1765" y="1125">posting_id</text>
-  <path class="line" d="M1722 1138 L1808 1138"/>
-  <path class="line" d="M1810 1100 L1945 1045"/>
-
-  <ellipse class="shape" cx="2100" cy="1145" rx="76" ry="34"/>
-  <text class="attrText" x="2100" y="1145">job_title</text>
-  <path class="line" d="M2100 1111 L2100 1045"/>
-
-  <ellipse class="shape" cx="2290" cy="1105" rx="80" ry="34"/>
-  <text class="attrText" x="2290" y="1105">deadline</text>
-  <path class="line" d="M2245 1078 L2205 1045"/>
-
-  <ellipse class="shape" cx="2275" cy="910" rx="90" ry="34"/>
-  <text class="attrText" x="2275" y="910">work_term</text>
-  <path class="line" d="M2210 935 L2165 965"/>
-
-  <!-- Offer attributes -->
-  <ellipse class="shape" cx="1670" cy="1440" rx="70" ry="34"/>
-  <text class="idText" x="1670" y="1440">offer_id</text>
-  <path class="line" d="M1638 1453 L1702 1453"/>
-  <path class="line" d="M1710 1412 L1780 1340"/>
-
-  <ellipse class="shape" cx="1880" cy="1465" rx="96" ry="34"/>
-  <text class="attrText" x="1880" y="1465">hourly_wage</text>
-  <path class="line" d="M1872 1431 L1855 1340"/>
-
-  <ellipse class="shape" cx="2090" cy="1440" rx="98" ry="34"/>
-  <text class="attrText" x="2090" y="1440">offer_status</text>
-  <path class="line" d="M2045 1412 L1930 1340"/>
-
-  <!-- Relationships -->
-  <polygon class="shape" points="665,690 765,760 665,830 565,760"/>
-  <text class="relText" x="665" y="760">Submits</text>
-  <path class="line" d="M430 655 L565 760"/>
-  <path class="line" d="M765 760 L1040 760"/>
-  <text class="mult" x="485" y="700">1</text>
-  <text class="mult" x="900" y="738">N</text>
-
-  <polygon class="shape" points="315,820 415,890 315,960 215,890"/>
-  <text class="relText" x="315" y="890">Owns</text>
-  <path class="line" d="M305 670 L315 820"/>
-  <path class="line" d="M315 960 L315 1120"/>
-  <text class="mult" x="335" y="745">1</text>
-  <text class="mult" x="338" y="1040">N</text>
-
-  <polygon class="shape" points="720,1070 820,1140 720,1210 620,1140"/>
-  <text class="relText" x="720" y="1140">Uses</text>
-  <path class="line" d="M485 1160 L620 1140"/>
-  <path class="line" d="M820 1140 L1040 815"/>
-  <text class="mult" x="545" y="1138">1</text>
-  <text class="mult" x="930" y="965">N</text>
-
-  <polygon class="shape" points="1165,430 1265,500 1165,570 1065,500"/>
-  <text class="relText" x="1165" y="500">Has</text>
-  <path class="line" d="M1165 310 L1165 430"/>
-  <path class="line" d="M1165 570 L1165 735"/>
-  <text class="mult" x="1190" y="370">1</text>
-  <text class="mult" x="1138" y="675">N</text>
-
-  <polygon class="shape" points="1190,990 1305,1060 1190,1130 1075,1060"/>
-  <text class="relText" x="1190" y="1060">HasStatus</text>
-  <path class="line" d="M1190 815 L1190 990"/>
-  <path class="line" d="M1190 1130 L1190 1260"/>
-  <text class="mult" x="1215" y="900">N</text>
-  <text class="mult" x="1215" y="1200">1</text>
-
-  <polygon class="shape" points="1580,700 1690,770 1580,840 1470,770"/>
-  <text class="relText" x="1580" y="770">Receives</text>
-  <path class="line" d="M1340 770 L1470 770"/>
-  <path class="line" d="M1690 770 L1935 1005"/>
-  <text class="mult" x="1405" y="755">N</text>
-  <text class="mult" x="1810" y="875">1</text>
-
-  <polygon class="shape" points="2100,705 2200,775 2100,845 2000,775"/>
-  <text class="relText" x="2100" y="775">Posts</text>
-  <path class="line" d="M2100 600 L2100 705"/>
-  <path class="line" d="M2100 845 L2100 965"/>
-  <text class="mult" x="2125" y="655">1</text>
-  <text class="mult" x="2125" y="915">N</text>
-
-  <polygon class="shape" points="1515,985 1645,1055 1515,1125 1385,1055"/>
-  <text class="relText" x="1515" y="1055">MayReceive</text>
-  <path class="line" d="M1240 815 L1457 1016"/>
-  <path class="line" d="M1590 1085 L1800 1260"/>
-  <text class="mult" x="1360" y="910">1</text>
-  <text class="mult" x="1650" y="1190">0..1</text>
-
-  <text class="note" x="70" y="1570">Note: Identifier attributes are underlined. Table reference details are handled in the relational schema.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="1930" viewBox="0 0 1320 1930">
+<rect width="100%" height="100%" fill="#f4f7fb"/>
+<style>text{font-family:ui-monospace,monospace;fill:#172a42} .title{font-family:Arial;font-weight:bold}</style>
+<text x="28" y="36" font-size="25" class="title">Co-op Application Tracker · Complete relational ERD</text>
+<text x="28" y="62" font-size="14">Every attribute shown · PK primary key · FK foreign key · ? nullable · relationship cardinalities below</text>
+<rect x="24" y="88" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
+<text x="38" y="118" font-size="19" class="title">Student</text>
+<text x="38" y="148" font-size="13">student_id PK </text>
+<text x="38" y="173" font-size="13">full_name </text>
+<text x="38" y="198" font-size="13">username </text>
+<text x="38" y="223" font-size="13">email ?</text>
+<text x="38" y="248" font-size="13">program ?</text>
+<text x="38" y="489" font-size="11">Keys: student_id; username</text>
+<rect x="456" y="88" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
+<text x="470" y="118" font-size="19" class="title">Employer</text>
+<text x="470" y="148" font-size="13">employer_id PK </text>
+<text x="470" y="173" font-size="13">employer_name </text>
+<text x="470" y="198" font-size="13">industry ?</text>
+<text x="470" y="223" font-size="13">website ?</text>
+<text x="470" y="248" font-size="13">city ?</text>
+<text x="470" y="273" font-size="13">province ?</text>
+<text x="470" y="298" font-size="13">country ?</text>
+<text x="470" y="489" font-size="11">Keys: employer_id</text>
+<rect x="888" y="88" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
+<text x="902" y="118" font-size="19" class="title">JobPosting</text>
+<text x="902" y="148" font-size="13">posting_id PK </text>
+<text x="902" y="173" font-size="13">employer_id FK </text>
+<text x="902" y="198" font-size="13">job_title </text>
+<text x="902" y="223" font-size="13">work_term </text>
+<text x="902" y="248" font-size="13">location_type </text>
+<text x="902" y="273" font-size="13">city ?</text>
+<text x="902" y="298" font-size="13">province ?</text>
+<text x="902" y="323" font-size="13">country ?</text>
+<text x="902" y="348" font-size="13">posting_url ?</text>
+<text x="902" y="373" font-size="13">date_posted ?</text>
+<text x="902" y="398" font-size="13">application_deadline ?</text>
+<text x="902" y="423" font-size="13">salary_range ?</text>
+<text x="902" y="448" font-size="13">posting_status </text>
+<text x="902" y="489" font-size="11">Keys: posting_id</text>
+<rect x="24" y="538" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
+<text x="38" y="568" font-size="19" class="title">ApplicationStatus</text>
+<text x="38" y="598" font-size="13">status_id PK </text>
+<text x="38" y="623" font-size="13">status_name </text>
+<text x="38" y="648" font-size="13">is_terminal </text>
+<text x="38" y="939" font-size="11">Keys: status_id; status_name</text>
+<rect x="456" y="538" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
+<text x="470" y="568" font-size="19" class="title">ResumeVersion</text>
+<text x="470" y="598" font-size="13">resume_id PK </text>
+<text x="470" y="623" font-size="13">student_id FK </text>
+<text x="470" y="648" font-size="13">resume_label </text>
+<text x="470" y="673" font-size="13">version_number </text>
+<text x="470" y="698" font-size="13">created_on </text>
+<text x="470" y="723" font-size="13">file_name ?</text>
+<text x="470" y="939" font-size="11">Keys: resume_id; student_id + version_number</text>
+<rect x="888" y="538" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
+<text x="902" y="568" font-size="19" class="title">Application</text>
+<text x="902" y="598" font-size="13">application_id PK </text>
+<text x="902" y="623" font-size="13">student_id FK </text>
+<text x="902" y="648" font-size="13">posting_id FK </text>
+<text x="902" y="673" font-size="13">status_id FK </text>
+<text x="902" y="698" font-size="13">date_applied ?</text>
+<text x="902" y="723" font-size="13">source ?</text>
+<text x="902" y="748" font-size="13">priority </text>
+<text x="902" y="773" font-size="13">notes ?</text>
+<text x="902" y="939" font-size="11">Keys: application_id; student_id + posting_id</text>
+<rect x="24" y="988" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
+<text x="38" y="1018" font-size="19" class="title">Interview</text>
+<text x="38" y="1048" font-size="13">interview_id PK </text>
+<text x="38" y="1073" font-size="13">application_id FK </text>
+<text x="38" y="1098" font-size="13">interview_round </text>
+<text x="38" y="1123" font-size="13">interview_type </text>
+<text x="38" y="1148" font-size="13">scheduled_at </text>
+<text x="38" y="1173" font-size="13">location ?</text>
+<text x="38" y="1198" font-size="13">interviewer_name ?</text>
+<text x="38" y="1223" font-size="13">result </text>
+<text x="38" y="1389" font-size="11">Keys: interview_id; application_id + interview_round</text>
+<rect x="456" y="988" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
+<text x="470" y="1018" font-size="19" class="title">Offer</text>
+<text x="470" y="1048" font-size="13">offer_id PK </text>
+<text x="470" y="1073" font-size="13">application_id FK </text>
+<text x="470" y="1098" font-size="13">hourly_wage ?</text>
+<text x="470" y="1123" font-size="13">offer_date </text>
+<text x="470" y="1148" font-size="13">response_deadline ?</text>
+<text x="470" y="1173" font-size="13">offer_status </text>
+<text x="470" y="1198" font-size="13">notes ?</text>
+<text x="470" y="1389" font-size="11">Keys: offer_id; application_id</text>
+<rect x="888" y="988" width="408" height="424" rx="10" fill="white" stroke="#bccbdb"/>
+<text x="902" y="1018" font-size="19" class="title">ApplicationResume</text>
+<text x="902" y="1048" font-size="13">application_id PK FK </text>
+<text x="902" y="1073" font-size="13">resume_id FK </text>
+<text x="902" y="1389" font-size="11">Keys: application_id</text>
+<text x="28" y="1450" font-size="20" class="title">Relationship graph · each child references exactly one parent</text>
+<text x="28" y="1475" font-size="13">1 at parent end; 0..* or 0..1 at child end. Attributes for each node appear above.</text>
+<line x1="1130.0" y1="1564.0" x2="1130.0" y2="1656.0" stroke="#4b6d93" stroke-width="2"/>
+<text x="1130.0" y="1571.8" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">1</text>
+<text x="1130.0" y="1604.0" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">posts</text>
+<text x="1130.0" y="1636.2" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">0..*</text>
+<line x1="150.0" y1="1564.0" x2="150.0" y2="1656.0" stroke="#4b6d93" stroke-width="2"/>
+<text x="150.0" y="1571.8" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">1</text>
+<text x="150.0" y="1604.0" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">owns</text>
+<text x="150.0" y="1636.2" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">0..*</text>
+<line x1="234.0" y1="1564.0" x2="556.0" y2="1656.0" stroke="#4b6d93" stroke-width="2"/>
+<text x="282.3" y="1571.8" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">1</text>
+<text x="395.0" y="1604.0" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">submits</text>
+<text x="507.7" y="1636.2" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">0..*</text>
+<line x1="1018.0" y1="1680.0" x2="752.0" y2="1680.0" stroke="#4b6d93" stroke-width="2"/>
+<text x="978.1" y="1674.0" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">1</text>
+<text x="885.0" y="1674.0" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">receives</text>
+<text x="791.9" y="1674.0" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">0..*</text>
+<line x1="640.0" y1="1564.0" x2="640.0" y2="1656.0" stroke="#4b6d93" stroke-width="2"/>
+<text x="640.0" y="1571.8" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">1</text>
+<text x="640.0" y="1604.0" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">classifies</text>
+<text x="640.0" y="1636.2" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">0..*</text>
+<line x1="640.0" y1="1704.0" x2="640.0" y2="1846.0" stroke="#4b6d93" stroke-width="2"/>
+<text x="640.0" y="1719.3" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">1</text>
+<text x="640.0" y="1769.0" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">has</text>
+<text x="640.0" y="1818.7" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">0..*</text>
+<line x1="701.8947368421053" y1="1704.0" x2="1068.1052631578948" y2="1846.0" stroke="#4b6d93" stroke-width="2"/>
+<text x="756.8263157894737" y="1719.3" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">1</text>
+<text x="885.0" y="1769.0" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">receives</text>
+<text x="1013.1736842105263" y="1818.7" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">0..1</text>
+<line x1="578.1052631578947" y1="1704.0" x2="211.89473684210526" y2="1846.0" stroke="#4b6d93" stroke-width="2"/>
+<text x="523.1736842105263" y="1719.3" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">1</text>
+<text x="395.0" y="1769.0" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">selects</text>
+<text x="266.82631578947365" y="1818.7" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">0..1</text>
+<line x1="150.0" y1="1704.0" x2="150.0" y2="1846.0" stroke="#4b6d93" stroke-width="2"/>
+<text x="150.0" y="1719.3" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">1</text>
+<text x="150.0" y="1769.0" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">used_by</text>
+<text x="150.0" y="1818.7" text-anchor="middle" font-size="12" style="paint-order:stroke;stroke:#f4f7fb;stroke-width:5;stroke-linejoin:round">0..*</text>
+<rect x="38" y="1516" width="224" height="48" rx="7" fill="white" stroke="#7795b5"/>
+<text x="150" y="1545" text-anchor="middle" font-size="15" class="title">Student</text>
+<rect x="528" y="1516" width="224" height="48" rx="7" fill="white" stroke="#7795b5"/>
+<text x="640" y="1545" text-anchor="middle" font-size="15" class="title">ApplicationStatus</text>
+<rect x="1018" y="1516" width="224" height="48" rx="7" fill="white" stroke="#7795b5"/>
+<text x="1130" y="1545" text-anchor="middle" font-size="15" class="title">Employer</text>
+<rect x="38" y="1656" width="224" height="48" rx="7" fill="white" stroke="#7795b5"/>
+<text x="150" y="1685" text-anchor="middle" font-size="15" class="title">ResumeVersion</text>
+<rect x="528" y="1656" width="224" height="48" rx="7" fill="white" stroke="#7795b5"/>
+<text x="640" y="1685" text-anchor="middle" font-size="15" class="title">Application</text>
+<rect x="1018" y="1656" width="224" height="48" rx="7" fill="white" stroke="#7795b5"/>
+<text x="1130" y="1685" text-anchor="middle" font-size="15" class="title">JobPosting</text>
+<rect x="38" y="1846" width="224" height="48" rx="7" fill="white" stroke="#7795b5"/>
+<text x="150" y="1875" text-anchor="middle" font-size="15" class="title">ApplicationResume</text>
+<rect x="528" y="1846" width="224" height="48" rx="7" fill="white" stroke="#7795b5"/>
+<text x="640" y="1875" text-anchor="middle" font-size="15" class="title">Interview</text>
+<rect x="1018" y="1846" width="224" height="48" rx="7" fill="white" stroke="#7795b5"/>
+<text x="1130" y="1875" text-anchor="middle" font-size="15" class="title">Offer</text>
 </svg>

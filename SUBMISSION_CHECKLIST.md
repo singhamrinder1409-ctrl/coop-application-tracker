@@ -1,37 +1,36 @@
-# Submission Checklist
+# Sprint 1 submission checklist
 
-This checklist is based on the kick-off instructions and rubric.
+## Completed in this repository
 
-## Required By The Instructions
+- [x] Every kick-off commitment recapped with status and evidence in SPRINT_PLAN.md.
+- [x] All four written feedback gaps addressed, including Advanced Relational Design topics.
+- [x] Complete ERD and generated relational schema.
+- [x] Table-by-table FD, key, minimal basis and BCNF checks; worked projection, 3NF and 4NF explanations.
+- [x] Resume ownership enforcement and more than five formal integrity rules.
+- [x] Synthetic normal/edge data, five reporting queries and actual MySQL execution evidence.
+- [x] Workflow and rejected-write verification; next sprint plan through proposed Advanced SQL scope.
+- [x] Team recording script and sources provided.
 
-- [x] Team is identified: Group 3 with Amrinder, Jaiman, and Aashna.
-- [x] Initial project direction is chosen: Co-op Application Tracker.
-- [x] Git repository files are prepared.
-- [ ] GitHub link is added to the Brightspace submission.
-- [ ] Exact commit hash is added to the Brightspace submission.
-- [ ] Video progress report is recorded.
-- [ ] Video is 11 minutes or less because the group has 3 people.
-- [ ] One group member submits on behalf of the group.
-- [ ] If the GitHub repo is private, instructor and TA-client are given access.
+## Must be completed by the group before Brightspace submission
 
-## Evidence We Have In The Repo
+- [ ] Compare competency matrix with official Brightspace course/module competencies. Official wording was not supplied.
+- [ ] Confirm TA-client assumptions or explicitly disclose review still pending.
+- [ ] Review code/theory and practice explaining it; do not claim unperformed work.
+- [ ] Record the actual team video. Target 7:30 including transitions and below 8:00 to satisfy both the formula and inconsistent example in the pasted instructions.
+- [ ] Measure the exported recording's length; do not rely on the script's estimate.
+- [ ] Create or select a GitHub/UVic GitLab remote. None is configured locally.
+- [ ] Push the submission commit to the chosen remote and verify the URL resolves to that commit.
+- [ ] For a private repository, grant instructor and TA-client access.
+- [ ] Include repository URL, exact full commit hash, and video in Brightspace; only one member submits for Group 3.
 
-- [x] Project overview: `PROJECT_KICKOFF.md`
-- [x] ERD/conceptual design: `ERD.md`
-- [x] Relational schema: `RELATIONAL_SCHEMA.md`
-- [x] Normalization and BCNF notes: `NORMALIZATION.md`
-- [x] MySQL DDL: `schema.sql`
-- [x] Current sprint evidence and next sprint plan: `SPRINT_PLAN.md`
-- [x] Course sources used: `SOURCES.md`
-- [x] Rendered ERD image: `ERD.svg`
+After the final edit, commit and inspect:
 
-## Helpful But Not Main Submission Files
+```sh
+git status --short
+git add .
+git commit -m "Complete CSC 370 Sprint 1 evidence and Advanced SQL plan"
+git rev-parse HEAD
+git remote -v
+```
 
-- [x] Sample data: `supporting-files/seed.sql`
-- [x] Demo queries: `supporting-files/demo_queries.sql`
-- [x] Video outline: `supporting-files/video-script.md`
-- [x] Team speaking script: `TEAM_VIDEO_SCRIPT.md`
-
-## Nothing Major Missing Right Now
-
-The main thing still missing is the actual GitHub URL, final commit hash after the last edit, and the recorded video.
+Run these commands inside this project's own Git repository, not the surrounding research repository. If this session already created the final commit, use `git rev-parse HEAD`; do not make an empty replacement commit. Add a remote and push only after selecting the intended account/repository.
