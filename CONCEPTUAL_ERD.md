@@ -23,4 +23,4 @@ Application is an entity with its own identifier because it has lifecycle attrib
 
 Interview uses its surrogate interview_id in the implemented model, with the alternate identifier (application, interview_round) documented. The weak-entity alternative and the decision against unnecessary inheritance are in `docs/CONSTRAINTS.md`.
 
-Generate and check with `python3 scripts/conceptual_erd.py`. The complete relational schema records SQL types, nullable fields, alternate keys and FKs separately, keeping conceptual relationships separate from SQL implementation details.
+Saved conceptual coverage results are in `evidence/conceptual-erd-verification.txt`. The complete relational schema records SQL types, nullable fields, alternate keys and FKs separately, keeping conceptual relationships separate from SQL implementation details.

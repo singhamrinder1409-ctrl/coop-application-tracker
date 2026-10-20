@@ -24,7 +24,7 @@ For each row below, let `P` be the primary key and `N` every other attribute lis
 
 Key closures reach every attribute. For example, `{student_id, version_number}+` first reaches resume_id, then resume_label, created_on and file_name. Neither student_id alone nor version_number alone reaches resume_id. In Application, student_id and posting_id separately are not keys. In Offer, application_id reaches offer_id and then every offer attribute.
 
-Minimality: each RHS is one attribute; deleting a key component destroys its ability to identify the record; removing any listed FD makes that RHS unreachable from its LHS. `scripts/design.py` tests each deletion and each LHS component. It searches attribute subsets, skips supersets of established keys, computes the remaining closures and rejects non-key determinants with a nontrivial closure. Thus the BCNF decision checks implied dependencies too. This verifies the declared model, not whether our domain assumptions are complete.
+Minimality: each RHS is one attribute; deleting a key component destroys its ability to identify the record; removing any listed FD makes that RHS unreachable from its LHS. The development checker tested each deletion and each LHS component; results are saved in `evidence/design-verification.txt`. It searched attribute subsets, skipped supersets of established keys, computed the remaining closures and rejected non-key determinants with a nontrivial closure. Thus the BCNF decision checks implied dependencies too. This verifies the declared model, not whether our domain assumptions are complete.
 
 ## FDs in the ERD
 
@@ -58,7 +58,7 @@ The production model stores single values for program, location, file_name and o
 
 ## Reproducible worked-example checks
 
-Run `python3 scripts/verify_theory.py` to check every subset closure for the minimal-basis and projected-basis examples, the lossless-intersection and preservation conditions, both Allocation candidate keys, its 3NF/BCNF distinction, a concrete dependency-preservation counterexample, and the four-row MVD reconstruction. Actual output is saved in `evidence/theory-examples.txt`. These checks complement the nine production-table checks and the stated domain assumptions.
+The development theory verifier checked every subset closure for the minimal-basis and projected-basis examples, the lossless-intersection and preservation conditions, both Allocation candidate keys, its 3NF/BCNF distinction, a concrete dependency-preservation counterexample, and the four-row MVD reconstruction. Actual output is saved in `evidence/theory-examples.txt`. These checks complement the nine production-table checks and the stated domain assumptions.
 
 ## Full 3NF synthesis with a key relation
 
@@ -71,7 +71,7 @@ Consider a design experiment, not extra production tables:
 2. Create AS, AP, SN and QT, one projection per FD. Each has a key determinant for its nontrivial FDs, so each is BCNF and hence 3NF.
 3. The only candidate key of the original relation is {A,Q}. Neither A nor Q appears on any RHS, so every key must include both; their combined closure reaches all six attributes. None of the first four projections contains a superkey of the original.
 4. Add AQ. Its projected FD set has no nontrivial dependencies, and {A,Q} is its key. Omitting this step would lose which application-note pairs existed and could create spurious combinations.
-5. The synthesized design is `{AS, AP, SN, QT, AQ}`. Every original FD is enforced in one projection, so dependencies are preserved. The minimal-basis synthesis theorem gives a lossless decomposition when the key relation is present. `verify_theory.py` also joins a three-row legal example and checks exact reconstruction.
+5. The synthesized design is `{AS, AP, SN, QT, AQ}`. Every original FD is enforced in one projection, so dependencies are preserved. The minimal-basis synthesis theorem gives a lossless decomposition when the key relation is present. The theory verifier also joined a three-row legal example and checked exact reconstruction.
 
 AS and AP may be combined into ASP because they share the same determinant A; this optional simplification is not necessary for the construction. A normalized production model should not be weakened merely to demonstrate 3NF: our actual tables retain their BCNF design. The earlier Allocation example separately explains when preserving a non-BCNF 3NF relation is useful.
 

@@ -18,7 +18,7 @@ Group 3: Amrinder Singh, Jaiman Singh and Aashna Sadeque. We worked together on 
 
 | TA feedback | Correction | Evidence to show |
 | --- | --- | --- |
-| BCNF not fully demonstrated table by table | Nine-table FD basis, all keys, closure/minimality/BCNF checks; resume FD resolved by decomposition | `NORMALIZATION.md`, `scripts/design.py`, `evidence/design-verification.txt` |
+| BCNF not fully demonstrated table by table | Nine-table FD basis, all keys, closure/minimality/BCNF checks; resume FD resolved by decomposition | `NORMALIZATION.md`, `evidence/design-verification.txt` |
 | ERD omitted most attributes | Complete course-style Chen diagram plus relational companion: all 59 SQL attributes accounted for, including all 13 JobPosting columns | `CONCEPTUAL_ERD.svg`, `CONCEPTUAL_ERD.md`, `ERD.svg`, generated `RELATIONAL_SCHEMA.md` |
 | Course competency and current limitation unnamed | Named course competencies (Data Analytics, Data Modelling, Back-end Engineering), concrete limitations and measurable checks | Sprint 2 matrix below |
 | Missing FDs in ERDs, minimal bases, projection, 3NF, 4NF | Explicit worked examples, assumptions and proofs/decisions | `NORMALIZATION.md`; not merely future promises |
@@ -69,4 +69,4 @@ The plan prioritizes correct SQL results, justified normalized models and transa
 
 ## Extension of the kick-off implementation
 
-`migrations/001_sprint1.sql` upgrades the exact original eight-table schema and preserves all four original application/resume assignments; 15 migration checks demonstrate preservation and preflight rejection of invalid ownership. Verification ran on separate test databases. See `migrations/README.md` for the upgrade procedure and MySQL DDL transaction limits.
+The developed migration upgraded the original eight-table schema and preserved all four original application/resume assignments. Its 15 saved checks in `evidence/migration-verification.txt` demonstrate preservation and preflight rejection of invalid ownership. The optional migration implementation and test tools are retained locally rather than included in this submission checkout. Verification ran on separate test databases. MySQL DDL commits implicitly, so the migration was not an atomic transaction.

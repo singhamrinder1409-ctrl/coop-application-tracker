@@ -24,14 +24,14 @@ Start with the [Sprint 1 report and Sprint 2 plan](SPRINT_PLAN.md). It compares 
 | Table-by-table BCNF, FDs, keys, minimal bases, projection, 3NF and 4NF | [Normalization report](NORMALIZATION.md) |
 | SQL and relational-algebra constraints; weak entities and inheritance | [Integrity rules and design decisions](docs/CONSTRAINTS.md) |
 | Eight conceptual-design quality criteria | [Design review](docs/CONCEPTUAL_DESIGN_REVIEW.md) |
-| Preservation of the kick-off data | [Migration instructions](migrations/README.md), [migration results](evidence/migration-verification.txt) |
+| Preservation of the kick-off data | [Saved migration results](evidence/migration-verification.txt) |
 | References and assistance acknowledgement | [Sources](SOURCES.md) |
 
-The [original kick-off report](docs/archive/PROJECT_KICKOFF.md), plan, DDL and seed are retained in `docs/archive/` as the comparison baseline. They describe the earlier version; the files linked above describe Sprint 1.
+The original kickoff plan, DDL and seed are retained in `docs/archive/` as the comparison baseline. They describe the earlier version; the files linked above describe Sprint 1.
 
 ## Run the database and reports
 
-Requirements: Python 3 and MySQL 8.0.16 or later. The Python scripts use the standard library. Recorded database verification used MySQL 8.4.8. All nine tables explicitly use InnoDB.
+Requirement: MySQL 8.0.16 or later. Recorded database verification used MySQL 8.4.8. All nine tables explicitly use InnoDB.
 
 Run these commands from the repository root with a MySQL account permitted to create databases, tables and triggers and execute SELECT, INSERT, UPDATE and DELETE:
 
@@ -41,27 +41,10 @@ mysql -u root -p < supporting-files/seed.sql
 mysql -u root -p < supporting-files/demo_queries.sql
 ```
 
-This creates `coop_application_tracker_sprint1`. Existing tables cause the load to stop; the scripts do not drop a database. For an existing kick-off installation, follow the migration instructions instead. Migration also requires ALTER, CREATE ROUTINE, ALTER ROUTINE and EXECUTE privileges; see the [MySQL privilege reference](https://dev.mysql.com/doc/refman/8.4/en/stored-routines-privileges.html).
+This creates `coop_application_tracker_sprint1`. Existing tables cause the load to stop; the current schema does not drop a database. Use a fresh installation for these commands rather than loading the seed over existing data. The archived kickoff DDL is historical and includes a database reset; it is not the current setup command.
 
-## Reproduce the verification
+## Verification evidence
 
-Configure authentication through `mysql_config_editor` or the MySQL client's normal environment, then run:
+The [evidence index](evidence/README.md) describes the saved results: 56 database checks, 15 migration checks, 12 worked theory checks, 10 design checks and two conceptual-diagram coverage checks. The [seven report outputs](evidence/demo-output.tsv) can be compared with a fresh run of the supplied schema, seed and report SQL.
 
-```sh
-python3 scripts/design.py
-python3 scripts/verify_theory.py
-python3 scripts/conceptual_erd.py
-python3 scripts/verify.py
-python3 scripts/verify_migration.py
-```
-
-`MYSQL_BIN`, `MYSQL_SOCKET` and `MYSQL_USER` select a different client, socket or account. The database verifiers create randomly named databases and retain them for inspection. The scripts reject `-O` and `PYTHONOPTIMIZE`, which disable their assertions.
-
-The [evidence index](evidence/README.md) describes the saved results: 56 database checks, 15 migration checks, 12 worked theory checks, 10 design checks and two conceptual-diagram coverage checks. The [seven report outputs](evidence/demo-output.tsv) can be compared with a fresh run. These checks validate the stated models and tested cases; domain assumptions and 4NF reasoning are documented separately in the normalization report.
-
-To regenerate the relational diagram/schema and conceptual diagram after a design change:
-
-```sh
-python3 scripts/design.py --generate
-python3 scripts/conceptual_erd.py
-```
+These are recorded verification results from the development version. The Python verification/generation tools and optional migration implementation are retained locally, outside this submission checkout. Their recorded results remain here as supporting evidence; the automated suites cannot be rerun from this checkout alone. The SQL demonstration and written design proofs can be checked using the files included here. Domain assumptions and 4NF reasoning are documented in the normalization report.
