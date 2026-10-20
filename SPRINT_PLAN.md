@@ -69,4 +69,4 @@ The plan prioritizes correct SQL results, justified normalized models and transa
 
 ## Extension of the kick-off implementation
 
-The developed migration upgraded the original eight-table schema and preserved all four original application/resume assignments. Its 15 saved checks in `evidence/migration-verification.txt` demonstrate preservation and preflight rejection of invalid ownership. The optional migration implementation and test tools are retained locally rather than included in this submission checkout. Verification ran on separate test databases. MySQL DDL commits implicitly, so the migration was not an atomic transaction.
+The developed migration upgraded the original eight-table schema and preserved all four original application/resume assignments. Its 15 saved checks in `evidence/migration-verification.txt` demonstrate preservation and preflight rejection of invalid ownership. The migration implementation is in `migrations/001_sprint1.sql`, and its verifier is `scripts/verify_migration.py`. Verification ran on separate test databases. MySQL DDL commits implicitly, so the migration was not an atomic transaction.

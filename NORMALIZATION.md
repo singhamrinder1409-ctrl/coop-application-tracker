@@ -24,7 +24,7 @@ For each row below, let `P` be the primary key and `N` every other attribute lis
 
 Key closures reach every attribute. For example, `{student_id, version_number}+` first reaches resume_id, then resume_label, created_on and file_name. Neither student_id alone nor version_number alone reaches resume_id. In Application, student_id and posting_id separately are not keys. In Offer, application_id reaches offer_id and then every offer attribute.
 
-Minimality: each RHS is one attribute; deleting a key component destroys its ability to identify the record; removing any listed FD makes that RHS unreachable from its LHS. The development checker tested each deletion and each LHS component; results are saved in `evidence/design-verification.txt`. It searched attribute subsets, skipped supersets of established keys, computed the remaining closures and rejected non-key determinants with a nontrivial closure. Thus the BCNF decision checks implied dependencies too. This verifies the declared model, not whether our domain assumptions are complete.
+Minimality: each RHS is one attribute; deleting a key component destroys its ability to identify the record; removing any listed FD makes that RHS unreachable from its LHS. `scripts/design.py` checks each deletion and each LHS component; results are saved in `evidence/design-verification.txt`. It searched attribute subsets, skipped supersets of established keys, computed the remaining closures and rejected non-key determinants with a nontrivial closure. Thus the BCNF decision checks implied dependencies too. This verifies the declared model, not whether our domain assumptions are complete.
 
 ## FDs in the ERD
 
@@ -58,7 +58,7 @@ The production model stores single values for program, location, file_name and o
 
 ## Reproducible worked-example checks
 
-The development theory verifier checked every subset closure for the minimal-basis and projected-basis examples, the lossless-intersection and preservation conditions, both Allocation candidate keys, its 3NF/BCNF distinction, a concrete dependency-preservation counterexample, and the four-row MVD reconstruction. Actual output is saved in `evidence/theory-examples.txt`. These checks complement the nine production-table checks and the stated domain assumptions.
+`python3 scripts/verify_theory.py` checks every subset closure for the minimal-basis and projected-basis examples, the lossless-intersection and preservation conditions, both Allocation candidate keys, its 3NF/BCNF distinction, a concrete dependency-preservation counterexample, and the four-row MVD reconstruction. Actual output is saved in `evidence/theory-examples.txt`. These checks complement the nine production-table checks and the stated domain assumptions.
 
 ## Full 3NF synthesis with a key relation
 

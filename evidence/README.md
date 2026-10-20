@@ -9,6 +9,6 @@ Run date: 2026-10-18, America/Vancouver. Environment: macOS arm64, MySQL Communi
 - `conceptual-erd-verification.txt`: Chen descriptive-attribute coverage and mapping of all SQL FK columns through relationships.
 - `demo-output.tsv`: actual output from the seven supplied report queries on the same successful test database. Upcoming interviews use 2026-10-18 as a fixed demonstration date.
 
-The automated verification tools and optional migration implementation are retained locally, outside the submission checkout. These logs record the completed development runs; the automated suites cannot be rerun using this checkout alone. The supplied schema, seed and report SQL reproduce the database demonstration. See the root README for commands.
+The verification tools are included in `scripts/`, and the migration implementation is in `migrations/`. These logs record the completed development runs. See the root README for the commands to rerun the checks or reproduce the SQL reports.
 
 The 4NF discussion is a domain/MVD argument, not an automated FD test result. Course mappings and technical limits are recorded in SPRINT_PLAN.md. Recording, recipient access and Brightspace upload are separate submission actions.

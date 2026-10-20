@@ -31,7 +31,7 @@ The original kickoff plan, DDL and seed are retained in `docs/archive/` as the c
 
 ## Run the database and reports
 
-Requirement: MySQL 8.0.16 or later. Recorded database verification used MySQL 8.4.8. All nine tables explicitly use InnoDB.
+Requirements: Python 3 and MySQL 8.0.16 or later. The verification scripts use the Python standard library. Recorded database verification used MySQL 8.4.8. All nine tables explicitly use InnoDB.
 
 Run these commands from the repository root with a MySQL account permitted to create databases, tables and triggers and execute SELECT, INSERT, UPDATE and DELETE:
 
@@ -47,4 +47,16 @@ This creates `coop_application_tracker_sprint1`. Existing tables cause the load 
 
 The [evidence index](evidence/README.md) describes the saved results: 56 database checks, 15 migration checks, 12 worked theory checks, 10 design checks and two conceptual-diagram coverage checks. The [seven report outputs](evidence/demo-output.tsv) can be compared with a fresh run of the supplied schema, seed and report SQL.
 
-These are recorded verification results from the development version. The Python verification/generation tools and optional migration implementation are retained locally, outside this submission checkout. Their recorded results remain here as supporting evidence; the automated suites cannot be rerun from this checkout alone. The SQL demonstration and written design proofs can be checked using the files included here. Domain assumptions and 4NF reasoning are documented in the normalization report.
+To rerun the checks, configure MySQL authentication through `mysql_config_editor` or the client's normal environment, then run from the repository root:
+
+```sh
+python3 scripts/design.py
+python3 scripts/verify_theory.py
+python3 scripts/conceptual_erd.py
+python3 scripts/verify.py
+python3 scripts/verify_migration.py
+```
+
+`MYSQL_BIN`, `MYSQL_SOCKET` and `MYSQL_USER` select a different client, socket or account. The database verifiers create randomly named databases and retain them for inspection. They require database/table/trigger creation and data manipulation privileges; migration checks also require ALTER, CREATE ROUTINE, ALTER ROUTINE and EXECUTE. The scripts reject `-O` and `PYTHONOPTIMIZE`, which disable assertions.
+
+The [migration instructions](migrations/README.md) explain upgrading an existing kickoff installation. Domain assumptions and 4NF reasoning are documented separately in the normalization report.
