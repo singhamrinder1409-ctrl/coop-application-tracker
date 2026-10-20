@@ -2,7 +2,7 @@
 
 ![Complete Chen conceptual ERD](CONCEPTUAL_ERD.svg)
 
-The Conceptual Design lecture (CSC370-4, slides 9-10) explicitly chooses Chen-style conceptual notation. This diagram therefore uses entity rectangles, descriptive-attribute ellipses, underlined identifiers and relationship diamonds. It complements the complete relational diagram in `ERD.svg`; that relational diagram is not presented as a substitute for the conceptual model.
+This diagram uses Chen notation with entity rectangles, descriptive-attribute ellipses, underlined identifiers and relationship diamonds. It complements the complete relational diagram in `ERD.svg`; that relational diagram is not presented as a substitute for the conceptual model.
 
 There are eight conceptual entity sets with all 50 descriptive attributes/identifiers shown. The nine SQL FK columns are represented by the eight relationships below, giving full coverage of the 59 attributes in the relational schema. A pure assignment table is the logical implementation of the Selected relationship, not a ninth independent conceptual entity.
 
@@ -23,4 +23,4 @@ Application is an entity with its own identifier because it has lifecycle attrib
 
 Interview uses its surrogate interview_id in the implemented model, with the alternate identifier (application, interview_round) documented. The weak-entity alternative and the decision against unnecessary inheritance are in `docs/CONSTRAINTS.md`.
 
-Generate and check with `python3 scripts/conceptual_erd.py`. The complete relational schema records SQL types, nullable fields, alternate keys and FKs separately, as required by the conceptual/logical/physical distinction in the lectures.
+Generate and check with `python3 scripts/conceptual_erd.py`. The complete relational schema records SQL types, nullable fields, alternate keys and FKs separately, keeping conceptual relationships separate from SQL implementation details.

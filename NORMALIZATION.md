@@ -62,7 +62,7 @@ Run `python3 scripts/verify_theory.py` to check every subset closure for the min
 
 ## Full 3NF synthesis with a key relation
 
-The corrected 3NF lecture (CSC370-23, slide 24) and Third Normal Form worksheet require more than recognizing prime attributes: construct relations from a minimal basis and add a key relation if necessary.
+Full 3NF synthesis constructs relations from a minimal basis and adds a key-containing relation if necessary.
 
 Consider a design experiment, not extra production tables:
 `FlatApplicationNotes(A,S,P,N,Q,T)` with A=application_id, S=student_id, P=posting_id, N=student_name, Q=note_id and T=note_text. Let `F = {A->S, A->P, S->N, Q->T}`. Here notes are reusable note snippets that may be attached to more than one application, and an application may use several snippets; no A->Q or Q->A dependency is assumed in this experiment.
@@ -77,21 +77,21 @@ AS and AP may be combined into ASP because they share the same determinant A; th
 
 ## Formal MVD reasoning and a rule that does not carry over
 
-The 4NF deck (CSC370-24, slide 22) defines `X ->> Y` by tuple swapping. Let Z be all attributes outside X∪Y. For any t,u agreeing on X, a tuple v must exist with the same X, t's Y values and u's Z values. This is a constraint on **all legal instances**, not evidence that a dependency holds merely because a small sample happens to satisfy it.
+The tuple-swap definition of an MVD describes `X ->> Y` by tuple swapping. Let Z be all attributes outside X∪Y. For any t,u agreeing on X, a tuple v must exist with the same X, t's Y values and u's Z values. This is a constraint on **all legal instances**, not evidence that a dependency holds merely because a small sample happens to satisfy it.
 
-An MVD is trivial if Y⊆X or X∪Y is the entire schema. If X->>Y, then X->>Z by complementarity. Every FD is an MVD; consequently 4NF implies BCNF, which implies 3NF. The opposite implications need not hold. Worksheet 3NF Question 4's proposed “BCNF but not 3NF” alternative is therefore impossible.
+An MVD is trivial if Y⊆X or X∪Y is the entire schema. If X->>Y, then X->>Z by complementarity. Every FD is an MVD; consequently 4NF implies BCNF, which implies 3NF. The opposite implications need not hold. A “BCNF but not 3NF” example is therefore impossible.
 
 Unlike an FD, `A ->> BC` cannot in general be split into `A ->> B` and `A ->> C`. For R(A,B,C,D), take the four tuples formed by correlated pairs (b1,c1),(b2,c2), independently combined with d1,d2 for one a. A->>BC holds, but A->>B fails because a tuple combining b1 with c2 is absent. The verifier checks this and the exact swap definition, complementarity, both trivial cases, and the earlier independent skill/city example.
 
 For a nontrivial violation X->>Y with a non-superkey X, the 4NF decomposition is XY and XZ, recursing after projecting dependencies. In the preference example, X={student}, Y={skill}, Z={city}; the two projections are precisely StudentSkill and StudentPreferredCity. A binary relation with just student and skill has a trivial MVD student->>skill because X∪Y is the whole schema, so that dependency does not call for another decomposition.
 
-## Reading corrected slides consistently
+## Candidate keys in the cinema example
 
-The corrected 3NF deck, slides 16 and 23, correctly identifies both {city,title} and {theatre,title} as keys of CinemaShowings. The 4NF deck's review slide 7 says only the latter is a key, conflicting with its own following explanation. Computing closures resolves this: city,title determines theatre, and theatre determines city. We follow the corrected deck and the closure calculations, not the inconsistent review sentence. No FD or MVD property is justified solely by copying a slide summary.
+Both {city,title} and {theatre,title} are keys under the example's dependencies: city,title determines theatre, and theatre determines city. Closure calculations verify both keys. Source qualifications are recorded in SOURCES.md.
 
 ## Complete projection table for the project-shaped Flat example
 
-For the earlier `Flat(A,S,N,P)` minimal basis `{A->S, A->P, S->N}`, project onto {A,N,P} as prescribed by lecture 12 and the projecting-FDs worksheet:
+For the earlier `Flat(A,S,N,P)` minimal basis `{A->S, A->P, S->N}`, project onto {A,N,P} by computing the original closures and retaining the projected attributes:
 
 | Subset X | Original closure X+ | Restriction X+ ∩ {A,N,P} |
 | --- | --- | --- |

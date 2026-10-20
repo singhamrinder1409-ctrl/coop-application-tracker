@@ -5,11 +5,11 @@
 - `Feedback for Project Kick-Off - Fall 2026 CSC 370 A01 A02 X - University of Victoria.pdf`: feedback on BCNF evidence, ERD completeness, competency/current-limitation planning and Advanced Relational Design coverage.
 - `Project Sprint 1 - Fall 2026 CSC 370 A01 A02 X - University of Victoria.pdf`: the four grading criteria.
 - Sprint 1 assignment text supplied with this project: current scope through Advanced Relational Design, next scope through Advanced SQL, repository URL/hash and video requirements.
-- Kick-off commit `ac978f8`: the original plan, schema and data. Copies are in `docs/archive/`.
+- Original kickoff plan, schema and data: preserved in `docs/archive/`.
 
 ## Course material
 
-Sean Chester's supplied CSC 370 materials include 14 lecture PDFs, one practice-exam PDF, 16 transcripts and three worksheet archives. `docs/COURSE_ALIGNMENT.md` gives the relevant slide references and their connection to the project.
+Sean Chester's supplied CSC 370 materials include 14 lecture PDFs, one practice-exam PDF, 16 transcripts and three worksheet archives. `docs/COURSE_ALIGNMENT.md` connects the course topics to the project.
 
 | PDF | Use in this submission |
 | --- | --- |
@@ -30,7 +30,7 @@ Sean Chester's supplied CSC 370 materials include 14 lecture PDFs, one practice-
 
 The three worksheets provide practice in ERD keys/DDL, projecting FDs and 3NF synthesis. Their methods are applied to project-shaped examples. The file named `CSC 485A_586F Lectur-transcript.txt` identifies CSC 370 in its opening; it supplies the introductory guidance that visualization is outside scope and APIs are aspirational. Other transcripts support the corresponding lessons. Relative dates in transcripts are not used to set this submission's deadline.
 
-The corrected 3NF deck and closure calculations identify both {city,title} and {theatre,title} as cinema keys. The inconsistent sentence in the 4NF review slide is discussed in NORMALIZATION.md. Course files are referenced without redistributing the supplied PDFs or transcripts.
+The corrected 3NF deck and closure calculations identify both {city,title} and {theatre,title} as cinema keys. The 4NF review slide 7 gives an inconsistent key statement; the corrected 3NF material and closure calculations support both keys. Course files are referenced without redistributing the supplied PDFs or transcripts.
 
 The ten-page `Fall 2026 CSC 370 A01 A02 X - Data Modelling Practice Exam (1 booklet).pdf` supplies rehearsal formats: explain changed constraints with counterexamples, derive ERD FDs, adjust keys/DDL, and justify design alternatives (questions 16-21). Its movie/ticket examples are not tracker requirements.
 
