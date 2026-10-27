@@ -1,4 +1,17 @@
-# Co-op Application Tracker - CSC 370 Sprint 1
+# Co-op Application Tracker
+
+A MySQL database for tracking co-op applications, job postings, resume versions, interviews and offers.
+
+![Relational database diagram](ERD.svg)
+
+## Portfolio overview
+
+- **Scope:** nine tables and 59 columns, with integrity constraints, migration scripts and reproducible report queries.
+- **My contribution:** I proposed the tracker concept and contributed schema design, SQL queries, Python verification, migration and documentation. Implementation and verification were shared team work.
+- **Recorded results:** 56 database checks and 15 migration checks, with saved evidence linked below. These are recorded project results, not a fresh database run during portfolio preparation.
+- **Next steps:** develop an application interface and extend the reporting beyond the current course sprint. The sprint report separates delivered functionality from planned work.
+
+## Course project context
 
 Group 3: Amrinder Singh (`amrinder`), Jaiman Singh (`jaiman1`), Aashna Sadeque (`aashnas`). We worked together on the design, implementation, verification and documentation.
 
