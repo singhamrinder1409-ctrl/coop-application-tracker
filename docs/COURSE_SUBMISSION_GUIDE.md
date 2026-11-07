@@ -1,11 +1,12 @@
-## Guide to the submission
+# Guide to the Sprint 2 submission
 
-Start with the [Sprint 1 report and Sprint 2 plan](../SPRINT_PLAN.md). It compares the prior commitments with delivered results, addresses the kick-off feedback and sets measurable goals through Advanced SQL.
+Start with the [Sprint 2 report and Sprint 3 plan](../SPRINT_PLAN.md). It compares every promised goal with its result, responds to the supplied Sprint 1 feedback and plans through Analysing Query Algorithms.
 
 | Grading criterion | Evidence |
 | --- | --- |
-| Achievement of sprint goals | The report's prior-commitment and feedback tables link each result to its implementation or verification. [Saved results](../evidence/README.md) include seven report outputs, valid workflows, rejected writes and migration checks. |
-| Justification for missed goals | The report's technical-limits section distinguishes completed work, design assumptions and unverified submission actions. No subsequent TA meeting or approval is claimed. |
-| Improvement in course-level competencies | The next-sprint matrix names Data Analytics, Data Modelling and Back-end Engineering, with current limitations, shared team responsibility, effort and objective success criteria. |
-| Coverage of new module competencies | The [course mapping](COURSE_ALIGNMENT.md) connects current work through Advanced Relational Design and planned work through Advanced SQL to evidence and checks. |
+| Achievement of sprint goals | The prior-goal table maps all six goals to SQL and saved results. [Sprint 2 evidence](../evidence/sprint2/README.md) links the runnable checks and report outputs. |
+| Justification for missed goals | The technical-limits section distinguishes delivered implementation, assumptions, transaction boundaries and unverified video/access/upload steps. No invented TA meeting, measured velocity or performance result is claimed. |
+| Improvement in course-level competencies | The Sprint 3 plan names Data Analytics, Data Modelling and Back-end Engineering, states current limitations, and gives shared effort estimates and measurable acceptance criteria. |
+| Coverage of new module competencies | The current topic matrix covers Advanced SQL. The next plan names query algorithms, operators, page-I/O costs, memory/cardinality assumptions, plans and controlled comparisons, each with objective evidence requirements. |
 
+Submit one repository URL, exact final published commit hash and measured group video. Confirm private-repository access for the instructor and TA. The repository checks cannot verify those human submission steps. Recording scripts and team preparation stay local.

@@ -1,0 +1,63 @@
+Disposable database: coop_sprint2_test_2a41f48f1971
+Version: 8.4.8
+PASS nine unchanged base tables and two views
+PASS R1 exact ordered report rows
+PASS R2 exact ordered report rows
+PASS R3 exact ordered report rows
+PASS R4 exact ordered report rows
+PASS R5 exact ordered report rows
+PASS R6 exact ordered report rows
+PASS R7 exact ordered report rows
+PASS R8 exact ordered report rows
+PASS ApplicationOverview independent expected rows
+PASS ApplicationOverview all columns equal direct query
+PASS StudentWorkload direct-query equivalence with expected rows
+PASS E1 baseline A expected bag
+PASS E1 baseline B expected bag
+PASS E2 baseline A expected bag
+PASS E2 baseline B expected bag
+PASS E3 baseline A expected bag
+PASS E3 baseline B expected bag
+PASS E4 baseline A expected bag
+PASS E4 baseline B expected bag
+PASS E1 no assignments A expected bag
+PASS E1 no assignments B expected bag
+PASS E2 duplicate display names A expected bag
+PASS E2 duplicate display names B expected bag
+PASS E3 no interviews A expected bag
+PASS E3 no interviews B expected bag
+PASS E4 overlapping branches A expected bag
+PASS E4 overlapping branches B expected bag
+PASS UNION ALL overlap would duplicate application 1
+PASS NOT IN with a NULL right side loses the no-application student
+PASS NOT EXISTS keeps the no-application student
+PASS COUNT star would report one application for the unmatched student
+PASS join without DISTINCT duplicates the interviewed application
+PASS extra interview does not multiply offered/interviewed applications
+PASS distinct student IDs preserve duplicate display names
+PASS division on an empty open-posting set includes all students
+PASS new open posting without applications makes division empty
+PASS offer count includes offers with NULL wage
+PASS O1 optional CTE/window report expected rows
+PASS O2 optional CTE/window report expected rows
+PASS window tie broken by posting/application IDs
+PASS E2 no applications A expected bag
+PASS E2 no applications B expected bag
+PASS CTE empty fixture avoids division by zero
+PASS window empty fixture returns no rows
+PASS duplicate round after status update triggers rollback (expected MySQL error 1062)
+PASS failed duplicate preserves old status and interview count in new connection
+PASS NULL schedule after status update triggers rollback (expected MySQL error 1048)
+PASS failed NULL schedule preserves saved status and no child
+PASS nonpositive round rejected (expected MySQL error 3819)
+PASS failed round check rolls status back
+PASS unknown application rejected (expected MySQL error 1644)
+PASS terminal application rejected (expected MySQL error 1644)
+PASS invalid interview type rejected (expected MySQL error 1644)
+PASS autocommit-disabled caller rejected (expected MySQL error 1644)
+PASS unusable interview status rejected (expected MySQL error 1644)
+PASS committed status and interview visible in new connection
+PASS ownership enforcement remains active (expected MySQL error 1644)
+PASS still nine base tables after routine workflow
+ALL SPRINT 2 CHECKS PASSED (59 checks).
+Retained disposable database: coop_sprint2_test_2a41f48f1971

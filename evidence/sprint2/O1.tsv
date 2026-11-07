@@ -1,0 +1,7 @@
+status_id	status_name	application_count	percent_of_applications
+1	saved	2	33.33
+2	applied	1	16.67
+3	interview	1	16.67
+4	offer	1	16.67
+5	rejected	1	16.67
+6	withdrawn	0	0.00

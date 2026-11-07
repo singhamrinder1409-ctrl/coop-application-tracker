@@ -1,0 +1,195 @@
+Sprint 2 verification, 2026-11-07 America/Vancouver
+Environment: Darwin arm64; MySQL 8.4.8; isolated server with networking disabled.
+Clean local clone of the staged implementation; no untracked preparation files copied.
+Generated evidence is copied back only after all commands succeed.
+The base schema, seed and diagrams are unchanged from Sprint 1.
+
+$ python3 scripts/design.py
+PASS Student : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
+PASS Employer : minimal singleton-RHS basis; 1 candidate key(s); BCNF under declared FDs
+PASS JobPosting : minimal singleton-RHS basis; 1 candidate key(s); BCNF under declared FDs
+PASS ApplicationStatus : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
+PASS ResumeVersion : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
+PASS Application : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
+PASS Interview : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
+PASS Offer : minimal singleton-RHS basis; 2 candidate key(s); BCNF under declared FDs
+PASS ApplicationResume : minimal singleton-RHS basis; 1 candidate key(s); BCNF under declared FDs
+PASS complete ERD attribute coverage; projected A -> N; lossless intersection S -> (S,N)
+NOTE: finite checks validate the declared FD model, not completeness of domain assumptions or 4NF.
+
+$ python3 scripts/verify_theory.py
+PASS minimal basis preserves every closure and has no redundant FD or LHS attribute
+PASS projected basis matches all original closures restricted to A,N,P
+PASS Flat decomposition is lossless and preserves the original FD basis
+PASS assigned-resume decomposition is lossless and dependency-preserving
+PASS Allocation is 3NF but violates BCNF, with both candidate keys verified
+PASS BCNF projection counterexample demonstrates lost local SP -> M enforcement
+PASS 4NF independent-value decomposition reconstructs exactly four rows; missing combination disproves MVD
+PASS full 3NF synthesis: AS, AP, SN, QT, added key relation AQ; all projected relations in 3NF and all FDs preserved
+PASS synthesized key relation supports exact reconstruction of the application-note example
+PASS formal MVD tuple-swap test, complementarity and missing-combination rejection
+PASS MVDs cannot use the FD splitting rule; both trivial cases and FD-implied MVD tested
+PASS corrected 3NF lecture: both cinema keys verified despite inconsistent 4NF review slide
+ALL WORKED THEORY EXAMPLES PASSED (including extended course checks); production MVD assumptions remain a domain review
+
+$ python3 scripts/conceptual_erd.py
+PASS Chen notation: 8 entities, 50 descriptive attributes/identifiers, 8 relationship diamonds
+PASS all 9 SQL foreign-key columns represented through the conceptual relationship mapping
+
+$ python3 scripts/verify.py
+Disposable database: coop_sprint1_test_b1903dbfb637
+PASS DDL loads on MySQL
+PASS server version: 8.4.8
+PASS seed loads
+PASS live attribute coverage Student
+PASS live attribute coverage Employer
+PASS live attribute coverage JobPosting
+PASS live attribute coverage ApplicationStatus
+PASS live attribute coverage ResumeVersion
+PASS live attribute coverage Application
+PASS live attribute coverage Interview
+PASS live attribute coverage Offer
+PASS live attribute coverage ApplicationResume
+PASS nine tables
+PASS explicit InnoDB despite nontransactional session default
+PASS fixture cardinalities
+PASS report 1 exact expected rows (including duplicate multiplicities)
+PASS report 2 exact expected rows (including duplicate multiplicities)
+PASS report 3 exact expected rows (including duplicate multiplicities)
+PASS report 4 exact expected rows (including duplicate multiplicities)
+PASS report 5 exact expected rows (including duplicate multiplicities)
+PASS report 6 exact expected rows (including duplicate multiplicities)
+PASS report 7 exact expected rows (including duplicate multiplicities)
+PASS upcoming excludes past interview
+PASS active application set
+PASS offer boundary values
+PASS optional resume absent
+PASS student with zero applications
+PASS orphan student (expected MySQL error 1452)
+PASS orphan posting (expected MySQL error 1452)
+PASS orphan status (expected MySQL error 1452)
+PASS missing assignment application (expected MySQL error 1644)
+PASS missing assignment resume (expected MySQL error 1644)
+PASS assigned resume cannot be deleted (expected MySQL error 1451)
+PASS duplicate application (expected MySQL error 1062)
+PASS priority lower bound (expected MySQL error 3819)
+PASS priority upper bound (expected MySQL error 3819)
+PASS NULL priority (expected MySQL error 1048)
+PASS posting date order (expected MySQL error 3819)
+PASS resume version positive (expected MySQL error 3819)
+PASS duplicate resume version (expected MySQL error 1062)
+PASS interview round positive (expected MySQL error 3819)
+PASS duplicate interview round (expected MySQL error 1062)
+PASS negative wage (expected MySQL error 3819)
+PASS offer deadline order (expected MySQL error 3819)
+PASS one offer per application (expected MySQL error 1062)
+PASS boolean domain (expected MySQL error 3819)
+PASS resume ownership insert (expected MySQL error 1644)
+PASS resume ownership update (expected MySQL error 1644)
+PASS association application update (expected MySQL error 1644)
+PASS application owner immutable (expected MySQL error 1644)
+PASS resume owner immutable (expected MySQL error 1644)
+PASS referenced student cannot be deleted (expected MySQL error 1451)
+PASS ownership algebra invariant
+PASS valid resume replacement rolls back
+PASS workflow create apply interview offer then rollback
+PASS rollback restores six applications
+ALL DATABASE CHECKS PASSED; retained database for inspection: coop_sprint1_test_b1903dbfb637
+
+$ python3 scripts/verify_migration.py
+PASS archived kick-off schema and data load
+PASS capture original references
+PASS construct invalid legacy ownership
+PASS preflight rejects invalid legacy ownership
+PASS rejected preflight preserves old application column
+PASS rejected preflight creates no assignment table
+PASS restore legacy ownership
+PASS migration executes without database reset
+PASS all legacy resume associations retained
+PASS old resume column removed
+PASS legacy application and student rows retained
+PASS upgraded schema enforces resume ownership
+PASS four ownership triggers installed
+PASS nontransactional legacy fixture loads
+PASS preflight rejects non-InnoDB legacy tables
+ALL MIGRATION CHECKS PASSED; retained disposable databases: coop_sprint1_migration_0d1abe4067df coop_sprint1_migration_0d1abe4067df_myisam
+
+$ python3 scripts/verify_sprint2.py
+Disposable database: coop_sprint2_test_2a41f48f1971
+Version: 8.4.8
+PASS nine unchanged base tables and two views
+PASS R1 exact ordered report rows
+PASS R2 exact ordered report rows
+PASS R3 exact ordered report rows
+PASS R4 exact ordered report rows
+PASS R5 exact ordered report rows
+PASS R6 exact ordered report rows
+PASS R7 exact ordered report rows
+PASS R8 exact ordered report rows
+PASS ApplicationOverview independent expected rows
+PASS ApplicationOverview all columns equal direct query
+PASS StudentWorkload direct-query equivalence with expected rows
+PASS E1 baseline A expected bag
+PASS E1 baseline B expected bag
+PASS E2 baseline A expected bag
+PASS E2 baseline B expected bag
+PASS E3 baseline A expected bag
+PASS E3 baseline B expected bag
+PASS E4 baseline A expected bag
+PASS E4 baseline B expected bag
+PASS E1 no assignments A expected bag
+PASS E1 no assignments B expected bag
+PASS E2 duplicate display names A expected bag
+PASS E2 duplicate display names B expected bag
+PASS E3 no interviews A expected bag
+PASS E3 no interviews B expected bag
+PASS E4 overlapping branches A expected bag
+PASS E4 overlapping branches B expected bag
+PASS UNION ALL overlap would duplicate application 1
+PASS NOT IN with a NULL right side loses the no-application student
+PASS NOT EXISTS keeps the no-application student
+PASS COUNT star would report one application for the unmatched student
+PASS join without DISTINCT duplicates the interviewed application
+PASS extra interview does not multiply offered/interviewed applications
+PASS distinct student IDs preserve duplicate display names
+PASS division on an empty open-posting set includes all students
+PASS new open posting without applications makes division empty
+PASS offer count includes offers with NULL wage
+PASS O1 optional CTE/window report expected rows
+PASS O2 optional CTE/window report expected rows
+PASS window tie broken by posting/application IDs
+PASS E2 no applications A expected bag
+PASS E2 no applications B expected bag
+PASS CTE empty fixture avoids division by zero
+PASS window empty fixture returns no rows
+PASS duplicate round after status update triggers rollback (expected MySQL error 1062)
+PASS failed duplicate preserves old status and interview count in new connection
+PASS NULL schedule after status update triggers rollback (expected MySQL error 1048)
+PASS failed NULL schedule preserves saved status and no child
+PASS nonpositive round rejected (expected MySQL error 3819)
+PASS failed round check rolls status back
+PASS unknown application rejected (expected MySQL error 1644)
+PASS terminal application rejected (expected MySQL error 1644)
+PASS invalid interview type rejected (expected MySQL error 1644)
+PASS autocommit-disabled caller rejected (expected MySQL error 1644)
+PASS unusable interview status rejected (expected MySQL error 1644)
+PASS committed status and interview visible in new connection
+PASS ownership enforcement remains active (expected MySQL error 1644)
+PASS still nine base tables after routine workflow
+ALL SPRINT 2 CHECKS PASSED (59 checks).
+Retained disposable database: coop_sprint2_test_2a41f48f1971
+PASS design.py rejects -O
+PASS design.py rejects PYTHONOPTIMIZE
+PASS verify_theory.py rejects -O
+PASS verify_theory.py rejects PYTHONOPTIMIZE
+PASS conceptual_erd.py rejects -O
+PASS conceptual_erd.py rejects PYTHONOPTIMIZE
+PASS verify.py rejects -O
+PASS verify.py rejects PYTHONOPTIMIZE
+PASS verify_migration.py rejects -O
+PASS verify_migration.py rejects PYTHONOPTIMIZE
+PASS verify_sprint2.py rejects -O
+PASS verify_sprint2.py rejects PYTHONOPTIMIZE
+
+All six commands passed: 154 printed checks; all 12 optimized-mode guards rejected safely.
+No performance timing, video duration, recipient access or Brightspace upload is established by these commands.

@@ -1,4 +1,10 @@
-# Actual Sprint 1 execution evidence
+# Project execution evidence
+
+## Sprint 2
+
+Current execution results, clean-copy regression and header-labelled advanced report outputs are indexed in [Sprint 2 evidence](sprint2/README.md). The runnable verifier is `scripts/verify_sprint2.py`.
+
+## Sprint 1 recorded results
 
 Run date: 2026-10-18, America/Vancouver. Environment: macOS arm64, MySQL Community Server 8.4.8. Verification used an isolated server with networking disabled; existing application databases were not altered. Test data is synthetic. Video and publication are separate submission steps.
 

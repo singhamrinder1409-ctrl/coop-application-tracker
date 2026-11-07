@@ -45,3 +45,17 @@ The changes use the course methods and MySQL interfaces listed above.
 ## Assistance and review
 
 OpenAI Codex assisted with the SQL changes, verification scripts, diagrams, theory examples and draft documentation.
+
+## Sprint 2 requirements and SQL references
+
+- `Project Sprint 2 - Fall 2026 CSC 370 A01 A02 X - University of Victoria.pdf`: four grading criteria; current progress evidence and next-sprint planning are evaluated separately.
+- `Feedback for Project Sprint 1 - Fall 2026 CSC 370 A01 A02 X - University of Victoria.pdf`: 380/400, comprising 90/100/100/90 across the four criteria. There are no written criterion comments in the supplied file.
+- Sprint 2 assignment text supplied by the group: current scope through Advanced SQL; next scope through Analysing Query Algorithms; repository URL, exact commit hash, group video and private-repository access requirements. The formula/example conflict is handled by targeting below eight minutes. The pasted formative-weight sentence is not used to infer the actual Sprint 2 assessment weight.
+- The unchanged previous plan in `docs/archive/SPRINT1_REPORT_AND_PLAN.md`: source of the six Sprint 2 commitments, including the optional CTE/window goal.
+- [CREATE VIEW](https://dev.mysql.com/doc/refman/8.4/en/create-view.html): explicit view columns and invoker security.
+- [RESIGNAL](https://dev.mysql.com/doc/refman/8.4/en/resignal.html): preserve the SQL error after rollback in the stored procedure handler.
+- [Implicit commits](https://dev.mysql.com/doc/refman/8.4/en/implicit-commit.html): DDL and START TRANSACTION boundaries; nested transactions are not supported by this operation.
+- [Common table expressions](https://dev.mysql.com/doc/refman/8.4/en/with.html): O1's named intermediate result sets.
+- [Window functions](https://dev.mysql.com/doc/refman/8.4/en/window-functions-usage.html): O2's per-student ROW_NUMBER ranking.
+
+These interfaces were checked against official MySQL documentation. No new application dependencies were added. The existing assistance acknowledgement applies to the Sprint 2 SQL, verification and documentation as well. Advanced SQL and query-algorithm topic lists in the report are labelled project coverage/proposed experiments rather than quotations of material that was not supplied.

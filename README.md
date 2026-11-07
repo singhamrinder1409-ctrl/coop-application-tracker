@@ -8,18 +8,18 @@ A MySQL database for tracking co-op applications, job postings, resume versions,
 
 - **Scope:** nine tables and 59 columns, with integrity constraints, migration scripts and reproducible report queries.
 - **My contribution:** I proposed the tracker concept and contributed schema design, SQL queries, Python verification, migration and documentation. Implementation and verification were shared team work.
-- **Recorded results:** 56 database checks and 15 migration checks, with saved evidence linked below. These are recorded project results, not a fresh database run during portfolio preparation.
-- **Next steps:** develop an application interface and extend the reporting beyond the current course sprint. The sprint report separates delivered functionality from planned work.
+- **Verification:** the original database, migration and design checks remain reproducible. Sprint 2 adds eight advanced reports, two views, a status/interview transaction, four query-equivalence pairs and optional CTE/window reports; saved results are linked below.
+- **Next steps:** analyse query algorithms and access paths on controlled larger datasets. An application interface remains an optional future extension. The sprint report separates delivered functionality from planned work.
 
 ## Course project context
 
 Group 3: Amrinder Singh (`amrinder`), Jaiman Singh (`jaiman1`), Aashna Sadeque (`aashnas`). We worked together on the design, implementation, verification and documentation.
 
-This MySQL database tracks students' co-op applications, job postings, resume selections, interview rounds and offers. Sprint 1 extends the kick-off implementation with a normalized resume-selection relationship, stronger integrity rules, complete diagrams and reproducible verification. All demonstration data is synthetic.
+This MySQL database tracks students' co-op applications, job postings, resume selections, interview rounds and offers. Sprint 1 added normalized resume selection, stronger integrity rules and complete diagrams. Sprint 2 adds advanced SQL reports, two views and a transaction without changing the base schema. All demonstration data is synthetic.
 
 Course submission details are in the [course guide](docs/COURSE_SUBMISSION_GUIDE.md).
 
-## Design and feedback corrections
+## Design and evidence
 
 | Topic | Files |
 | --- | --- |
@@ -28,28 +28,34 @@ Course submission details are in the [course guide](docs/COURSE_SUBMISSION_GUIDE
 | Table-by-table BCNF, FDs, keys, minimal bases, projection, 3NF and 4NF | [Normalization report](NORMALIZATION.md) |
 | SQL and relational-algebra constraints; weak entities and inheritance | [Integrity rules and design decisions](docs/CONSTRAINTS.md) |
 | Eight conceptual-design quality criteria | [Design review](docs/CONCEPTUAL_DESIGN_REVIEW.md) |
+| Advanced SQL and transaction behavior | [Sprint 2 SQL guide](docs/ADVANCED_SQL.md), [new reports](supporting-files/sprint2/reports.sql), [new verification](evidence/sprint2/verification.txt) |
 | Preservation of the kick-off data | [Saved migration results](evidence/migration-verification.txt) |
 | References and assistance acknowledgement | [Sources](SOURCES.md) |
 
-The original kickoff plan, DDL and seed are retained in `docs/archive/` as the comparison baseline. They describe the earlier version; the files linked above describe Sprint 1.
+The original kickoff plan, DDL and seed are retained in `docs/archive/` as the comparison baseline. They describe the earlier version; the files linked above describe the current tracker. The unchanged Sprint 1 report and promised Sprint 2 goals are also archived there.
 
 ## Run the database and reports
 
 Requirements: Python 3 and MySQL 8.0.16 or later. The verification scripts use the Python standard library. Recorded database verification used MySQL 8.4.8. All nine tables explicitly use InnoDB.
 
-Run these commands from the repository root with a MySQL account permitted to create databases, tables and triggers and execute SELECT, INSERT, UPDATE and DELETE:
+Run these commands from the repository root with a MySQL account permitted to create databases, tables and triggers and execute SELECT, INSERT, UPDATE and DELETE. The new installers also need CREATE VIEW (and DROP when replacing an existing view), CREATE ROUTINE, ALTER ROUTINE and EXECUTE:
 
 ```sh
 mysql -u root -p < schema.sql
 mysql -u root -p < supporting-files/seed.sql
 mysql -u root -p < supporting-files/demo_queries.sql
+mysql -u root -p < supporting-files/sprint2/views.sql
+mysql -u root -p < supporting-files/sprint2/transactions.sql
+mysql -u root -p < supporting-files/sprint2/reports.sql
 ```
 
 This creates `coop_application_tracker_sprint1`. Existing tables cause the load to stop; the current schema does not drop a database. Use a fresh installation for these commands rather than loading the seed over existing data. The archived kickoff DDL is historical and includes a database reset; it is not the current setup command.
 
+The database keeps its established name `coop_application_tracker_sprint1`. On a populated Sprint 1 installation, run only the new view/procedure installers, then the reports. See the [SQL guide](docs/ADVANCED_SQL.md) for equivalence queries, optional CTE/window reports and the standalone transaction contract.
+
 ## Verification evidence
 
-The [evidence index](evidence/README.md) describes the saved results: 56 database checks, 15 migration checks, 12 worked theory checks, 10 design checks and two conceptual-diagram coverage checks. The [seven report outputs](evidence/demo-output.tsv) can be compared with a fresh run of the supplied schema, seed and report SQL.
+The [evidence index](evidence/README.md) describes the saved results: 56 database checks, 15 migration checks, 12 worked theory checks, 10 design checks and two conceptual-diagram coverage checks. Current Sprint 2 results and header-labelled report outputs are in [evidence/sprint2](evidence/sprint2/README.md). The [seven report outputs](evidence/demo-output.tsv) can be compared with a fresh run of the supplied schema, seed and report SQL.
 
 To rerun the checks, configure MySQL authentication through `mysql_config_editor` or the client's normal environment, then run from the repository root:
 
@@ -59,6 +65,7 @@ python3 scripts/verify_theory.py
 python3 scripts/conceptual_erd.py
 python3 scripts/verify.py
 python3 scripts/verify_migration.py
+python3 scripts/verify_sprint2.py
 ```
 
 `MYSQL_BIN`, `MYSQL_SOCKET` and `MYSQL_USER` select a different client, socket or account. The database verifiers create randomly named databases and retain them for inspection. They require database/table/trigger creation and data manipulation privileges; migration checks also require ALTER, CREATE ROUTINE, ALTER ROUTINE and EXECUTE. The scripts reject `-O` and `PYTHONOPTIMIZE`, which disable assertions.

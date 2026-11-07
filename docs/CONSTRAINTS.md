@@ -24,3 +24,7 @@ Interview rounds are conceptually existence-dependent on Application, with parti
 We considered JobPosting subtypes RemotePosting and OnSitePosting. They currently add no distinct attributes; location_type is sufficient and avoids duplicated posting columns. ENUM gives disjoint remote/in_person/hybrid categories and total participation through NOT NULL. This is a type discriminator, not an implemented ISA hierarchy. If separate subtype attributes arise, use JobPosting as supertype and subtype tables with posting_id as PK/FK, then decide total/partial and disjoint/overlap constraints explicitly. Subtype tables can be added when distinct facts or restricted relationships justify them.
 
 The design incorporates the supplied written TA feedback. Further requirements may change the documented assumptions.
+
+## Sprint 2 operation
+
+The base rules above are unchanged. `ScheduleInterview` in `supporting-files/sprint2/transactions.sql` adds a standalone transaction that changes the current status and inserts an interview together. It rejects terminal applications and invalid types, rolls back on SQL exceptions and rethrows the original error. Its caller/transaction boundary and fresh-connection tests are documented in `docs/ADVANCED_SQL.md`. The procedure's transition guard is not claimed to constrain arbitrary manual updates.

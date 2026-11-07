@@ -26,3 +26,7 @@ We evaluated the tracker together using eight conceptual-design quality criteria
 For each strong entity, its chosen ID determines every descriptive attribute. Many-to-one links imply child ID -> parent ID; examples are posting_id -> employer_id and application_id -> posting_id/student_id/status_id. “For” must therefore not be drawn as many-to-many. The zero-or-one offer relation gives both application_id -> offer_id and offer_id -> application_id in Offer. Uses of a selected resume imply application_id -> resume_id, while resume_id -> application_id is false because reuse is allowed.
 
 The student/posting pair is an alternate key of Application; neither student nor posting alone identifies an application. The many-to-many association is therefore mediated by the application entity and its lifecycle attributes. The separate conceptual student, posting and employer facts must not be collapsed into one entity merely because identifiers link them; doing so would repeat facts determined by non-key attributes.
+
+## Sprint 2 revalidation
+
+The base entities, attributes, identifiers and multiplicities did not change. The two views and stored operation are derived/read-write interfaces over that model, not new entity sets. `docs/ADVANCED_SQL.md` revisits all eight criteria for the added reports and operation. Original design/diagram/theory and database checks are rerun, with outputs indexed under `evidence/sprint2/`.
