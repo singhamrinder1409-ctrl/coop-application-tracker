@@ -7,7 +7,7 @@ A MySQL database for tracking co-op applications, job postings, resume versions,
 ## Portfolio overview
 
 - **Scope:** nine tables and 59 columns, with integrity constraints, migration scripts and reproducible report queries.
-- **My contribution:** I proposed the tracker concept and contributed schema design, SQL queries, Python verification, migration and documentation. Implementation and verification were shared team work.
+- **Team work:** all three members worked together on the schema, SQL queries, verification, migration and documentation.
 - **Verification:** the original database, migration and design checks remain reproducible. Sprint 2 adds eight advanced reports, two views, a status/interview transaction, four query-equivalence pairs and optional CTE/window reports; saved results are linked below.
 - **Next steps:** analyse query algorithms and access paths on controlled larger datasets. An application interface remains an optional future extension. The sprint report separates delivered functionality from planned work.
 

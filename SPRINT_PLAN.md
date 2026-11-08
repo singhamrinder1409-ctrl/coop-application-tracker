@@ -17,7 +17,7 @@ Group 3: Amrinder Singh, Jaiman Singh and Aashna Sadeque. We worked together on 
 
 The supplied feedback records 380/400: 90 for delivery evidence, 100 for missed-goal justification, 100 for course-level planning and 90 for module coverage. It contains no written criterion comments. We therefore do not attribute a specific technical criticism to the TA.
 
-For delivery evidence, every promised goal above now points to its SQL, expected output and runnable check. Failure tests require the intended MySQL error and separately read the resulting state; merely printing an error is not treated as proof of rollback. For module coverage, the topic matrix below connects each SQL method to a report or test and makes the next sprint's acceptance criteria explicit. These changes address the two lower-scoring areas without claiming a guaranteed grade.
+For delivery evidence, every promised goal above now points to its SQL, expected output and runnable check. Failure tests require the intended MySQL error and separately read the resulting state; merely printing an error is not treated as proof of rollback. For module coverage, the topic matrix below connects each SQL method to a report or test and makes the next sprint's acceptance criteria explicit. The goal table and topic matrix make the evidence for these two areas easier to check.
 
 ## What the implementation demonstrates
 
@@ -31,9 +31,9 @@ All core implementation goals and the optional CTE/window goal have supporting r
 
 The operation must run on a fresh standalone connection, outside a caller transaction. MySQL START TRANSACTION can implicitly commit an existing transaction; disabled autocommit is rejected, but enabled autocommit alone does not prove that no explicit transaction is open. DDL installation also commits implicitly. The SQL report documents these boundaries.
 
-The fixture is small and synthetic. We have not measured large-data speed, compared physical join algorithms or tested deadlock retries. Those are next-sprint work, not missed promises disguised as completed tests. The current-status summary is not a historical conversion funnel because the tracker stores no status history. A chart and API remain outside the core scope.
+The fixture is small and synthetic. We have not measured large-data speed, compared physical join algorithms or tested deadlock retries. These are planned for next sprint. The current-status summary is not a historical conversion funnel because the tracker stores no status history. A chart and API remain outside the core scope.
 
-No extra Advanced SQL or query-algorithm course material was supplied. The named module boundaries come from the assignment; the detailed topic coverage below and proposed next-sprint experiments are our explicit interpretation. They can be adjusted if the teaching team supplies more specific requirements. We do not rely on the pasted “first attempt is worth 0%” sentence to establish Sprint 2's assessment weight.
+The topic coverage follows the assignment's module boundaries. The detailed next-sprint experiments are proposed coverage, not an official topic list; we can refine them if the teaching team supplies more specific requirements.
 
 ## Current scope through Advanced SQL
 
